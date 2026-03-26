@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ouvidoria Escolar — Juventude Sem Bullying</title>
+  <meta name="description" content="Canal seguro para denúncias de bullying e cyberbullying nas escolas, com protocolo e acompanhamento.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ouvidoria.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page-ouvidoria">
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">Juventude <strong>Sem Bullying</strong></span>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"
+          alt="Bandeira do Brasil"
+          class="logo-flag js-lang-ptbr"
+          title="Mudar idioma para Português (Brasil)"
+          role="button"
+          tabindex="0"
+          loading="eager"
+          decoding="async"
+        >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+          alt="Bandeira dos Estados Unidos"
+          class="logo-flag js-lang-enus"
+          title="Switch language to English (US)"
+          role="button"
+          tabindex="0"
+          loading="eager"
+          decoding="async"
+        >
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#noticias">Notícias</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="conheca-o-projeto.html">Conheça o Projeto</a></li>
+        <li><a href="ouvidoria.html" class="nav-cta">Ouvidoria</a></li>
+        <li><a href="ouvidoria.html?admin=1" class="nav-admin-cta" target="_blank" rel="noopener noreferrer">🔐 Login Administrativo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="ouv-main">
+    <header class="ouv-hero">
+      <div class="ouv-hero-bg" aria-hidden="true"></div>
+      <div class="container ouv-hero-inner">
+        <div class="ouv-hero-badge">
+          <span class="ouv-hero-badge-dot"></span>
+          Canal escolar seguro · Lei 14.811/2024
+        </div>
+        <h1 class="ouv-hero-title">Ouvidoria <span class="ouv-hero-accent">Escolar</span></h1>
+        <p class="ouv-lead">Registre bullying ou cyberbullying de forma <strong>anônima</strong> ou <strong>identificada</strong>. Você recebe um <strong>protocolo</strong> para acompanhar — demonstração local no navegador.</p>
+        <div class="ouv-quick">
+          <a href="#formulario" class="ouv-btn ouv-btn-primary">Nova denúncia</a>
+          <a href="#acompanhar" class="ouv-btn ouv-btn-ghost">Acompanhar protocolo</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="ouv-section container" id="orientacoes">
+      <div class="ouv-section-head">
+        <span class="ouv-section-label">Antes de registrar</span>
+        <h2 class="ouv-section-title">Orientações importantes</h2>
+      </div>
+      <div class="ouv-info-grid">
+        <article class="ouv-info-card">
+          <div class="ouv-info-icon" aria-hidden="true">🚨</div>
+          <h3>Emergência</h3>
+          <p>Em <strong>risco imediato</strong>, ligue <strong>190</strong> (Polícia) ou <strong>192</strong> (SAMU).</p>
+        </article>
+        <article class="ouv-info-card">
+          <div class="ouv-info-icon" aria-hidden="true">📝</div>
+          <h3>Como relatar</h3>
+          <p>Descreva fatos com <strong>data</strong>, <strong>local</strong> e <strong>testemunhas</strong>, sem expor dados desnecessários de terceiros.</p>
+        </article>
+        <article class="ouv-info-card">
+          <div class="ouv-info-icon" aria-hidden="true">🔒</div>
+          <h3>Sigilo</h3>
+          <p>O uso responsável do canal ajuda a escola a agir com <strong>rapidez</strong> e <strong>sigilo</strong>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ouv-section container ouv-form-section" id="formulario">
+      <div class="ouv-section-head">
+        <span class="ouv-section-label">Formulário</span>
+        <h2 class="ouv-section-title">Registro em etapas</h2>
+        <p class="ouv-section-desc">Preencha com calma. Você pode voltar a qualquer passo.</p>
+      </div>
+      <div class="ouv-form-shell">
+        <div class="ouv-steps" id="stepIndicators" role="navigation" aria-label="Etapas do formulário">
+          <div class="ouv-step-track">
+            <span class="ouv-step active" data-step="1"><span class="ouv-step-num">1</span><span class="ouv-step-name">Quem</span></span>
+            <span class="ouv-step-line" aria-hidden="true"></span>
+            <span class="ouv-step" data-step="2"><span class="ouv-step-num">2</span><span class="ouv-step-name">O quê</span></span>
+            <span class="ouv-step-line" aria-hidden="true"></span>
+            <span class="ouv-step" data-step="3"><span class="ouv-step-num">3</span><span class="ouv-step-name">Relato</span></span>
+            <span class="ouv-step-line" aria-hidden="true"></span>
+            <span class="ouv-step" data-step="4"><span class="ouv-step-num">4</span><span class="ouv-step-name">Revisão</span></span>
+          </div>
+        </div>
+
+        <form id="ouvForm" class="ouv-form-card" novalidate>
+          <div class="ouv-panel" data-panel="1">
+            <h3>Identificação</h3>
+            <fieldset class="ouv-fieldset">
+              <legend class="sr-only">Tipo de identificação</legend>
+              <label class="ouv-radio"><input type="radio" name="idTipo" value="anonimo" checked> Anônimo</label>
+              <label class="ouv-radio"><input type="radio" name="idTipo" value="aluno"> Sou aluno(a)</label>
+              <label class="ouv-radio"><input type="radio" name="idTipo" value="responsavel"> Sou responsável</label>
+              <label class="ouv-radio"><input type="radio" name="idTipo" value="funcionario"> Funcionário da escola</label>
+            </fieldset>
+            <div class="ouv-fields-ident" id="camposIdent">
+              <label>Nome <input type="text" name="nome" autocomplete="name"></label>
+              <label>E-mail ou telefone <input type="text" name="contato" autocomplete="email"></label>
+              <div class="ouv-anon-message hidden" id="anonMessage" role="note" aria-live="polite">
+                Mesmo selecionando <strong>“Anônimo”</strong>, é necessário informar <strong>nome</strong> e <strong>contato</strong> para que, se for preciso, possamos entrar em contato; seus dados ficam <strong>SIGILOSOS</strong> e a <strong>instituição de ensino</strong> não terá acesso às informações.
+              </div>
+            </div>
+          </div>
+
+          <div class="ouv-panel hidden" data-panel="2">
+            <h3>Sobre o ocorrido</h3>
+            <label>Escola / unidade <input type="text" name="escola" required placeholder="Nome da escola"></label>
+            <label>Tipo <select name="tipo" required>
+              <option value="">Selecione</option>
+              <option value="fisico">Físico</option>
+              <option value="verbal">Verbal</option>
+              <option value="social">Social / exclusão</option>
+              <option value="cyber">Cyberbullying</option>
+              <option value="outro">Outro</option>
+            </select></label>
+            <label>Frequência <select name="frequencia" required>
+              <option value="">Selecione</option>
+              <option value="unica">Uma vez</option>
+              <option value="recorrente">Recorrente</option>
+            </select></label>
+            <label>Urgência <select name="urgencia" required>
+              <option value="normal">Normal</option>
+              <option value="alta">Alta</option>
+              <option value="emergencia">Emergência — já acionei 190/192 se necessário</option>
+            </select></label>
+          </div>
+
+          <div class="ouv-panel hidden" data-panel="3">
+            <h3>Relato</h3>
+            <label>Descrição detalhada <textarea name="relato" rows="6" required placeholder="O que aconteceu, quando, onde, quem testemunhou…"></textarea></label>
+          </div>
+
+          <div class="ouv-panel hidden" data-panel="4">
+            <h3>Revisão</h3>
+            <div class="ouv-review" id="reviewBox"></div>
+            <label class="ouv-check"><input type="checkbox" name="veracidade" required> Declaro que as informações são verdadeiras, na medida do meu conhecimento.</label>
+          </div>
+
+          <div class="ouv-nav-btns">
+            <button type="button" class="ouv-btn ouv-btn-secondary" id="btnPrev" disabled>Voltar</button>
+            <button type="button" class="ouv-btn ouv-btn-primary" id="btnNext">Próximo</button>
+            <button type="submit" class="ouv-btn ouv-btn-primary ouv-btn-glow hidden" id="btnSubmit">Enviar registro</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="ouv-section container" id="acompanhar">
+      <div class="ouv-panel-card">
+        <div class="ouv-panel-head">
+          <span class="ouv-panel-icon" aria-hidden="true">🔍</span>
+          <div>
+            <h2 class="ouv-panel-title">Acompanhar protocolo</h2>
+            <p class="ouv-muted">Digite o código gerado após o envio.</p>
+          </div>
+        </div>
+        <div class="ouv-track ouv-track-modern">
+          <input type="text" id="protocolInput" class="ouv-input" placeholder="Ex: JSB-2026-XXXX" autocomplete="off">
+          <button type="button" class="ouv-btn ouv-btn-primary" id="protocolBtn">Consultar</button>
+        </div>
+        <div class="ouv-protocol-result hidden" id="protocolResult"></div>
+      </div>
+    </section>
+
+    <section class="ouv-section container ouv-admin-wrap hidden" id="painel">
+      <div class="ouv-panel-card ouv-panel-card--admin">
+        <div class="ouv-panel-head">
+          <span class="ouv-panel-icon" aria-hidden="true">🏫</span>
+          <div>
+            <h2 class="ouv-panel-title">Painel da escola</h2>
+            <p class="ouv-muted">Demonstração · código: <code class="ouv-code">escola2026</code></p>
+          </div>
+        </div>
+
+        <div class="ouv-track ouv-track-modern">
+          <input type="password" id="adminCode" class="ouv-input" placeholder="Código de acesso" autocomplete="current-password">
+          <button type="button" class="ouv-btn ouv-btn-secondary" id="adminLogin">Entrar</button>
+        </div>
+
+        <div class="ouv-admin-access-block hidden" id="adminAccessBlock" aria-live="polite">
+          <div class="ouv-admin-access-inner">
+            <div class="ouv-admin-access-title">Acesso Administrativo</div>
+            <p class="ouv-admin-access-desc">Clique abaixo para abrir Painel Administrativo com relatórios detalhados e status de cada protocolo.</p>
+            <button type="button" class="ouv-btn ouv-btn-primary" id="adminAccess">Abrir Painel</button>
+          </div>
+        </div>
+
+        <div class="hidden" id="adminApp">
+          <div class="ouv-admin-filter">
+            <label class="ouv-label" for="adminSchoolName">Nome da escola (para filtrar protocolos)</label>
+            <div class="ouv-track ouv-track-modern">
+              <input type="text" id="adminSchoolName" class="ouv-input" placeholder="Ex: Escola Municipal São Paulo" autocomplete="organization">
+              <button type="button" class="ouv-btn ouv-btn-primary" id="adminRefresh">Atualizar</button>
+            </div>
+          </div>
+
+          <div class="ouv-admin-tabs" role="tablist" aria-label="Abas do painel administrativo">
+            <button type="button" class="ouv-admin-tab active" data-tab="cadastros" role="tab" aria-selected="true">Cadastros</button>
+            <button type="button" class="ouv-admin-tab" data-tab="protocolos" role="tab" aria-selected="false">Protocolos</button>
+            <button type="button" class="ouv-admin-tab" data-tab="relatorios" role="tab" aria-selected="false">Relatórios</button>
+          </div>
+
+          <div class="ouv-admin-tabpanels">
+            <section class="ouv-admin-panel active" data-panel="cadastros" role="tabpanel">
+              <div class="ouv-admin-grid">
+                <div class="ouv-form-block">
+                  <h3 class="ouv-admin-h3">Cadastrar funcionário</h3>
+                  <div class="ouv-fields-grid">
+                    <label>Nome<input type="text" id="funcNome" class="ouv-input" placeholder="Nome do funcionário"></label>
+                    <label>Cargo<input type="text" id="funcCargo" class="ouv-input" placeholder="Professor(a), coordenação, etc"></label>
+                    <label>Contato (opcional)<input type="text" id="funcContato" class="ouv-input" placeholder="E-mail ou telefone"></label>
+                  </div>
+                  <button type="button" class="ouv-btn ouv-btn-primary" id="addFunc">Adicionar</button>
+                </div>
+
+                <div class="ouv-form-block">
+                  <h3 class="ouv-admin-h3">Cadastrar aluno</h3>
+                  <div class="ouv-fields-grid">
+                    <label>Nome<input type="text" id="alunoNome" class="ouv-input" placeholder="Nome do aluno(a)"></label>
+                    <label>Turma<input type="text" id="alunoTurma" class="ouv-input" placeholder="Ano/série/turma"></label>
+                    <label>Responsável (opcional)<input type="text" id="alunoResp" class="ouv-input" placeholder="Nome/contato do responsável"></label>
+                  </div>
+                  <button type="button" class="ouv-btn ouv-btn-primary" id="addAluno">Adicionar</button>
+                </div>
+
+                <div class="ouv-form-block">
+                  <h3 class="ouv-admin-h3">Cadastrar profissional parceiro</h3>
+                  <div class="ouv-fields-grid">
+                    <label>Tipo
+                      <select id="proTipo" class="ouv-input">
+                        <option value="">Selecione</option>
+                        <option value="advogado">Advogado</option>
+                        <option value="psicologo">Psicólogo</option>
+                      </select>
+                    </label>
+                    <label>Nome<input type="text" id="proNome" class="ouv-input" placeholder="Nome do profissional"></label>
+                    <label>Contato (opcional)<input type="text" id="proContato" class="ouv-input" placeholder="E-mail ou telefone"></label>
+                  </div>
+                  <button type="button" class="ouv-btn ouv-btn-primary" id="addPro">Adicionar</button>
+                </div>
+              </div>
+
+              <div class="ouv-admin-lists">
+                <div class="ouv-list-block">
+                  <h3 class="ouv-admin-h3">Funcionários cadastrados</h3>
+                  <div id="funcList" class="ouv-admin-listing"></div>
+                </div>
+                <div class="ouv-list-block">
+                  <h3 class="ouv-admin-h3">Alunos cadastrados</h3>
+                  <div id="alunoList" class="ouv-admin-listing"></div>
+                </div>
+                <div class="ouv-list-block">
+                  <h3 class="ouv-admin-h3">Profissionais parceiros</h3>
+                  <div id="proList" class="ouv-admin-listing"></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="ouv-admin-panel" data-panel="protocolos" role="tabpanel">
+              <div class="ouv-admin-protocols-head">
+                <div class="ouv-track ouv-track-modern">
+                  <input type="text" id="protocolSearch" class="ouv-input" placeholder="Buscar por protocolo (ex: JSB-2026-XXXX)">
+                  <select id="protocolStatusFilter" class="ouv-input">
+                    <option value="all">Todos os status</option>
+                    <option value="Recebido">Recebido</option>
+                    <option value="Em análise">Em análise</option>
+                    <option value="Encaminhado">Encaminhado</option>
+                    <option value="Concluído">Concluído</option>
+                  </select>
+                </div>
+              </div>
+              <div id="protocolsList" class="ouv-protocols-list"></div>
+              <div class="ouv-muted" id="protocolsEmpty"></div>
+            </section>
+
+            <section class="ouv-admin-panel" data-panel="relatorios" role="tabpanel">
+              <div class="ouv-report-grid">
+                <div class="ouv-form-block">
+                  <h3 class="ouv-admin-h3">Emitir relatório</h3>
+                  <div class="ouv-fields-grid">
+                    <label>Início (opcional)<input type="date" id="reportStart" class="ouv-input"></label>
+                    <label>Fim (opcional)<input type="date" id="reportEnd" class="ouv-input"></label>
+                    <label>Status (opcional)
+                      <select id="reportStatus" class="ouv-input">
+                        <option value="all">Todos</option>
+                        <option value="Recebido">Recebido</option>
+                        <option value="Em análise">Em análise</option>
+                        <option value="Encaminhado">Encaminhado</option>
+                        <option value="Concluído">Concluído</option>
+                      </select>
+                    </label>
+                  </div>
+                  <button type="button" class="ouv-btn ouv-btn-primary" id="genReport">Gerar relatório</button>
+                  <button type="button" class="ouv-btn ouv-btn-secondary" id="downloadCsv">Baixar CSV</button>
+                </div>
+
+                <div class="ouv-report-cards" id="reportCards"></div>
+              </div>
+
+              <div class="ouv-report-table">
+                <h3 class="ouv-admin-h3">Resumo por frequência</h3>
+                <div id="freqSummary" class="ouv-admin-listing"></div>
+
+                <h3 class="ouv-admin-h3" style="margin-top:26px;">Relatório detalhado (denúncias)</h3>
+                <div id="reportDetailList" class="ouv-admin-listing"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ouv-section container ouv-site-admin-wrap hidden" id="siteAdmin">
+      <div class="ouv-panel-card ouv-panel-card--admin">
+        <div class="ouv-panel-head">
+          <span class="ouv-panel-icon" aria-hidden="true">⚙️</span>
+          <div>
+            <h2 class="ouv-panel-title">Painel Administrativo (Site)</h2>
+            <p class="ouv-muted">Acesso para administradores do site · (demo: <code class="ouv-code">site2026</code>)</p>
+          </div>
+        </div>
+
+        <div class="ouv-track ouv-track-modern">
+          <input type="password" id="siteAdminCode" class="ouv-input" placeholder="Código do administrador do site" autocomplete="current-password">
+          <button type="button" class="ouv-btn ouv-btn-secondary" id="siteAdminLogin">Entrar</button>
+        </div>
+
+        <div class="hidden" id="siteAdminApp">
+          <div class="ouv-admin-protocols-head">
+            <div class="ouv-track ouv-track-modern">
+              <input type="text" id="siteProtocolSearch" class="ouv-input" placeholder="Buscar por protocolo (ex: JSB-2026-XXXX)">
+              <select id="siteStatusFilter" class="ouv-input">
+                <option value="all">Todos os status</option>
+                <option value="Recebido">Recebido</option>
+                <option value="Em análise">Em análise</option>
+                <option value="Encaminhado">Encaminhado</option>
+                <option value="Concluído">Concluído</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="siteProtocolsList" class="ouv-protocols-list"></div>
+          <div class="ouv-muted" id="siteProtocolsEmpty"></div>
+
+          <div style="margin-top:18px;">
+            <button type="button" class="ouv-btn ouv-btn-secondary" id="siteDownloadCsv">Baixar CSV</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:0;">
+        <p><a href="index.html" class="ouv-footer-link">← Voltar ao início</a></p>
+        <p>&copy; 2026 Juventude Sem Bullying — Lei nº 14.811/2024</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="ouv-modal hidden" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="ouv-modal-backdrop"></div>
+    <div class="ouv-modal-box">
+      <div class="ouv-modal-icon" aria-hidden="true">✓</div>
+      <h2 id="modalTitle">Registro recebido</h2>
+      <p class="ouv-modal-sub">Seu protocolo</p>
+      <p class="ouv-protocol-big" id="modalProtocol"></p>
+      <p class="ouv-muted">Guarde este número para acompanhar na seção acima.</p>
+      <button type="button" class="ouv-btn ouv-btn-primary ouv-btn-glow" id="modalClose">Entendi</button>
+    </div>
+  </div>
+
+  <script src="ouvidoria.js"></script>
+</body>
+</html>
