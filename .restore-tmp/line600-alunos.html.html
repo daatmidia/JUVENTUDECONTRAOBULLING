@@ -1,0 +1,129 @@
+          <div class="edu-m23" id="eduM23">
+            <div class="missao-tabs" role="tablist" aria-label="Atividades da Missão 2">
+              <button type="button" class="mtab active" id="tab-m2" data-m23-tab="2" role="tab" aria-selected="true">
+                <span class="mtab-icon">🤝</span>
+                <span>SER ALIADO</span>
+                <span class="mtab-num">MISSÃO 2</span>
+              </button>
+              <button type="button" class="mtab" id="tab-m3a" data-m23-tab="3" role="tab" aria-selected="false">
+                <span class="mtab-icon">🆘</span>
+                <span>PEDIR AJUDA</span>
+                <span class="mtab-num">MISSÃO 3A</span>
+              </button>
+              <button type="button" class="mtab" id="tab-m3b" data-m23-tab="4" role="tab" aria-selected="false">
+                <span class="mtab-icon">📱</span>
+                <span>CYBERBULLYING</span>
+                <span class="mtab-num">MISSÃO 3B</span>
+              </button>
+            </div>
+
+            <div class="missao-panel active" id="panel-m2" role="tabpanel">
+              <div class="missao-intro">
+                <div class="missao-intro-row">
+                  <div class="missao-icon-big blue" aria-hidden="true">🤝</div>
+                  <div>
+                    <div class="missao-intro-label">MISSÃO 2</div>
+                    <div class="missao-intro-title">Ser Aliado(a)</div>
+                  </div>
+                </div>
+                <div class="missao-intro-desc">Você presenciou uma cena de bullying. O que você faz? Nesta missão, tome decisões reais e aprenda como ser um aliado de verdade — sem se colocar em risco.</div>
+                <div class="progress-bar-wrap">
+                  <div class="prog-label"><span>CENÁRIOS CONCLUÍDOS</span><span id="m2-prog-label">0 / 4</span></div>
+                  <div class="prog-bar"><div class="prog-fill" id="m2-prog-bar" style="width:0%"></div></div>
+                </div>
+              </div>
+              <div id="m2-cenarios"></div>
+              <div class="nao-dizer-section">
+                <div class="nao-dizer-title">🚫 O QUE NÃO DIZER</div>
+                <div class="nao-dizer-cards">
+                  <div class="nd-card"><div class="nd-phrase">"Se defenda sozinho(a)!"</div><div class="nd-why">Coloca toda a responsabilidade na vítima, que já está vulnerável.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"É só brincadeira, ignora."</div><div class="nd-why">Minimiza a dor real que a pessoa está sentindo.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"Você provocou."</div><div class="nd-why">Ninguém merece ser agredido. A culpa nunca é da vítima.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"Não conta pra ninguém."</div><div class="nd-why">O silêncio protege o agressor, não a vítima.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"Você está exagerando."</div><div class="nd-why">Invalida o sentimento da pessoa e dificulta que ela busque ajuda.</div></div>
+                </div>
+              </div>
+              <div class="hud-divider"></div>
+              <div class="avisar-section">
+                <div class="avisar-title">💬 COMO AVISAR UM ADULTO</div>
+                <div class="avisar-script">
+                  <div class="script-quote" id="script-text">"Preciso de ajuda com algo que vi na escola. Não quero que ninguém se machuque mais."</div>
+                  <div class="script-note">Você não precisa ter todas as palavras. Falar é suficiente. Você está protegendo alguém — não é dedo-duro.</div>
+                  <button type="button" class="copy-btn" id="copy-btn">📋 COPIAR FRASE</button>
+                </div>
+              </div>
+              <div class="conclusao-m2" id="conclusao-m2">
+                <div style="font-size:40px;margin-bottom:8px" aria-hidden="true">🏆</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:14px;color:var(--m23-ng);margin-bottom:6px">MISSÃO 2 CONCLUÍDA!</div>
+                <div class="conclusao-score" id="m2-score">4/4</div>
+                <div class="conclusao-msg" id="m2-msg">Você mostrou que sabe ser um aliado de verdade. Isso faz diferença!</div>
+              </div>
+            </div>
+
+            <div class="missao-panel" id="panel-m3a" role="tabpanel">
+              <div class="missao-intro">
+                <div class="missao-intro-row">
+                  <div class="missao-icon-big pink" aria-hidden="true">🆘</div>
+                  <div>
+                    <div class="missao-intro-label">MISSÃO 3A</div>
+                    <div class="missao-intro-title">Pedir Ajuda</div>
+                  </div>
+                </div>
+                <div class="missao-intro-desc">Pedir ajuda pode parecer difícil. Esta missão mostra o caminho passo a passo — com respostas para as dúvidas mais comuns. Clique em cada etapa!</div>
+              </div>
+              <div class="badge-row">
+                <span class="badge pink">ROTEIRO REAL</span>
+                <span class="badge blue">PASSO A PASSO</span>
+                <span class="badge purple">DÚVIDAS COMUNS</span>
+              </div>
+              <div class="stepper" id="stepper-ajuda"></div>
+              <div class="hud-divider"></div>
+              <div class="conclusao-m3" id="conclusao-m3a">
+                <div style="font-size:36px;margin-bottom:8px" aria-hidden="true">⭐</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--m23-nv);margin-bottom:8px">MISSÃO 3A CONCLUÍDA!</div>
+                <div style="font-size:14px;color:rgba(200,220,255,.8);line-height:1.6;max-width:380px;margin:0 auto">Agora você sabe o que dizer e o que esperar. Pedir ajuda é corajoso — e você merece ser ouvido(a).</div>
+              </div>
+            </div>
+
+            <div class="missao-panel" id="panel-m3b" role="tabpanel">
+              <div class="missao-intro">
+                <div class="missao-intro-row">
+                  <div class="missao-icon-big blue" aria-hidden="true">📱</div>
+                  <div>
+                    <div class="missao-intro-label">MISSÃO 3B</div>
+                    <div class="missao-intro-title">Cyberbullying: o que fazer</div>
+                  </div>
+                </div>
+                <div class="missao-intro-desc">Se você está sofrendo cyberbullying, aja! Toque nos cards para revelar cada passo — e pratique no simulador de situação real.</div>
+              </div>
+              <div class="badge-row">
+                <span class="badge pink">SIMULADOR</span>
+                <span class="badge blue">4 PASSOS</span>
+                <span class="badge purple">3 PLATAFORMAS</span>
+              </div>
+              <div class="cyber-grid" id="cyber-steps-grid"></div>
+              <div class="hud-divider"></div>
+              <div class="sim-section">
+                <div class="sim-title">🎮 SIMULADOR — O QUE VOCÊ FAZ?</div>
+                <p style="font-size:13px;color:rgba(180,200,255,.65);margin-bottom:12px;line-height:1.6">Você recebeu uma mensagem hostil. Escolha a melhor resposta para cada situação.</p>
+                <div id="sim-wrap"></div>
+              </div>
+              <div class="hud-divider"></div>
+              <div class="plat-section">
+                <div class="plat-title">📲 COMO DENUNCIAR NAS PLATAFORMAS</div>
+                <div class="plat-tabs">
+                  <button type="button" class="plat-tab active" data-plat-key="instagram">📸 Instagram</button>
+                  <button type="button" class="plat-tab" data-plat-key="tiktok">🎵 TikTok</button>
+                  <button type="button" class="plat-tab" data-plat-key="whatsapp">💬 WhatsApp</button>
+                </div>
+                <div id="plat-contents"></div>
+              </div>
+              <div class="conclusao-m3" id="conclusao-m3b">
+                <div style="font-size:36px;margin-bottom:8px" aria-hidden="true">🛡️</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--m23-nb);margin-bottom:8px">MISSÃO 3B CONCLUÍDA!</div>
+                <div style="font-size:14px;color:rgba(200,220,255,.8);line-height:1.6;max-width:380px;margin:0 auto">Agora você sabe exatamente o que fazer se sofrer cyberbullying. Salve os prints, bloqueie e conte para um adulto.</div>
+              </div>
+            </div>
+
+            <div class="confetti" id="m23-confetti" aria-hidden="true"></div>
+          </div>

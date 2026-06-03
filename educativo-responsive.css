@@ -1,0 +1,449 @@
+/* ===== Jogo educativo — layout fluido (qualidade nativa das imagens) ===== */
+
+.page-educativo--game {
+  overflow-x: clip;
+  --game-panel-pad: clamp(14px, 3.5vw, 28px);
+  --game-gap: clamp(12px, 2.5vw, 24px);
+}
+
+.page-educativo--game .game-main,
+.page-educativo--game .edu-panel,
+.page-educativo--game #eduTeenGame,
+.page-educativo--game .edu-module-shell,
+.page-educativo--game .game-level-panel,
+.edu-faixas {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Imagens: encolhem em telas menores, sem esticar além da resolução original */
+.page-educativo--game img,
+.edu-faixas img,
+.fx-kids-image-modal img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  image-rendering: auto;
+}
+
+.page-educativo--game video.ju-intro-video,
+.edu-faixas video.ju-intro-video {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.page-educativo--game .container {
+  padding-inline: clamp(10px, 3vw, 20px);
+}
+
+.edu-faixas {
+  width: 100%;
+  max-width: min(820px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(4px, 2vw, 12px);
+  padding-bottom: clamp(32px, 6vw, 48px);
+}
+
+.page-educativo--game .edu-module-shell,
+.page-educativo--game .game-level-panel {
+  padding: var(--game-panel-pad) !important;
+  border-radius: clamp(14px, 2vw, 20px);
+}
+
+.page-educativo--game .toon-quiz,
+.edu-faixas .fx-quiz {
+  padding: var(--game-panel-pad);
+}
+
+/* ── Variáveis da Ju por tamanho de tela ── */
+@media (max-width: 480px) {
+  .page-educativo--game,
+  .edu-faixas {
+    --ju-hero-max-w: min(88vw, 280px);
+    --ju-hero-max-h: clamp(200px, 42svh, 400px);
+    --ju-quiz-max-w: min(82vw, 220px);
+    --ju-quiz-max-h: clamp(170px, 36svh, 300px);
+    --ju-intro-video-max-w: min(96vw, 520px);
+    --ju-intro-video-max-h: min(82svh, 640px);
+    --ju-help-video-max-w: min(96vw, 360px);
+    --ju-help-video-max-h: min(74svh, 480px);
+    --ju-finish-max-w: min(72vw, 200px);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .page-educativo--game,
+  .edu-faixas {
+    --ju-hero-max-w: min(56vw, 320px);
+    --ju-quiz-max-w: min(50vw, 260px);
+    --ju-intro-video-max-w: min(90vw, 580px);
+    --ju-intro-video-max-h: min(84svh, 680px);
+    --ju-help-video-max-w: min(80vw, 420px);
+    --ju-help-video-max-h: min(76svh, 520px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .page-educativo--game,
+  .edu-faixas {
+    --ju-hero-max-w: min(38vw, 360px);
+    --ju-quiz-max-w: min(32vw, 300px);
+    --ju-intro-video-max-w: min(62vw, 640px);
+    --ju-intro-video-max-h: min(80svh, 740px);
+    --ju-help-video-max-w: min(50vw, 480px);
+    --ju-help-video-max-h: min(72svh, 580px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-educativo--game,
+  .edu-faixas {
+    --ju-hero-max-w: clamp(300px, 26vw, 420px);
+    --ju-hero-max-h: clamp(340px, 54svh, 600px);
+    --ju-quiz-max-w: clamp(220px, 22vw, 320px);
+    --ju-quiz-max-h: clamp(260px, 44svh, 420px);
+    --ju-intro-video-max-w: clamp(520px, 52vw, 800px);
+    --ju-intro-video-max-h: clamp(580px, 78svh, 860px);
+    --ju-help-video-max-w: clamp(380px, 34vw, 560px);
+    --ju-help-video-max-h: clamp(460px, 62svh, 680px);
+  }
+}
+
+@media (max-width: 768px) {
+  .fx-kids-sinto-block,
+  .fx-kids-sinto-video {
+    max-width: min(96vw, var(--ju-help-video-max-w, 400px));
+  }
+}
+
+/* ── Vídeo de saudação: layout responsivo ── */
+.page-educativo--game .game-start-mascot:has(.ju-intro-video),
+.edu-faixas .ju-arena--selector:has(.ju-intro-video) {
+  width: 100%;
+  max-width: var(--ju-intro-video-max-w);
+  margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+  .edu-faixas .selector-layout {
+    gap: clamp(16px, 4vw, 24px);
+  }
+
+  .edu-faixas .ju-arena--selector,
+  .edu-faixas .ju-arena--selector .game-start-splash,
+  .edu-faixas .ju-arena--selector .ju-intro-video,
+  .edu-faixas #selectorJu {
+    width: 100%;
+    max-width: var(--ju-intro-video-max-w);
+    margin-inline: auto;
+  }
+
+  .page-educativo--game .game-hero--start .game-start-mascot--with-speech {
+    width: 100%;
+    max-width: var(--ju-intro-video-max-w);
+    margin-inline: auto;
+  }
+
+  .page-educativo--game .game-hero--start .game-start-splash:has(.ju-intro-video) {
+    max-width: var(--ju-intro-video-max-w);
+  }
+}
+
+@media (max-width: 520px) {
+  .edu-faixas .selector-layout .ju-arena--selector {
+    justify-self: center;
+  }
+
+  .edu-faixas .ju-bubble--beside {
+    max-width: min(100%, 340px);
+    margin-inline: auto;
+  }
+}
+
+/* ── Tipografia fluida ── */
+.page-educativo--game .edu-module-title {
+  font-size: clamp(1.15rem, 4vw, 1.65rem);
+}
+
+.page-educativo--game .edu-module-desc,
+.page-educativo--game .edu-quiz-scenario {
+  font-size: clamp(0.88rem, 2.8vw, 1rem);
+  line-height: 1.6;
+}
+
+.page-educativo--game .edu-quiz-title {
+  font-size: clamp(1rem, 3.2vw, 1.25rem);
+}
+
+.edu-faixas .fx-scenario {
+  font-size: clamp(0.88rem, 2.8vw, 0.95rem);
+  padding: clamp(12px, 2.5vw, 14px) clamp(14px, 3vw, 16px);
+}
+
+.edu-faixas .fx-btn {
+  font-size: clamp(0.82rem, 2.5vw, 0.95rem);
+  padding: clamp(12px, 2.5vw, 14px) clamp(14px, 3vw, 18px);
+  min-height: 48px;
+}
+
+.edu-faixas .faixa-card {
+  padding: clamp(14px, 3vw, 18px);
+}
+
+.edu-faixas .faixa-label {
+  font-size: clamp(12px, 2.5vw, 14px);
+}
+
+/* ── Quiz adolescentes ── */
+.page-educativo--game .toon-quiz-stage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--game-gap);
+  width: 100%;
+}
+
+.page-educativo--game .toon-quiz-mascot,
+.page-educativo--game .toon-speech-bubble--quiz {
+  flex: 1 1 min(100%, 320px);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.page-educativo--game .toon-speech-bubble--quiz {
+  width: 100%;
+}
+
+.page-educativo--game .ju-portrait-img,
+.page-educativo--game .game-start-img,
+.page-educativo--game .ju-finish-img,
+.edu-faixas .kids-ju,
+.edu-faixas .ju-img {
+  width: 100%;
+  height: auto;
+}
+
+/* ── Quiz faixas (criança / fundamental) ── */
+.edu-faixas .fx-quiz-stage {
+  grid-template-columns: 1fr;
+  gap: var(--game-gap);
+}
+
+@media (min-width: 600px) {
+  .edu-faixas .fx-quiz-stage {
+    grid-template-columns: minmax(0, min(var(--ju-quiz-max-w, 220px), 38vw)) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.edu-faixas .fx-actions {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .edu-faixas .fx-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Flip cards (faixas) — um abaixo do outro ── */
+.edu-faixas .fx-flip-grid {
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 3vw, 22px);
+  max-width: min(820px, 100%);
+  margin-inline: auto;
+}
+
+/* ── Capas 16:9 — mobile (não cortar arte) ── */
+@media (max-width: 768px) {
+  .edu-faixas .fx-flip-card:has(.fx-flip-front--cover),
+  .edu-flip-card:has(.edu-flip-front--cover),
+  .page-educativo--game .toon-flip-grid .edu-flip-card:has(.edu-flip-front--cover) {
+    aspect-ratio: 16 / 9;
+    min-height: 0 !important;
+  }
+
+  .edu-faixas .fx-flip-card:not(.is-flipped) .fx-flip-inner,
+  .edu-flip-card:not(.is-flipped) .edu-flip-inner,
+  .page-educativo--game .toon-flip-grid .edu-flip-card:not(.is-flipped) .edu-flip-inner {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  .edu-faixas .fx-flip-card:not(.is-flipped) .fx-flip-front--cover,
+  .edu-flip-card:not(.is-flipped) .edu-flip-front--cover,
+  .page-educativo--game .toon-flip-grid .edu-flip-card:not(.is-flipped) .edu-flip-front--cover {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .fx-flip-hint--cover,
+  .edu-flip-hint--cover {
+    font-size: 8px;
+    padding: 4px 10px;
+  }
+}
+
+/* ── Missões 2/3 e acolhimento — figuras da Ju ── */
+.edu-m23 .missao-intro-layout,
+.edu-ma .missao-intro-layout {
+  grid-template-columns: minmax(0, min(200px, 42vw)) minmax(0, 1fr);
+}
+
+.edu-m23 .missao-hero-figure,
+.edu-ma .missao-hero-figure {
+  width: min(200px, 42vw);
+  height: auto;
+  min-height: clamp(140px, 36vw, 280px);
+  max-height: min(340px, 52vh);
+}
+
+.edu-m23 .missao-hero-img,
+.edu-ma .missao-hero-img {
+  width: 100%;
+  height: auto;
+  max-height: min(340px, 52vh);
+}
+
+@media (max-width: 640px) {
+  .edu-m23 .missao-intro-layout,
+  .edu-ma .missao-intro-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .edu-m23 .missao-hero-figure,
+  .edu-ma .missao-hero-figure {
+    width: min(200px, 65vw);
+    min-height: clamp(140px, 48vw, 260px);
+    margin-inline: auto;
+  }
+}
+
+/* ── Grids de atividades ── */
+.page-educativo--game .edu-m2-grid,
+.edu-m23 .opcoes-grid,
+.edu-m23 .cyber-grid,
+.edu-ma .ma-contatos-grid,
+.edu-ma .ma-direitos-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+/* ── HUD, missões e adesivos ── */
+.page-educativo--game .game-hud-inner {
+  flex-wrap: wrap;
+  gap: clamp(8px, 2vw, 12px);
+}
+
+.page-educativo--game .game-hud-values {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-educativo--game .game-quest-nav {
+  flex-wrap: wrap;
+  gap: clamp(6px, 1.5vw, 10px);
+}
+
+.page-educativo--game .toon-sticker-bar,
+.edu-faixas .fx-sticker-bar {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 12px);
+}
+
+.edu-faixas .fx-sticker-count {
+  margin-left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 520px) {
+  .edu-faixas .fx-sticker-count {
+    width: auto;
+    margin-left: auto;
+    text-align: right;
+  }
+}
+
+/* ── Modal de imagens (cards de bullying) ── */
+.fx-kids-image-modal {
+  padding: clamp(8px, 2.5vw, 24px);
+}
+
+.fx-kids-image-dialog {
+  width: min(960px, calc(100vw - 24px));
+  max-height: min(92dvh, 920px);
+}
+
+.fx-kids-image-view {
+  width: 100%;
+  height: auto;
+  max-height: min(85dvh, 900px);
+  object-fit: contain;
+  object-position: center top;
+}
+
+@media (max-width: 768px) {
+  .fx-kids-image-modal:not(.fx-kids-image-modal--mobile) {
+    padding: 4px;
+  }
+
+  .fx-kids-image-modal:not(.fx-kids-image-modal--mobile) .fx-kids-image-dialog {
+    width: calc(100vw - 8px);
+    max-height: 96dvh;
+  }
+
+  .fx-kids-image-modal:not(.fx-kids-image-modal--mobile) .fx-kids-image-view {
+    max-height: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .fx-kids-image-modal:not(.fx-kids-image-modal--mobile) .fx-kids-image-dialog {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .fx-kids-image-modal:not(.fx-kids-image-modal--mobile) .fx-kids-image-close {
+    top: 6px;
+    right: 6px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ── Telas baixas (celular deitado) ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .page-educativo--game,
+  .edu-faixas {
+    --ju-hero-max-h: min(72svh, 320px);
+    --ju-quiz-max-h: min(68svh, 280px);
+    --ju-intro-video-max-w: min(42svh, 320px);
+    --ju-intro-video-max-h: min(88svh, 380px);
+  }
+
+  .page-educativo--game .game-hero--start {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .fx-kids-image-view {
+    max-height: min(78dvh, 600px);
+  }
+
+  .edu-m23 .missao-hero-figure,
+  .edu-ma .missao-hero-figure {
+    min-height: clamp(100px, 60svh, 200px);
+    max-height: min(240px, 72svh);
+  }
+}

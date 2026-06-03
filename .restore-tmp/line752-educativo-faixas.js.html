@@ -1,0 +1,13 @@
+  function goBack() {
+    showScreen('selector');
+    root.hidden = false;
+    root.removeAttribute('hidden');
+    const teen = document.getElementById('eduTeenGame');
+    if (teen) {
+      teen.hidden = true;
+      teen.setAttribute('hidden', '');
+    }
+    document.body.classList.add('edu-faixa-active');
+    document.body.classList.remove('edu-faixa-teen');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }

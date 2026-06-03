@@ -1,0 +1,1101 @@
+/* ===== Tema Cartoon — aba Alunos ===== */
+.page-educativo--cartoon {
+  --toon-ink: #2d3436;
+  --toon-sky: #7dd3fc;
+  --toon-sky-deep: #38bdf8;
+  --toon-sun: #ffd93d;
+  --toon-coral: #ff6b6b;
+  --toon-mint: #6bcb77;
+  --toon-lilac: #c084fc;
+  --toon-peach: #ffb4a2;
+  --toon-comic-shadow: 5px 5px 0 var(--toon-ink);
+  --toon-comic-shadow-sm: 3px 3px 0 var(--toon-ink);
+  --edu-font: 'Nunito', system-ui, sans-serif;
+  --edu-heading: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --edu-bg: #e0f2fe;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 217, 61, 0.25), transparent 35%),
+    radial-gradient(circle at 90% 10%, rgba(192, 132, 252, 0.2), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(107, 203, 119, 0.15), transparent 40%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 12px,
+      rgba(255, 255, 255, 0.35) 12px,
+      rgba(255, 255, 255, 0.35) 24px
+    ),
+    var(--edu-bg);
+}
+
+.page-educativo--cartoon .edu-module-title,
+.page-educativo--cartoon .edu-quiz-title,
+.page-educativo--cartoon h1,
+.page-educativo--cartoon h2,
+.page-educativo--cartoon h3 {
+  font-family: var(--edu-heading);
+}
+
+/* ----- Hero cartoon ----- */
+.page-educativo--cartoon .toon-hero {
+  padding: clamp(40px, 7vw, 72px) 0 clamp(32px, 5vw, 48px);
+  color: var(--toon-ink);
+}
+
+.page-educativo--cartoon .toon-hero-bg {
+  background:
+    linear-gradient(180deg, #7dd3fc 0%, #bae6fd 55%, #fef08a 100%);
+}
+
+.page-educativo--cartoon .toon-hero-bg::before {
+  background-image: none;
+}
+
+.toon-deco--clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120px 50px at 15% 25%, #fff 70%, transparent 71%),
+    radial-gradient(ellipse 90px 40px at 85% 18%, #fff 70%, transparent 71%),
+    radial-gradient(ellipse 100px 45px at 70% 75%, rgba(255,255,255,0.85) 70%, transparent 71%);
+  animation: toonCloudDrift 20s ease-in-out infinite alternate;
+}
+
+.toon-deco--stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    radial-gradient(circle, var(--toon-sun) 2px, transparent 2px) 12% 15% / 20px 20px,
+    radial-gradient(circle, var(--toon-coral) 2px, transparent 2px) 88% 22% / 16px 16px,
+    radial-gradient(circle, var(--toon-lilac) 2px, transparent 2px) 78% 68% / 18px 18px;
+}
+
+@keyframes toonCloudDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(12px); }
+}
+
+.toon-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(20px, 4vw, 40px);
+  align-items: center;
+  max-width: 100%;
+}
+
+.page-educativo--game .edu-hero-inner.toon-hero-grid:not(.game-start-wrap) {
+  max-width: 680px;
+}
+
+.page-educativo--game .edu-hero-inner.game-start-wrap {
+  max-width: var(--container);
+}
+
+.page-educativo--cartoon .toon-hero,
+.page-educativo--game .toon-hero {
+  overflow: visible;
+}
+
+.toon-badge {
+  color: var(--toon-ink) !important;
+  background: #fff !important;
+  border: 3px solid var(--toon-ink) !important;
+  box-shadow: var(--toon-comic-shadow-sm);
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-family: var(--edu-heading);
+}
+
+.page-educativo--cartoon .toon-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--toon-ink);
+  text-shadow: 3px 3px 0 #fff, 4px 4px 0 rgba(45, 52, 54, 0.15);
+}
+
+.toon-title-pop {
+  display: inline-block;
+  background: var(--toon-sun) !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: var(--toon-ink) !important;
+  padding: 0 12px;
+  border: 3px solid var(--toon-ink);
+  border-radius: 12px;
+  box-shadow: var(--toon-comic-shadow-sm);
+  transform: rotate(-2deg);
+  animation: toonWiggle 3s ease-in-out infinite;
+}
+
+@keyframes toonWiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.page-educativo--cartoon .edu-hero-lead {
+  color: var(--toon-ink);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.toon-jumps {
+  gap: 12px;
+}
+
+.toon-jump {
+  color: var(--toon-ink) !important;
+  background: #fff !important;
+  border: 3px solid var(--toon-ink) !important;
+  box-shadow: var(--toon-comic-shadow-sm);
+  font-family: var(--edu-heading);
+  font-weight: 600;
+  gap: 8px;
+}
+
+.toon-jump-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--toon-coral);
+  color: #fff;
+  font-size: 0.85rem;
+  border: 2px solid var(--toon-ink);
+}
+
+.toon-jump:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--toon-ink);
+}
+
+.toon-jump.is-done {
+  background: var(--toon-mint) !important;
+}
+
+.toon-hero-mascot {
+  position: relative;
+  animation: toonBounce 2.5s ease-in-out infinite;
+}
+
+@keyframes toonBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.ju-avatar-wrap {
+  --ju-cell-ratio: 512 / 279;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--ju-cell-ratio);
+  border-radius: 18px;
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow);
+  background: #0b1020;
+}
+
+.ju-sprite-sheet {
+  position: absolute;
+  inset: 0;
+  width: 200%;
+  height: 200%;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+  transition: object-position 0.35s ease;
+}
+
+.ju-avatar-wrap[data-frame="intro"] .ju-sprite-sheet { object-position: 0% 0%; }
+.ju-avatar-wrap[data-frame="correct"] .ju-sprite-sheet { object-position: 100% 0%; }
+.ju-avatar-wrap[data-frame="think"] .ju-sprite-sheet { object-position: 0% 100%; }
+.ju-avatar-wrap[data-frame="learn"] .ju-sprite-sheet { object-position: 0% 100%; }
+.ju-avatar-wrap[data-frame="victory"] .ju-sprite-sheet { object-position: 100% 100%; }
+
+.ju-avatar-wrap--hero {
+  width: min(460px, 92vw);
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+.ju-avatar-wrap--portrait {
+  aspect-ratio: auto;
+  overflow: visible;
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+.ju-portrait-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  filter: none;
+  transition: transform 0.35s ease;
+  background: transparent !important;
+}
+
+.ju-avatar-wrap--quiz.ju-avatar-wrap--portrait {
+  width: 148px;
+  background: transparent !important;
+}
+
+.ju-avatar-wrap--quiz.ju-avatar-wrap--portrait .ju-portrait-img {
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.ju-avatar-wrap--buddy.ju-avatar-wrap--portrait {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+.ju-avatar-wrap--buddy.ju-avatar-wrap--portrait .ju-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Expressões da Ju — sem drop-shadow retangular no PNG */
+.ju-avatar-wrap--portrait[data-frame="intro"] .ju-portrait-img,
+.ju-avatar-wrap--portrait[data-frame="think"] .ju-portrait-img,
+.ju-avatar-wrap--portrait[data-frame="learn"] .ju-portrait-img,
+.ju-avatar-wrap--portrait[data-frame="correct"] .ju-portrait-img,
+.ju-avatar-wrap--portrait[data-frame="victory"] .ju-portrait-img {
+  filter: none;
+}
+
+.ju-avatar-wrap--portrait[data-frame="learn"],
+.ju-avatar-wrap--portrait[data-frame="victory"] {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ju-avatar-wrap--portrait[data-frame="correct"] {
+  border: none !important;
+  box-shadow: none !important;
+  max-width: min(calc(var(--ju-quiz-max-w, 220px) * 1.08), 92vw);
+}
+
+.ju-avatar-wrap--portrait[data-frame="correct"] .ju-portrait-img {
+  max-width: min(calc(var(--ju-quiz-max-w, 220px) * 1.08), 92vw);
+  max-height: min(calc(var(--ju-quiz-max-h, 320px) * 1.32), 48svh);
+}
+
+/* Etiqueta de humor visível */
+.ju-mood-chip {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: rgba(8, 18, 42, 0.95);
+  color: #e0f2fe;
+  font-family: var(--edu-heading, 'Fredoka', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.ju-mood-chip--buddy {
+  bottom: 4px;
+  font-size: 0.58rem;
+  padding: 2px 7px;
+}
+
+.ju-avatar-wrap[data-frame="think"] .ju-mood-chip {
+  border-color: rgba(167, 139, 250, 0.9);
+  color: #ddd6fe;
+}
+
+.ju-avatar-wrap[data-frame="learn"] .ju-mood-chip {
+  border-color: rgba(251, 191, 36, 0.95);
+  color: #fde68a;
+  background: rgba(69, 26, 3, 0.92);
+}
+
+.ju-avatar-wrap[data-frame="correct"] .ju-mood-chip {
+  border-color: rgba(52, 211, 153, 0.95);
+  color: #bbf7d0;
+  background: rgba(6, 44, 28, 0.92);
+}
+
+.ju-avatar-wrap[data-frame="victory"] .ju-mood-chip {
+  border-color: rgba(251, 191, 36, 0.95);
+  color: #fef3c7;
+  background: rgba(69, 26, 3, 0.92);
+}
+
+.ju-avatar-wrap--sprite[data-frame="learn"] {
+  border-color: rgba(251, 191, 36, 0.75) !important;
+  box-shadow: 0 0 22px rgba(251, 191, 36, 0.45) !important;
+}
+
+.ju-avatar-wrap--sprite[data-frame="correct"] {
+  border-color: rgba(52, 211, 153, 0.85) !important;
+  box-shadow: 0 0 24px rgba(52, 211, 153, 0.5) !important;
+}
+
+.ju-avatar-wrap--sprite[data-frame="victory"] {
+  border-color: rgba(251, 191, 36, 0.9) !important;
+  box-shadow: 0 0 28px rgba(251, 191, 36, 0.55) !important;
+}
+
+@keyframes juExpressPop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.ju-avatar-wrap.ju-express-pop {
+  animation: juExpressPop 0.45s ease;
+}
+
+.ju-avatar-wrap--buddy.ju-express-pop {
+  animation: none;
+}
+
+.ju-avatar-wrap--buddy.ju-express-pop .ju-portrait-img,
+.ju-avatar-wrap--buddy.ju-express-pop .ju-sprite-sheet {
+  animation: juExpressPop 0.45s ease;
+}
+
+.ju-avatar-wrap--quiz {
+  width: 148px;
+  border-radius: 0;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+.ju-avatar-wrap--quiz .ju-mood-chip {
+  bottom: 6px;
+  font-size: 0.62rem;
+  padding: 3px 8px;
+}
+
+.ju-avatar-wrap--buddy {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  background: transparent !important;
+}
+
+.ju-avatar-wrap--buddy .ju-sprite-sheet {
+  object-position: 18% 12%;
+  width: 360%;
+  height: 360%;
+}
+
+.ju-avatar-wrap--buddy[data-frame="correct"] .ju-sprite-sheet { object-position: 82% 8%; }
+.ju-avatar-wrap--buddy[data-frame="think"] .ju-sprite-sheet { object-position: 20% 88%; }
+.ju-avatar-wrap--buddy[data-frame="learn"] .ju-sprite-sheet { object-position: 20% 88%; }
+.ju-avatar-wrap--buddy[data-frame="victory"] .ju-sprite-sheet { object-position: 84% 88%; }
+
+.ju-avatar-wrap--buddy.ju-avatar-wrap--sprite {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #12082a;
+}
+
+.ju-avatar-wrap--buddy.ju-avatar-wrap--sprite .ju-sprite-sheet {
+  object-position: 20% 88%;
+  width: 360%;
+  height: 360%;
+}
+
+.toon-char--lg { width: min(240px, 46vw); height: auto; }
+
+.toon-char--sm { width: 100px; height: auto; }
+
+.toon-char--ju.toon-char--lg,
+.toon-char--ju.toon-char--sm,
+.toon-char--ju.toon-char--buddy {
+  filter: drop-shadow(4px 6px 0 rgba(45, 52, 54, 0.12));
+}
+
+.toon-hero-speech {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 3px solid var(--toon-ink);
+  border-radius: 16px;
+  padding: 8px 14px;
+  font-family: var(--edu-heading);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: var(--toon-comic-shadow-sm);
+}
+
+.toon-hero-speech::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-bottom-color: var(--toon-ink);
+}
+
+/* ----- Tabs cartoon ----- */
+.page-educativo--cartoon .edu-tabs-wrap {
+  background: rgba(224, 242, 254, 0.9);
+}
+
+.page-educativo--cartoon .edu-tabs {
+  border: 3px solid var(--toon-ink);
+  border-radius: 20px;
+  box-shadow: var(--toon-comic-shadow-sm);
+}
+
+.page-educativo--cartoon .edu-tab {
+  font-family: var(--edu-heading);
+}
+
+.page-educativo--cartoon .edu-tab.is-active {
+  background: var(--toon-sun);
+  color: var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow-sm);
+  border: 2px solid var(--toon-ink);
+}
+
+/* ----- Quest map ----- */
+.toon-quest-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 3px solid var(--toon-ink);
+  border-radius: 20px;
+  box-shadow: var(--toon-comic-shadow);
+}
+
+.toon-quest-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 2px dashed var(--toon-ink);
+  font-family: var(--edu-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--toon-muted, #64748b);
+  opacity: 0.65;
+  transition: all 0.3s ease;
+}
+
+.toon-quest-item.is-active {
+  opacity: 1;
+  border-style: solid;
+  background: var(--toon-sun);
+  transform: scale(1.05);
+  box-shadow: var(--toon-comic-shadow-sm);
+}
+
+.toon-quest-item.is-done {
+  opacity: 1;
+  background: var(--toon-mint);
+  border-color: var(--toon-ink);
+  color: var(--toon-ink);
+}
+
+.toon-quest-line {
+  width: 24px;
+  height: 3px;
+  background: var(--toon-ink);
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+.toon-quest-line.is-done { opacity: 1; background: var(--toon-mint); }
+
+/* ----- Module shells comic ----- */
+.page-educativo--cartoon .edu-module-shell {
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow);
+  border-radius: 24px;
+  background: #fff;
+}
+
+.page-educativo--cartoon .edu-module--1 .edu-module-shell { border-top-width: 8px; border-top-color: var(--toon-coral); }
+.page-educativo--cartoon .edu-module--2 .edu-module-shell { border-top-width: 8px; border-top-color: var(--toon-sky-deep); }
+.page-educativo--cartoon .edu-module--3 .edu-module-shell { border-top-width: 8px; border-top-color: var(--toon-mint); }
+
+.page-educativo--cartoon .edu-module-label {
+  background: var(--toon-sun);
+  border: 2px solid var(--toon-ink);
+  color: var(--toon-ink);
+  font-family: var(--edu-heading);
+}
+
+.page-educativo--cartoon .edu-module-num {
+  color: rgba(255, 107, 107, 0.12);
+  font-family: var(--edu-heading);
+}
+
+/* ----- Quiz cartoon ----- */
+.page-educativo--cartoon .toon-quiz {
+  background: #fff9db;
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow);
+  position: relative;
+  overflow: visible;
+}
+
+.page-educativo--cartoon .toon-quiz::before {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--toon-coral),
+    var(--toon-coral) 12px,
+    var(--toon-sun) 12px,
+    var(--toon-sun) 24px,
+    var(--toon-mint) 24px,
+    var(--toon-mint) 36px,
+    var(--toon-sky-deep) 36px,
+    var(--toon-sky-deep) 48px
+  );
+  height: 6px;
+}
+
+.toon-quiz-badge {
+  background: var(--toon-coral) !important;
+  color: #fff !important;
+  border: 2px solid var(--toon-ink);
+  font-family: var(--edu-heading);
+  animation: toonPulse 2s ease infinite;
+}
+
+@keyframes toonPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.toon-progress-wrap {
+  background: #fff !important;
+  border: 2px solid var(--toon-ink);
+  height: 14px !important;
+}
+
+.page-educativo--cartoon .edu-quiz-progress-bar {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--toon-mint),
+    var(--toon-mint) 8px,
+    var(--toon-sun) 8px,
+    var(--toon-sun) 16px
+  ) !important;
+}
+
+.toon-quiz-stage {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.toon-quiz-mascot {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.toon-quiz-mascot[data-mood="think"] { animation: toonThink 1.5s ease-in-out infinite; }
+.toon-quiz-mascot[data-mood="correct"] { animation: toonHappy 0.55s ease; }
+.toon-quiz-mascot[data-mood="victory"] { animation: toonHappy 0.55s ease; }
+.toon-quiz-mascot[data-mood="happy"] { animation: toonHappy 0.55s ease; }
+.toon-quiz-mascot[data-mood="learn"] { animation: toonNod 0.6s ease; }
+.toon-quiz-mascot[data-mood="correct"] .ju-avatar-wrap,
+.toon-quiz-mascot[data-mood="victory"] .ju-avatar-wrap,
+.toon-quiz-mascot[data-mood="learn"] .ju-avatar-wrap {
+  box-shadow: none;
+}
+
+@keyframes toonThink {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes toonHappy {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+@keyframes toonNod {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.toon-speech-bubble {
+  flex: 1;
+  position: relative;
+  background: #fff;
+  border: 3px solid var(--toon-ink);
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: var(--toon-comic-shadow-sm);
+}
+
+.toon-speech-bubble::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 28px;
+  border: 10px solid transparent;
+  border-right-color: var(--toon-ink);
+}
+
+.toon-speech-bubble::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 30px;
+  border: 8px solid transparent;
+  border-right-color: #fff;
+}
+
+.page-educativo--cartoon .edu-quiz-scenario {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.toon-btn {
+  font-family: var(--edu-heading) !important;
+  border: 3px solid var(--toon-ink) !important;
+  box-shadow: var(--toon-comic-shadow-sm) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.toon-btn:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: none !important;
+}
+
+.toon-btn--yes {
+  background: var(--toon-coral) !important;
+  color: #fff !important;
+}
+
+.toon-btn--no {
+  background: var(--toon-sky-deep) !important;
+  color: #fff !important;
+}
+
+.toon-btn--next,
+.toon-btn--restart {
+  background: var(--toon-mint) !important;
+  color: var(--toon-ink) !important;
+  border-radius: 999px !important;
+}
+
+.toon-feedback {
+  border: 3px solid var(--toon-ink) !important;
+  border-radius: 16px !important;
+  font-weight: 600;
+}
+
+.toon-quiz-finish .toon-finish-burst {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 12px;
+  animation: toonBurst 0.8s ease;
+}
+
+.ju-finish-img {
+  display: block;
+  width: min(220px, 52vw);
+  max-height: 280px;
+  height: auto;
+  object-fit: contain;
+  animation: juFinishVibrate 0.65s ease-in-out infinite;
+  filter: none;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+@keyframes juFinishVibrate {
+  0%, 100% { transform: translateY(0) rotate(-2deg) scale(1); }
+  25% { transform: translateY(-8px) rotate(2deg) scale(1.05); }
+  50% { transform: translateY(-12px) rotate(-1deg) scale(1.08); }
+  75% { transform: translateY(-5px) rotate(1deg) scale(1.04); }
+}
+
+@keyframes toonBurst {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.3); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.toon-confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.toon-confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: toonConfettiFall 2.5s ease-in forwards;
+}
+
+@keyframes toonConfettiFall {
+  to {
+    transform: translateY(400px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* ----- Sticker bar ----- */
+.toon-sticker-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  background: #fff;
+  border: 3px dashed var(--toon-ink);
+  border-radius: 16px;
+}
+
+.toon-sticker-label {
+  font-family: var(--edu-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.toon-stickers {
+  display: flex;
+  gap: 10px;
+}
+
+.toon-sticker {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  border: 2px solid var(--toon-ink);
+  background: #f1f5f9;
+  opacity: 0.35;
+  filter: grayscale(1);
+  transform: scale(0.9);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toon-sticker.is-unlocked {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
+  background: var(--toon-sun);
+  box-shadow: var(--toon-comic-shadow-sm);
+  animation: toonStickerPop 0.5s ease;
+}
+
+@keyframes toonStickerPop {
+  0% { transform: scale(0.5) rotate(-10deg); }
+  60% { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.toon-sticker-count {
+  margin-left: auto;
+  font-family: var(--edu-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 4px 12px;
+  background: var(--toon-lilac);
+  color: #fff;
+  border: 2px solid var(--toon-ink);
+  border-radius: 999px;
+}
+
+/* ----- Flip cards cartoon ----- */
+.page-educativo--cartoon .toon-flip-card .edu-flip-front,
+.page-educativo--cartoon .toon-flip-card .edu-flip-back {
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow-sm);
+}
+
+.page-educativo--cartoon .toon-flip-card:not(.is-flipped) .edu-flip-front:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 7px 7px 0 var(--toon-ink);
+}
+
+.page-educativo--cartoon .toon-flip-card.is-flipped {
+  animation: toonCardFlip 0.4s ease;
+}
+
+@keyframes toonCardFlip {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.page-educativo--cartoon .edu-flip-icon {
+  border: 2px solid var(--toon-ink);
+  border-radius: 50%;
+}
+
+.page-educativo--cartoon .edu-flip-hint {
+  font-family: var(--edu-heading);
+  font-weight: 600;
+  color: var(--toon-ink);
+}
+
+/* ----- Module 2 cards ----- */
+.page-educativo--cartoon .edu-card {
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow-sm);
+  border-radius: 20px;
+}
+
+.page-educativo--cartoon .edu-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--toon-ink);
+}
+
+.page-educativo--cartoon .edu-card-icon {
+  border: 2px solid var(--toon-ink);
+}
+
+.page-educativo--cartoon .edu-cyber-step,
+.page-educativo--cartoon .edu-platform {
+  border: 2px solid rgba(45, 52, 54, 0.15);
+}
+
+/* ----- Module 3 ----- */
+.page-educativo--cartoon .edu-banner {
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow-sm);
+  background: linear-gradient(135deg, #fdf2f8, #e0f2fe);
+}
+
+.page-educativo--cartoon .edu-banner-quote {
+  color: var(--toon-coral);
+  font-family: var(--edu-heading);
+}
+
+.page-educativo--cartoon .edu-checklist {
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow-sm);
+}
+
+.page-educativo--cartoon .edu-check-item {
+  border: 2px solid transparent;
+  border-radius: 14px;
+}
+
+.page-educativo--cartoon .edu-check-item:has(input:checked) {
+  background: #fef08a;
+  border-color: var(--toon-ink);
+  animation: toonCheckPop 0.35s ease;
+}
+
+@keyframes toonCheckPop {
+  50% { transform: scale(1.02); }
+}
+
+.toon-check-msg {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.toon-check-msg.is-visible {
+  display: flex;
+}
+
+.toon-check-stars {
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  color: var(--toon-sun);
+  text-shadow: 1px 1px 0 var(--toon-ink);
+}
+
+.page-educativo--cartoon .edu-acc-item {
+  border: 2px solid var(--toon-ink);
+  border-radius: 14px;
+}
+
+.page-educativo--cartoon .edu-acc-trigger {
+  font-family: var(--edu-heading);
+}
+
+.page-educativo--cartoon .edu-cta {
+  border: 3px solid var(--toon-ink);
+  box-shadow: var(--toon-comic-shadow);
+  background: linear-gradient(135deg, var(--toon-coral), var(--toon-lilac));
+}
+
+.page-educativo--cartoon .edu-cta-btn {
+  border: 3px solid var(--toon-ink);
+  font-family: var(--edu-heading);
+  color: var(--toon-ink);
+}
+
+/* ----- Buddy mascot ----- */
+.toon-buddy {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 280px;
+}
+
+.toon-buddy-toggle {
+  width: 84px;
+  height: 84px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  background: transparent;
+  border: 3px solid rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  animation: toonBuddyBounce 2s ease-in-out infinite;
+}
+
+@keyframes toonBuddyBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.toon-buddy-toggle:hover { transform: scale(1.08); }
+
+.toon-char--buddy { width: 48px; height: auto; }
+
+.toon-buddy-bubble {
+  background: #fff;
+  border: 3px solid var(--toon-ink);
+  border-radius: 18px;
+  padding: 14px 18px;
+  font-family: var(--edu-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+  box-shadow: var(--toon-comic-shadow-sm);
+  position: relative;
+  animation: toonBubbleIn 0.35s ease;
+}
+
+.toon-buddy-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  right: 24px;
+  border: 8px solid transparent;
+  border-top-color: var(--toon-ink);
+}
+
+.toon-buddy-bubble.is-hidden {
+  display: none;
+}
+
+@keyframes toonBubbleIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.toon-buddy-toggle.is-wiggle {
+  animation: toonWiggleBtn 0.4s ease;
+}
+
+@keyframes toonWiggleBtn {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .toon-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .toon-hero-mascot {
+    margin: 0 auto;
+  }
+
+  .toon-jumps { justify-content: center; }
+
+  .toon-quiz-stage {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toon-speech-bubble::before,
+  .toon-speech-bubble::after { display: none; }
+
+  .toon-buddy {
+    bottom: 16px;
+    right: 16px;
+    max-width: calc(100% - 32px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toon-title-pop,
+  .toon-hero-mascot,
+  .toon-buddy-toggle,
+  .toon-quiz-badge,
+  .toon-deco--clouds,
+  .ju-avatar-wrap.ju-express-pop,
+  .ju-avatar-wrap--buddy.ju-express-pop .ju-portrait-img,
+  .ju-avatar-wrap--buddy.ju-express-pop .ju-sprite-sheet,
+  .ju-finish-img { animation: none; }
+  .toon-jump:hover,
+  .page-educativo--cartoon .edu-card:hover { transform: none; }
+}

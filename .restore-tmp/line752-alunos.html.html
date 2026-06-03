@@ -1,0 +1,137 @@
+      <div class="edu-panel is-active" id="panel-alunos" role="tabpanel" aria-labelledby="tab-alunos">
+
+        <div class="edu-faixas" id="eduFaixas">
+          <div class="fx-screen fx-screen--selector active" data-screen="selector">
+            <div class="fx-header">
+              <p class="fx-eyebrow">// CONTEÚDO EDUCATIVO //</p>
+              <h2 class="fx-title">Feito para a sua idade</h2>
+              <p class="fx-subtitle">Escolha sua faixa — a Ju prepara missões no seu ritmo!</p>
+            </div>
+            <div class="selector-layout">
+              <div class="ju-arena">
+                <img src="assets/ju-inicio.png?v=7" alt="Ju — Deusa da Justiça" class="selector-ju" id="selectorJu" width="576" height="654" loading="eager" decoding="async">
+                <div class="ju-bubble" id="selectorBubble">Olá! Sou a Ju — escolha sua faixa de idade!</div>
+              </div>
+              <div class="faixa-grid">
+                <button type="button" class="faixa-card faixa-card--kids" data-fx-mode="kids">
+                  <span class="faixa-icon" aria-hidden="true">🧒</span>
+                  <span>
+                    <span class="faixa-label">CRIANÇA</span>
+                    <span class="faixa-age">6 – 9 anos · quiz simples</span>
+                  </span>
+                  <span class="faixa-arrow" aria-hidden="true">▶</span>
+                </button>
+                <button type="button" class="faixa-card faixa-card--medio" data-fx-mode="medio">
+                  <span class="faixa-icon" aria-hidden="true">🧑‍🎒</span>
+                  <span>
+                    <span class="faixa-label">FUNDAMENTAL II</span>
+                    <span class="faixa-age">10 – 12 anos · quiz + tipos</span>
+                  </span>
+                  <span class="faixa-arrow" aria-hidden="true">▶</span>
+                </button>
+                <button type="button" class="faixa-card faixa-card--teen" data-fx-mode="teen">
+                  <span class="faixa-icon" aria-hidden="true">🧑‍💻</span>
+                  <span>
+                    <span class="faixa-label">ADOLESCENTE</span>
+                    <span class="faixa-age">13 – 18 anos · jogo completo</span>
+                  </span>
+                  <span class="faixa-arrow" aria-hidden="true">▶</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="fx-screen fx-screen--kids" data-screen="kids" id="fxKids">
+            <button type="button" class="back-btn" data-fx-back>← Voltar</button>
+            <div class="fx-header">
+              <p class="fx-eyebrow">6 – 9 ANOS</p>
+              <h2 class="fx-title">Quiz com a Ju</h2>
+              <p class="fx-subtitle">Frases simples — toque na resposta!</p>
+            </div>
+            <div class="fx-quiz">
+              <span class="fx-quiz-badge">⚡ Quiz rápido</span>
+              <div class="fx-quiz-head">
+                <h3 class="fx-quiz-title">Isso machuca?</h3>
+                <span class="fx-quiz-prog" id="kidsProg">1 de 4</span>
+              </div>
+              <div class="fx-prog" aria-hidden="true"><div class="fx-prog-fill" id="kidsProgFill"></div></div>
+              <div class="fx-quiz-stage" id="kidsQuizStage">
+                <div class="ju-arena">
+                  <img src="assets/ju-pergunta.png?v=4" alt="Ju pensando" class="kids-ju" id="kidsJu" width="400" height="400" loading="lazy" decoding="async">
+                  <div class="ju-bubble" id="kidsBubble">Pensando…</div>
+                </div>
+                <div>
+                  <p class="fx-scenario" id="kidsScenario"></p>
+                  <div class="fx-actions" id="kidsActions">
+                    <button type="button" class="fx-btn fx-btn--yes" id="kidsYes">🚨 É bullying</button>
+                    <button type="button" class="fx-btn fx-btn--no" id="kidsNo">✋ Não é</button>
+                  </div>
+                  <div class="fx-feedback hidden" id="kidsFeedback" role="status" aria-live="polite"></div>
+                  <button type="button" class="fx-btn fx-btn--next hidden" id="kidsNext">Próximo! →</button>
+                </div>
+              </div>
+              <div class="fx-finish hidden" id="kidsFinish">
+                <img src="assets/ju-fim-jogo.png?v=7" alt="Ju comemorando" class="ju-img" width="220" height="220" loading="lazy" decoding="async">
+                <h3>Parabéns!</h3>
+                <p id="kidsFinishMsg"></p>
+                <a href="ouvidoria.html" class="fx-btn fx-btn--ouvidoria">💬 Preciso de ajuda</a>
+                <button type="button" class="fx-btn fx-btn--restart" id="kidsRestart">🔄 Jogar de novo</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="fx-screen fx-screen--medio" data-screen="medio" id="fxMedio">
+            <button type="button" class="back-btn" data-fx-back>← Voltar</button>
+            <div class="fx-header">
+              <p class="fx-eyebrow">10 – 12 ANOS</p>
+              <h2 class="fx-title">Desafio da Ju</h2>
+              <p class="fx-subtitle">8 cenários reais + os 4 tipos de bullying</p>
+            </div>
+            <div class="ju-arena" style="margin-bottom:16px">
+              <img src="assets/ju-pergunta.png?v=4" alt="Ju" class="ju-img" id="fullJu" width="400" height="400" loading="lazy" decoding="async">
+              <div class="ju-bubble" id="fullBubble">Pensando…</div>
+            </div>
+            <div class="fx-quiz">
+              <span class="fx-quiz-badge">⚡ Jogo interativo</span>
+              <div class="fx-quiz-head">
+                <h3 class="fx-quiz-title">Isso é bullying ou não?</h3>
+                <span class="fx-quiz-prog" id="fullProg">1 de 8</span>
+              </div>
+              <div class="fx-prog" aria-hidden="true"><div class="fx-prog-fill" id="fullProgFill"></div></div>
+              <div class="fx-quiz-stage" id="fullQuizStage">
+                <p class="fx-scenario" id="fullScenario" style="grid-column:1/-1"></p>
+                <div class="fx-actions" id="fullActions" style="grid-column:1/-1">
+                  <button type="button" class="fx-btn fx-btn--yes" id="fullYes">🚨 É bullying</button>
+                  <button type="button" class="fx-btn fx-btn--no" id="fullNo">✋ Não é bullying</button>
+                </div>
+                <div class="fx-feedback hidden" id="fullFeedback" role="status" aria-live="polite" style="grid-column:1/-1"></div>
+                <button type="button" class="fx-btn fx-btn--next hidden" id="fullNext" style="grid-column:1/-1">Próximo! →</button>
+              </div>
+              <div class="fx-finish hidden" id="fullFinish">
+                <img src="assets/ju-fim-jogo.png?v=7" alt="Ju comemorando" class="ju-img" width="220" height="220" loading="lazy" decoding="async">
+                <h3>Quiz concluído!</h3>
+                <p id="fullFinishMsg"></p>
+                <button type="button" class="fx-btn fx-btn--restart" id="fullRestart">🔄 Jogar de novo</button>
+              </div>
+            </div>
+            <div class="fx-divider"></div>
+            <h3 class="fx-section-title">🃏 Os 4 tipos de bullying</h3>
+            <p class="fx-section-desc">Toque nos cards para descobrir cada tipo — desbloqueie os adesivos!</p>
+            <div class="fx-sticker-bar">
+              <span class="fx-sticker-label">Adesivos:</span>
+              <div class="fx-stickers">
+                <span class="fx-sticker" data-sticker="fisico" title="Físico">👊</span>
+                <span class="fx-sticker" data-sticker="verbal" title="Verbal">🗣️</span>
+                <span class="fx-sticker" data-sticker="social" title="Social">👥</span>
+                <span class="fx-sticker" data-sticker="cyber" title="Cyber">📱</span>
+              </div>
+              <span class="fx-sticker-count" id="fxStickerCount">0/4</span>
+            </div>
+            <div class="fx-flip-grid" id="fxFlipGrid"></div>
+            <a href="ouvidoria.html" class="fx-btn fx-btn--ouvidoria" style="margin-top:20px">💬 Preciso de ajuda — Ouvidoria</a>
+          </div>
+        </div>
+
+        <div id="eduTeenGame" hidden>
+
+        <div class="game-hud game-hud--missions" aria-label="Progresso das missões">

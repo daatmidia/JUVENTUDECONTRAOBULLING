@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados sobre bullying no Brasil | Projeto REACT</title>
+  <meta name="description" content="Dados reais sobre bullying no Brasil: PeNSE 2024 (IBGE), os 4 tipos de bullying e fontes confiáveis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dados.css">
+  <link rel="stylesheet" href="responsive.css">
+</head>
+<body class="page-dados">
+  <div class="dados-bg-grid" aria-hidden="true"></div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo-projeto.png" alt="Logo do projeto" class="logo-project-image" loading="eager" decoding="async">
+        <span class="logo-text">Projeto <strong>REACT</strong></span>
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" alt="Bandeira do Brasil" class="logo-flag js-lang-ptbr" title="Mudar idioma para Português (Brasil)" role="button" tabindex="0" loading="eager" decoding="async">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="Bandeira dos Estados Unidos" class="logo-flag js-lang-enus" title="Switch language to English (US)" role="button" tabindex="0" loading="eager" decoding="async">
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="Bandera de España" class="logo-flag js-lang-eses" title="Cambiar idioma a Español (España)" role="button" tabindex="0" loading="eager" decoding="async">
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Página Inicial</a></li>
+        <li class="nav-item-submenu">
+          <a href="conheca-o-projeto.html" class="nav-link-has-submenu">Conheça o Projeto</a>
+          <ul class="nav-submenu" aria-label="Submenu Conheça o Projeto">
+            <li><a href="conheca-o-projeto.html">Sobre</a></li>
+            <li><a href="index.html#noticias">Notícias</a></li>
+            <li><a href="alunos.html">Conteúdo Educativo</a></li>
+            <li><a href="dados.html" class="nav-active-page">Dados</a></li>
+            <li><a href="index.html#depoimentos">Depoimentos</a></li>
+          </ul>
+        </li>
+        <li><a href="ouvidoria.html" class="nav-cta">Denuncia</a></li>
+        <li class="nav-item-submenu">
+          <button type="button" class="nav-link-trigger nav-admin-cta nav-link-has-submenu">Acesso</button>
+          <ul class="nav-submenu" aria-label="Submenu Acesso">
+            <li><a href="ouvidoria.html#acompanhar">Acompanhar protocolo</a></li>
+            <li><a href="ouvidoria.html?admin=1#siteAdmin" target="_blank" rel="noopener noreferrer">Acesso administrativo</a></li>
+            <li><a href="ouvidoria.html?admin=1#painel" target="_blank" rel="noopener noreferrer">Acesso escolas</a></li>
+            <li><a href="ouvidoria.html?admin=1#treinamentos" target="_blank" rel="noopener noreferrer">Treinamentos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="dados">
+    <header class="dados-hero">
+      <div class="container dados-hero-grid">
+        <div class="dados-hero-copy">
+          <span class="dados-hero-badge">📊 Dados oficiais · PeNSE 2024</span>
+          <h1>Dados reais sobre bullying no Brasil</h1>
+          <p class="dados-hero-lead">Entenda o que os números significam, conheça os <strong>4 tipos de bullying</strong> e use informações verificadas para prevenir violência nas escolas.</p>
+          <div class="dados-hero-pills">
+            <span class="dados-pill"><strong>IBGE</strong> · PeNSE 2024</span>
+            <span class="dados-pill">Alunos de <strong>13 a 17 anos</strong></span>
+            <span class="dados-pill">Escolas <strong>públicas e privadas</strong></span>
+          </div>
+        </div>
+        <div class="dados-hero-ju" aria-label="Ju, ideal de justiça">
+          <figure class="dados-ju-frame">
+            <video
+              class="dados-ju-img ju-intro-video"
+              width="512"
+              height="512"
+              playsinline
+              muted
+              autoplay
+              loop
+              preload="auto"
+              poster="assets/ju-express-intro.png?v=1"
+              aria-label="Ju — O Ideal de Justiça, mascote do Projeto REACT"
+            >
+              <source src="assets/VIDEOSAUDACAOINICIAL.mp4?v=1" type="video/mp4">
+              <source src="assets/VIDEOSAUDACAOINICIAL.mov?v=1" type="video/quicktime">
+            </video>
+          </figure>
+          <div class="dados-ju-speech">
+            <strong>Ju</strong> · O Ideal de Justiça
+            <p>Estes números não são só estatísticas — cada porcentagem é uma pessoa. Vamos entender juntos?</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="dados-section" aria-labelledby="dados-pense-title">
+      <div class="container">
+        <div class="dados-learn">
+          <div class="dados-learn-icon" aria-hidden="true">🔬</div>
+          <div>
+            <h2 id="dados-pense-title">O que é a PeNSE?</h2>
+            <p>A <strong>Pesquisa Nacional de Saúde do Escolar (PeNSE)</strong> é conduzida pelo IBGE em parceria com os Ministérios da Saúde e da Educação. Ela entrevista milhares de adolescentes sobre saúde, bem-estar, violência e ambiente escolar.</p>
+            <p class="dados-learn-quote">“Nos últimos 30 dias, quantas vezes algum colega te esculachou, zoou ou humilhou tanto que você ficou magoado?” — essa pergunta define o indicador principal de bullying na pesquisa.</p>
+            <p>Bullying é <strong>repetido</strong>, intencional e envolve um <strong>desequilíbrio de força</strong> entre quem agride e quem sofre — não é a mesma coisa que um conflito pontual entre colegas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dados-section" aria-labelledby="dados-numeros-title">
+      <div class="container">
+        <div class="dados-section-head">
+          <span class="dados-section-tag">Panorama nacional</span>
+          <h2 id="dados-numeros-title">Números que importam</h2>
+          <p>Três indicadores da edição 2024 que mostram a dimensão do problema e o quanto ainda falta prevenir nas escolas.</p>
+        </div>
+
+        <div class="dados-stats-grid">
+          <article class="dados-stat-card" data-bar style="--bar-width: 39.8%">
+            <div class="dados-stat-top">
+              <span class="dados-stat-icon" aria-hidden="true">👥</span>
+              <div>
+                <div class="dados-stat-value">
+                  <span data-target="39.8" data-decimals="1">0</span><span class="dados-stat-suffix">%</span>
+                </div>
+                <div class="dados-stat-label">Já sofreram bullying</div>
+              </div>
+            </div>
+            <p class="dados-stat-desc">Cerca de <strong>4 em cada 10</strong> estudantes de 13 a 17 anos já foram vítimas de bullying na escola em algum momento.</p>
+            <div class="dados-bar-wrap">
+              <div class="dados-bar-label"><span>Proporção na população escolar</span><span>39,8%</span></div>
+              <div class="dados-bar" role="presentation"><span class="dados-bar-fill"></span></div>
+            </div>
+            <small class="dados-stat-source">Fonte: <a href="https://agenciabrasil.ebc.com.br/educacao/noticia/2026-03/ibge-quatro-em-cada-dez-adolescentes-ja-sofreram-bullying-na-escola" target="_blank" rel="noopener noreferrer">PeNSE 2024 · IBGE</a></small>
+          </article>
+
+          <article class="dados-stat-card" data-bar style="--bar-width: 27.2%">
+            <div class="dados-stat-top">
+              <span class="dados-stat-icon" aria-hidden="true">🔁</span>
+              <div>
+                <div class="dados-stat-value">
+                  <span data-target="27.2" data-decimals="1">0</span><span class="dados-stat-suffix">%</span>
+                </div>
+                <div class="dados-stat-label">Bullying repetido (30 dias)</div>
+              </div>
+            </div>
+            <p class="dados-stat-desc">Sofreram humilhações ou provocações de colegas <strong>duas ou mais vezes</strong> no mês anterior à pesquisa — sinal de violência recorrente.</p>
+            <div class="dados-bar-wrap">
+              <div class="dados-bar-label"><span>Frequência recorrente</span><span>27,2%</span></div>
+              <div class="dados-bar" role="presentation"><span class="dados-bar-fill"></span></div>
+            </div>
+            <small class="dados-stat-source">Fonte: <a href="https://www.ibge.gov.br/estatisticas/sociais/saude/9134-pesquisa-nacional-de-saude-do-escolar.html" target="_blank" rel="noopener noreferrer">PeNSE 2024 · IBGE</a></small>
+          </article>
+
+          <article class="dados-stat-card" data-bar style="--bar-width: 43.2%">
+            <div class="dados-stat-top">
+              <span class="dados-stat-icon" aria-hidden="true">🏫</span>
+              <div>
+                <div class="dados-stat-value">
+                  <span data-target="43.2" data-decimals="1">0</span><span class="dados-stat-suffix">%</span>
+                </div>
+                <div class="dados-stat-label">Escolas com prevenção</div>
+              </div>
+            </div>
+            <p class="dados-stat-desc">Dos alunos estudam em escolas que realizam <strong>ações de prevenção</strong> ao bullying — ou seja, a maioria ainda não conta com essas ações.</p>
+            <div class="dados-bar-wrap">
+              <div class="dados-bar-label"><span>Cobertura de prevenção</span><span>43,2%</span></div>
+              <div class="dados-bar" role="presentation"><span class="dados-bar-fill"></span></div>
+            </div>
+            <small class="dados-stat-source">Fonte: <a href="https://agenciabrasil.ebc.com.br/educacao/noticia/2026-03/ibge-quatro-em-cada-dez-adolescentes-ja-sofreram-bullying-na-escola" target="_blank" rel="noopener noreferrer">PeNSE 2024 · IBGE</a></small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dados-section" aria-labelledby="dados-evolucao-title">
+      <div class="container">
+        <div class="dados-section-head">
+          <span class="dados-section-tag">Linha do tempo</span>
+          <h2 id="dados-evolucao-title">O bullying repetido aumentou</h2>
+          <p>Comparando a última edição anterior (2019) com 2024, mais estudantes relatam sofrer bullying de forma recorrente.</p>
+        </div>
+        <div class="dados-compare">
+          <div class="dados-compare-item">
+            <div class="dados-compare-year">2019</div>
+            <div class="dados-compare-val">23<small>%</small></div>
+            <p class="dados-compare-desc">Relataram bullying repetido (2+ vezes em 30 dias).</p>
+          </div>
+          <div class="dados-compare-arrow" aria-hidden="true">↑ +4,2 p.p. em 5 anos</div>
+          <div class="dados-compare-item">
+            <div class="dados-compare-year">2024</div>
+            <div class="dados-compare-val">27,2<small>%</small></div>
+            <p class="dados-compare-desc">Mais de <strong>1 em cada 4</strong> adolescentes enfrenta bullying recorrente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dados-section" aria-labelledby="dados-tipos-title">
+      <div class="container">
+        <div class="dados-section-head">
+          <span class="dados-section-tag">Aprenda a identificar</span>
+          <h2 id="dados-tipos-title">Os 4 tipos de bullying</h2>
+          <p>A <a href="https://www.unesco.org/en/articles/what-you-need-know-about-school-violence-and-bullying" target="_blank" rel="noopener noreferrer">UNESCO</a> classifica o bullying em formas física, verbal, social (relacional) e cyberbullying. Veja o que cada uma significa e o que os dados brasileiros mostram.</p>
+        </div>
+
+        <div class="dados-types-grid">
+          <article class="dados-type-card dados-type-card--fisico">
+            <div class="dados-type-head">
+              <span class="dados-type-icon" aria-hidden="true">👊</span>
+              <h3>Bullying físico</h3>
+            </div>
+            <div class="dados-type-body">
+              <div class="dados-type-block">
+                <h4>O que é</h4>
+                <p>Agressões corporais repetidas: empurrões, socos, chutes, pegar ou esconder objetos.</p>
+              </div>
+              <div class="dados-type-block">
+                <h4>Dado PeNSE 2024</h4>
+                <div class="dados-type-stat"><strong data-target="16.6" data-decimals="1">0</strong><span>%</span></div>
+                <p>já foram agredidos fisicamente por colegas.</p>
+              </div>
+              <div class="dados-type-tip"><strong>Como identificar:</strong> marcas no corpo, medo de ir a certos lugares da escola, objetos sumindo com frequência.</div>
+            </div>
+          </article>
+
+          <article class="dados-type-card dados-type-card--verbal">
+            <div class="dados-type-head">
+              <span class="dados-type-icon" aria-hidden="true">💬</span>
+              <h3>Bullying verbal</h3>
+            </div>
+            <div class="dados-type-body">
+              <div class="dados-type-block">
+                <h4>O que é</h4>
+                <p>Apelidos ofensivos, xingamentos, ameaças e humilhações repetidas — presenciais ou por mensagem.</p>
+              </div>
+              <div class="dados-type-block">
+                <h4>Dado PeNSE 2024</h4>
+                <div class="dados-type-stat"><strong data-target="27.2" data-decimals="1">0</strong><span>%</span></div>
+                <p>sofreram provocações ou humilhações repetidas (indicador principal da pesquisa).</p>
+              </div>
+              <div class="dados-type-tip"><strong>Como identificar:</strong> a pessoa fica quieta, evita falar ou ri forçado para disfarçar a dor.</div>
+            </div>
+          </article>
+
+          <article class="dados-type-card dados-type-card--social">
+            <div class="dados-type-head">
+              <span class="dados-type-icon" aria-hidden="true">🚫</span>
+              <h3>Bullying social</h3>
+            </div>
+            <div class="dados-type-body">
+              <div class="dados-type-block">
+                <h4>O que é</h4>
+                <p>Exclusão de grupos, rumores, ignorar de propósito e isolamento — machuca sem agressão física direta.</p>
+              </div>
+              <div class="dados-type-block">
+                <h4>Dado PeNSE 2024</h4>
+                <div class="dados-type-stat"><strong data-target="43.3" data-decimals="1">0</strong><span>%</span></div>
+                <p>das meninas foram vítimas de bullying (exclusão e humilhação social são formas frequentes).</p>
+              </div>
+              <div class="dados-type-tip"><strong>Como identificar:</strong> alguém sempre sozinho no intervalo, excluído de trabalhos em grupo de propósito.</div>
+            </div>
+          </article>
+
+          <article class="dados-type-card dados-type-card--cyber">
+            <div class="dados-type-head">
+              <span class="dados-type-icon" aria-hidden="true">📱</span>
+              <h3>Cyberbullying</h3>
+            </div>
+            <div class="dados-type-body">
+              <div class="dados-type-block">
+                <h4>O que é</h4>
+                <p>Violência online: mensagens ofensivas, exposição de fotos, grupos de zoeira, exclusão em redes.</p>
+              </div>
+              <div class="dados-type-block">
+                <h4>Dado PeNSE 2024</h4>
+                <div class="dados-type-stat"><strong data-target="12.7" data-decimals="1">0</strong><span>%</span></div>
+                <p>sofreram bullying em redes sociais ou apps — <strong>15,2%</strong> entre meninas.</p>
+              </div>
+              <div class="dados-type-tip"><strong>Como identificar:</strong> medo de olhar o celular, apagar apps ou ficar online escondido(a).</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dados-section" aria-labelledby="dados-ler-title">
+      <div class="container">
+        <div class="dados-section-head">
+          <span class="dados-section-tag">Leitura crítica</span>
+          <h2 id="dados-ler-title">Como interpretar estes dados</h2>
+          <p>Números ajudam a dimensionar o problema — mas cada porcentagem representa pessoas reais.</p>
+        </div>
+        <div class="dados-tips">
+          <article class="dados-tip-card">
+            <span class="dados-tip-num">1</span>
+            <h3>Repetição importa</h3>
+            <p>Um empurrão acidental não é bullying. A pesquisa foca em situações <strong>repetidas</strong> que magoam de propósito.</p>
+          </article>
+          <article class="dados-tip-card">
+            <span class="dados-tip-num">2</span>
+            <h3>Meninas são mais afetadas</h3>
+            <p>43,3% das meninas já sofreram bullying, contra 37,3% dos meninos — especialmente em humilhação verbal e cyberbullying.</p>
+          </article>
+          <article class="dados-tip-card">
+            <span class="dados-tip-num">3</span>
+            <h3>Prevenção ainda é insuficiente</h3>
+            <p>Menos da metade dos alunos está em escolas com ações de prevenção — denunciar e pedir ajuda faz diferença.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dados-section">
+      <div class="container">
+        <aside class="dados-fontes" aria-label="Referências bibliográficas">
+          <h3>Fontes consultadas</h3>
+          <ul>
+            <li><strong>IBGE</strong> — Pesquisa Nacional de Saúde do Escolar (PeNSE), edição 2024.</li>
+            <li><strong>Ministérios da Saúde e da Educação</strong> — parceiros institucionais da PeNSE.</li>
+            <li><strong>UNESCO</strong> — tipologia internacional de violência escolar e bullying.</li>
+            <li><strong>Fiocruz / Cadernos de Saúde Pública</strong> — cyberbullying com dados da PeNSE.</li>
+            <li><strong>Agência Brasil</strong> — divulgação oficial dos resultados de 2024.</li>
+          </ul>
+          <p class="dados-nota">Nota metodológica: cada indicador da PeNSE usa perguntas específicas. Bullying verbal/recorrente, agressão física e cyberbullying são medidos separadamente — por isso os percentuais não devem ser somados.</p>
+        </aside>
+
+        <div class="dados-cta">
+          <h2>Aprenda mais e saiba agir</h2>
+          <p>Use o conteúdo interativo para entender bullying na prática ou acesse a ouvidoria se precisar de ajuda.</p>
+          <div class="dados-cta-actions">
+            <a href="alunos.html" class="btn btn-primary btn-lg">Conteúdo educativo para alunos</a>
+            <a href="ouvidoria.html" class="btn btn-outline btn-lg dados-btn-outline">Acessar ouvidoria</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:0;">
+        <p>&copy; 2026 Projeto REACT — Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Acessibilidade + VLibras (canto inferior direito) -->
+  <div class="accessibility-dock" id="accessibilityDock">
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <script src="nav-mobile.js"></script>
+  <script src="accessibility.js"></script>
+  <script src="script.js"></script>
+  <script src="dados.js"></script>
+</body>
+</html>

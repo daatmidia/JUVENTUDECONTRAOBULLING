@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conteúdo Educativo — Alunos | Projeto REACT</title>
+  <meta name="description" content="Conteúdo interativo sobre bullying para alunos de 6 a 17 anos: quiz, tipos de bullying, como pedir ajuda e seus direitos.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="educativo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="educativo-cartoon.css">
+  <link rel="stylesheet" href="educativo-game.css">
+  <link rel="stylesheet" href="educativo-missoes23.css">
+  <link rel="stylesheet" href="educativo-acolhimento.css">
+  <link rel="stylesheet" href="educativo-faixas.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="educativo-responsive.css">
+</head>
+<body class="page-educativo page-educativo--cartoon page-educativo--game">
+  <!-- Cenário do jogo (templo + neon) -->
+  <div class="game-scene" aria-hidden="true">
+    <div class="game-temple-bg"></div>
+    <div class="game-column game-column--left"></div>
+    <div class="game-column game-column--right"></div>
+    <div class="game-arch"></div>
+  </div>
+
+  <div class="fx-confetti" id="fx-confetti" aria-hidden="true"></div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo-projeto.png" alt="Logo do projeto" class="logo-project-image" loading="eager" decoding="async">
+        <span class="logo-text">Projeto <strong>REACT</strong></span>
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" alt="Bandeira do Brasil" class="logo-flag js-lang-ptbr" title="Mudar idioma para Português (Brasil)" role="button" tabindex="0" loading="eager" decoding="async">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="Bandeira dos Estados Unidos" class="logo-flag js-lang-enus" title="Switch language to English (US)" role="button" tabindex="0" loading="eager" decoding="async">
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="Bandera de España" class="logo-flag js-lang-eses" title="Cambiar idioma a Español (España)" role="button" tabindex="0" loading="eager" decoding="async">
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Página Inicial</a></li>
+        <li class="nav-item-submenu">
+          <a href="conheca-o-projeto.html" class="nav-link-has-submenu">Conheça o Projeto</a>
+          <ul class="nav-submenu" aria-label="Submenu Conheça o Projeto">
+            <li><a href="conheca-o-projeto.html">Sobre</a></li>
+            <li><a href="index.html#noticias">Notícias</a></li>
+            <li><a href="alunos.html" class="nav-active-page">Conteúdo Educativo</a></li>
+            <li><a href="dados.html">Dados</a></li>
+            <li><a href="index.html#depoimentos">Depoimentos</a></li>
+          </ul>
+        </li>
+        <li><a href="ouvidoria.html" class="nav-cta">Denuncia</a></li>
+        <li class="nav-item-submenu">
+          <button type="button" class="nav-link-trigger nav-admin-cta nav-link-has-submenu">Acesso</button>
+          <ul class="nav-submenu" aria-label="Submenu Acesso">
+            <li><a href="ouvidoria.html#acompanhar">Acompanhar protocolo</a></li>
+            <li><a href="ouvidoria.html?admin=1#siteAdmin" target="_blank" rel="noopener noreferrer">Acesso administrativo</a></li>
+            <li><a href="ouvidoria.html?admin=1#painel" target="_blank" rel="noopener noreferrer">Acesso escolas</a></li>
+            <li><a href="ouvidoria.html?admin=1#treinamentos" target="_blank" rel="noopener noreferrer">Treinamentos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="edu-tabs-wrap game-tabs-wrap">
+    <div class="container">
+      <div class="edu-tabs" role="tablist" aria-label="Perfis de conteúdo educativo">
+        <button type="button" class="edu-tab is-active" role="tab" aria-selected="true" aria-controls="panel-alunos" data-panel="panel-alunos" id="tab-alunos">Alunos</button>
+        <button type="button" class="edu-tab" role="tab" aria-selected="false" aria-controls="panel-familia" data-panel="panel-familia" id="tab-familia">Família</button>
+        <button type="button" class="edu-tab" role="tab" aria-selected="false" aria-controls="panel-educadores" data-panel="panel-educadores" id="tab-educadores">Educadores</button>
+        <button type="button" class="edu-tab" role="tab" aria-selected="false" aria-controls="panel-gestores" data-panel="panel-gestores" id="tab-gestores">Gestores</button>
+        <button type="button" class="edu-tab" role="tab" aria-selected="false" aria-controls="panel-trilhas" data-panel="panel-trilhas" id="tab-trilhas">Trilhas</button>
+        <button type="button" class="edu-tab" role="tab" aria-selected="false" aria-controls="panel-materiais" data-panel="panel-materiais" id="tab-materiais">Materiais</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container fx-faixa-top-wrap">
+    <div class="fx-faixa-top">
+      <button type="button" class="back-btn fx-faixa-back" id="fxFaixaBack" data-fx-back hidden>← Voltar</button>
+      <div class="fx-brand-hero game-start-copy game-hero-copy">
+        <h2 class="game-start-title">
+          <span class="game-start-title-main">Conteúdo</span>
+          <span class="game-start-title-accent-wrap">
+            <span class="game-hero-level-up game-float--level" aria-hidden="true">LEVEL UP</span>
+            <span class="edu-hero-accent toon-title-pop game-title">Educativo</span>
+          </span>
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <header class="edu-hero toon-hero game-hero game-hero--start">
+    <div class="edu-hero-bg toon-hero-bg game-hero-bg" aria-hidden="true"></div>
+    <div class="game-hero-glow" aria-hidden="true"></div>
+    <div class="container edu-hero-inner game-start-wrap game-start-wrap--centered">
+      <div class="toon-hero-copy game-hero-copy game-start-copy game-start-copy--head">
+        <h1 class="game-start-title">
+          <span class="game-start-title-main">Conteúdo</span>
+          <span class="game-start-title-accent-wrap">
+            <span class="game-hero-level-up game-float--level" aria-hidden="true">LEVEL UP</span>
+            <span class="edu-hero-accent toon-title-pop game-title">Educativo</span>
+          </span>
+        </h1>
+      </div>
+      <div class="toon-hero-copy game-hero-copy game-start-copy game-start-copy--foot game-start-copy--above-ju">
+        <div class="game-start-meta">
+          <p class="game-start-tag">🎮 Modo Aventura</p>
+          <p class="game-start-lead game-lead">Complete as missões com a Ju e ganhe XP!</p>
+          <div class="game-hero-xp game-hero-xp--lead" aria-hidden="true">⭐ XP</div>
+        </div>
+      </div>
+      <div class="game-start-mascot game-hero-stage game-start-mascot--with-speech">
+        <div class="game-start-aura" aria-hidden="true"></div>
+        <div class="game-start-aura game-start-aura--2" aria-hidden="true"></div>
+        <figure class="game-start-splash">
+          <video
+            id="heroIntroVideo"
+            class="game-start-img ju-intro-video"
+            src="assets/VIDEOSAUDACAOINICIAL.mp4?v=5"
+            width="576"
+            height="654"
+            playsinline
+            webkit-playsinline
+            preload="auto"
+            aria-label="Ju — saudação em vídeo, O Ideal de Justiça"
+          ></video>
+        </figure>
+        <div class="toon-hero-speech game-speech game-start-speech game-start-speech--beside-ju" role="note" aria-label="Ju diz:">
+          <p class="game-start-speech-text">
+            <span class="game-start-speech-line game-start-speech-line--lead">Olá mentes brilhantes!</span>
+            <span class="game-start-speech-line">Preparados para um desafio?</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="edu-main game-main">
+    <div class="container">
+
+      <!-- Painel Alunos -->
+      <div class="edu-panel is-active" id="panel-alunos" role="tabpanel" aria-labelledby="tab-alunos">
+
+        <div class="edu-faixas" id="eduFaixas">
+          <div class="fx-screen fx-screen--selector active" data-screen="selector">
+            <div class="fx-header">
+              <p class="fx-subtitle">Escolha sua faixa — a Ju prepara missões no seu ritmo!</p>
+            </div>
+            <div class="selector-layout">
+              <div class="ju-arena ju-arena--selector game-start-mascot game-start-mascot--with-speech">
+                <div class="game-start-aura" aria-hidden="true"></div>
+                <div class="game-start-aura game-start-aura--2" aria-hidden="true"></div>
+                <figure class="game-start-splash">
+                  <video
+                    class="game-start-img ju-img ju-img--speak ju-intro-video"
+                    id="selectorJu"
+                    src="assets/VIDEOSAUDACAOINICIAL.mp4?v=5"
+                    width="576"
+                    height="654"
+                    playsinline
+                    webkit-playsinline
+                    preload="auto"
+                    aria-label="Ju — saudação em vídeo. Toque para ouvir a Ju."
+                    role="button"
+                    tabindex="0"
+                    title="Toque para ouvir a Ju"
+                  ></video>
+                </figure>
+                <div class="ju-bubble ju-bubble--beside ju-bubble--speak" id="selectorBubble" role="button" tabindex="0" title="Toque para ouvir a Ju">Olá mentes brilhantes! Preparados para um desafio?</div>
+              </div>
+              <div class="faixa-grid">
+                <button type="button" class="faixa-card faixa-card--kids" data-fx-mode="kids">
+                  <span class="faixa-icon" aria-hidden="true">🧒</span>
+                  <span>
+                    <span class="faixa-label">CRIANÇA</span>
+                    <span class="faixa-age">6 – 9 anos · quiz + tipos</span>
+                  </span>
+                  <span class="faixa-arrow" aria-hidden="true">▶</span>
+                </button>
+                <button type="button" class="faixa-card faixa-card--medio" data-fx-mode="medio">
+                  <span class="faixa-icon" aria-hidden="true">🧑‍🎒</span>
+                  <span>
+                    <span class="faixa-label">FUNDAMENTAL II</span>
+                    <span class="faixa-age">10 – 12 anos · quiz + tipos + acolhimento</span>
+                  </span>
+                  <span class="faixa-arrow" aria-hidden="true">▶</span>
+                </button>
+                <button type="button" class="faixa-card faixa-card--teen" data-fx-mode="teen">
+                  <span class="faixa-icon" aria-hidden="true">🧑‍💻</span>
+                  <span>
+                    <span class="faixa-label">ADOLESCENTE</span>
+                    <span class="faixa-age">13 – 18 anos · jogo completo</span>
+                  </span>
+                  <span class="faixa-arrow" aria-hidden="true">▶</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="fx-screen fx-screen--kids" data-screen="kids" id="fxKids">
+            <div class="fx-header">
+              <p class="fx-eyebrow">6 – 9 ANOS</p>
+              <h2 class="fx-title">Quiz com a Ju</h2>
+              <p class="fx-subtitle">Frases simples + os 4 tipos de bullying</p>
+            </div>
+            <div class="fx-quiz">
+              <span class="fx-quiz-badge">⚡ Quiz rápido</span>
+              <div class="fx-quiz-head">
+                <h3 class="fx-quiz-title">Isso machuca?</h3>
+                <span class="fx-quiz-prog" id="kidsProg">1 de 4</span>
+              </div>
+              <div class="fx-prog" aria-hidden="true"><div class="fx-prog-fill" id="kidsProgFill"></div></div>
+              <div class="fx-quiz-stage" id="kidsQuizStage">
+                <div class="ju-arena ju-arena--with-speech">
+                  <img src="assets/ju-pergunta.png?v=4" alt="Ju pensando" class="kids-ju" id="kidsJu" width="400" height="400" loading="lazy" decoding="async">
+                  <div class="ju-bubble ju-bubble--beside" id="kidsBubble">Pensando…</div>
+                </div>
+                <div>
+                  <p class="fx-scenario" id="kidsScenario"></p>
+                  <p class="fx-visual-tip" id="kidsVisualTip" aria-live="polite"></p>
+                  <div class="fx-actions" id="kidsActions">
+                    <button type="button" class="fx-btn fx-btn--yes" id="kidsYes">🚨 É bullying</button>
+                    <button type="button" class="fx-btn fx-btn--no" id="kidsNo">✋ Não é</button>
+                  </div>
+                  <div class="fx-feedback hidden" id="kidsFeedback" role="status" aria-live="polite"></div>
+                  <button type="button" class="fx-btn fx-btn--next hidden" id="kidsNext">Próximo! →</button>
+                </div>
+              </div>
+              <div class="fx-finish hidden" id="kidsFinish">
+                <img src="assets/ju_fimdejogo.png?v=9" alt="Ju comemorando" class="ju-img" width="220" height="220" loading="lazy" decoding="async">
+                <div class="fx-stars" id="kidsStars" aria-label="Estrelas conquistadas"></div>
+                <h3>Parabéns!</h3>
+                <p id="kidsFinishMsg"></p>
+                <div class="fx-kids-sinto-block">
+                  <video
+                    id="kidsSintoVideoFinish"
+                    class="fx-kids-sinto-video ju-sinto-video"
+                    src="assets/SINTOMUITO.mp4?v=2"
+                    playsinline
+                    webkit-playsinline
+                    preload="metadata"
+                    aria-label="Vídeo da Ju — mensagem de apoio. Toque para assistir."
+                    title="▶ Toque para assistir o vídeo"
+                    role="button"
+                    tabindex="0"
+                  ></video>
+                </div>
+                <a href="ouvidoria.html#formulario" class="fx-btn fx-btn--ouvidoria btn-ouvidoria-pulse">Alguém está fazendo isso com você? <strong>FALE COM A GENTE!!!</strong></a>
+                <button type="button" class="fx-btn fx-btn--restart" id="kidsRestart">🔄 Jogar de novo</button>
+              </div>
+            </div>
+            <div class="fx-divider"></div>
+            <h3 class="fx-quiz-title fx-quiz-title--section">🃏 Conheça os 4 tipos de bullying</h3>
+            <p class="fx-section-desc">Toque nos cards para descobrir cada tipo — desbloqueie os adesivos!</p>
+            <div class="fx-sticker-bar">
+              <span class="fx-sticker-label">Adesivos:</span>
+              <div class="fx-stickers">
+                <span class="fx-sticker" data-sticker="fisico" title="Físico">👊</span>
+                <span class="fx-sticker" data-sticker="verbal" title="Verbal">🗣️</span>
+                <span class="fx-sticker" data-sticker="social" title="Social">👥</span>
+                <span class="fx-sticker" data-sticker="cyber" title="Cyber">📱</span>
+              </div>
+              <span class="fx-sticker-count" id="kidsStickerCount">0/4</span>
+            </div>
+            <div class="fx-flip-grid" id="kidsFlipGrid"></div>
+            <div class="fx-kids-sinto-block fx-kids-sinto-block--main">
+              <video
+                id="kidsSintoVideo"
+                class="fx-kids-sinto-video ju-sinto-video"
+                src="assets/SINTOMUITO.mp4?v=2"
+                playsinline
+                webkit-playsinline
+                preload="metadata"
+                aria-label="Vídeo da Ju — Se estiver sofrendo, fale com a gente. Toque para assistir."
+                title="▶ Toque para assistir o vídeo"
+                role="button"
+                tabindex="0"
+              ></video>
+            </div>
+            <a href="ouvidoria.html#formulario" class="fx-btn fx-btn--ouvidoria btn-ouvidoria-pulse" style="margin-top:12px">Alguém está fazendo isso com você? <strong>FALE COM A GENTE!!!</strong></a>
+          </div>
+
+          <div class="fx-screen fx-screen--medio" data-screen="medio" id="fxMedio">
+            <div class="fx-header">
+              <p class="fx-eyebrow">10 – 12 ANOS</p>
+              <h2 class="fx-title">Desafio da Ju</h2>
+              <p class="fx-subtitle">8 cenários reais + os 4 tipos + acolhimento</p>
+            </div>
+            <div class="ju-arena ju-arena--with-speech" style="margin-bottom:16px">
+              <img src="assets/ju-pergunta.png?v=4" alt="Ju" class="ju-img" id="fullJu" width="400" height="400" loading="lazy" decoding="async">
+              <div class="ju-bubble ju-bubble--beside" id="fullBubble">Pensando…</div>
+            </div>
+            <div class="fx-quiz">
+              <span class="fx-quiz-badge">⚡ Jogo interativo</span>
+              <div class="fx-quiz-head">
+                <h3 class="fx-quiz-title">Isso é bullying ou não?</h3>
+                <span class="fx-quiz-prog" id="fullProg">1 de 8</span>
+              </div>
+              <div class="fx-prog" aria-hidden="true"><div class="fx-prog-fill" id="fullProgFill"></div></div>
+              <div class="fx-quiz-stage" id="fullQuizStage">
+                <p class="fx-scenario" id="fullScenario" style="grid-column:1/-1"></p>
+                <p class="fx-context-tip" id="fullContextTip" style="grid-column:1/-1"></p>
+                <div class="fx-actions" id="fullActions" style="grid-column:1/-1">
+                  <button type="button" class="fx-btn fx-btn--yes" id="fullYes">🚨 É bullying</button>
+                  <button type="button" class="fx-btn fx-btn--no" id="fullNo">✋ Não é bullying</button>
+                </div>
+                <div class="fx-feedback hidden" id="fullFeedback" role="status" aria-live="polite" style="grid-column:1/-1"></div>
+                <button type="button" class="fx-btn fx-btn--next hidden" id="fullNext" style="grid-column:1/-1">Próximo! →</button>
+              </div>
+              <div class="fx-finish hidden" id="fullFinish">
+                <img src="assets/ju_fimdejogo.png?v=9" alt="Ju comemorando" class="ju-img" width="220" height="220" loading="lazy" decoding="async">
+                <h3>Quiz concluído!</h3>
+                <p id="fullFinishMsg"></p>
+                <a href="ouvidoria.html#formulario" class="fx-btn fx-btn--ouvidoria btn-ouvidoria-pulse">Alguém está fazendo isso com você? <strong>FALE COM A GENTE!!!</strong></a>
+                <button type="button" class="fx-btn fx-btn--restart" id="fullRestart">🔄 Jogar de novo</button>
+              </div>
+            </div>
+            <div class="fx-divider"></div>
+            <h3 class="fx-quiz-title fx-quiz-title--section">🃏 Conheça os 4 tipos de bullying</h3>
+            <p class="fx-section-desc">Toque nos cards para descobrir cada tipo — desbloqueie os adesivos!</p>
+            <div class="fx-sticker-bar">
+              <span class="fx-sticker-label">Adesivos:</span>
+              <div class="fx-stickers">
+                <span class="fx-sticker" data-sticker="fisico" title="Físico">👊</span>
+                <span class="fx-sticker" data-sticker="verbal" title="Verbal">🗣️</span>
+                <span class="fx-sticker" data-sticker="social" title="Social">👥</span>
+                <span class="fx-sticker" data-sticker="cyber" title="Cyber">📱</span>
+              </div>
+              <span class="fx-sticker-count" id="fxStickerCount">0/4</span>
+            </div>
+            <div class="fx-flip-grid" id="fxFlipGrid"></div>
+            <div class="fx-divider"></div>
+            <h3 class="fx-section-title">💜 Acolhimento</h3>
+            <p class="fx-section-desc">Se eu estiver sofrendo — este espaço é para você, no seu ritmo.</p>
+            <div id="fxMedioMa"></div>
+            <a href="ouvidoria.html#formulario" class="fx-btn fx-btn--ouvidoria btn-ouvidoria-pulse" style="margin-top:20px">Alguém está fazendo isso com você? <strong>FALE COM A GENTE!!!</strong></a>
+          </div>
+        </div>
+
+        <div id="eduTeenGame" hidden>
+
+        <div class="game-hud game-hud--missions" aria-label="Progresso das missões">
+          <div class="game-hud-inner">
+            <div class="game-hud-pill game-hud-level">
+              <span>NÍVEL</span>
+              <strong id="gameLevel">1</strong>
+            </div>
+            <div class="game-hud-xp-wrap">
+              <div class="game-hud-xp-meta">
+                <span class="game-hud-xp-label" id="gameMissionLabel">0/3 missões</span>
+                <span class="game-hud-done-label" id="gameMissionStatus" hidden aria-live="polite">✓ Concluída</span>
+              </div>
+              <div class="game-hud-xp" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3" id="gameXpBar" aria-valuetext="0 de 3 missões concluídas">
+                <div class="game-hud-xp-fill" id="gameXpFill"></div>
+              </div>
+            </div>
+            <div class="game-hud-values">
+              <span id="gameRespeito">RESPEITO</span>
+              <span id="gameIgualdade">IGUALDADE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Módulo 1 -->
+        <section class="edu-module edu-module--1" id="modulo-1">
+          <div class="edu-module-shell game-level-panel">
+          <div class="edu-module-head">
+            <span class="edu-module-num" aria-hidden="true">01</span>
+            <a href="#eduQuiz" class="edu-jump toon-jump game-mission-btn edu-module-mission-btn" data-module="1"><span class="toon-jump-num">1</span> Missão: Bullying</a>
+            <h2 class="edu-module-title">Vamos descobrir juntos o que é bullying?</h2>
+            <p class="edu-module-desc">Bullying é quando alguém machuca outra pessoa <strong>de propósito</strong>, <strong>várias vezes</strong>, e existe um <strong>desequilíbrio de força</strong> — um tem mais poder que o outro.</p>
+          </div>
+
+          <!-- 4 tipos (antes do quiz — visível no celular sem rolar) -->
+          <div class="edu-subsection" id="eduFlipTypes">
+            <div class="edu-module-head edu-module-head--compact">
+              <h3 class="edu-module-title">Os 4 tipos de bullying</h3>
+              <p class="edu-module-desc">Toque nos cards — colecione os 4 tipos como adesivos!</p>
+            </div>
+
+          <div class="toon-sticker-bar" id="stickerBar" aria-label="Adesivos colecionados">
+            <span class="toon-sticker-label">🏅 Sua coleção:</span>
+            <div class="toon-stickers">
+              <div class="toon-sticker" data-sticker="fisico" title="Bullying físico">👊</div>
+              <div class="toon-sticker" data-sticker="verbal" title="Bullying verbal">💬</div>
+              <div class="toon-sticker" data-sticker="social" title="Bullying social">🚫</div>
+              <div class="toon-sticker" data-sticker="cyber" title="Cyberbullying">📱</div>
+            </div>
+            <span class="toon-sticker-count" id="stickerCount">0/4</span>
+          </div>
+
+          <div class="edu-flip-grid toon-flip-grid">
+            <div class="edu-flip-card edu-flip-card--fisico toon-flip-card" data-sticker="fisico">
+              <div class="edu-flip-inner">
+                <div class="edu-flip-front edu-flip-front--cover" tabindex="0" role="button" aria-expanded="false" aria-label="Bullying físico — toque para ver detalhes">
+                  <img class="edu-flip-cover" src="assets/CAPAFISICO.png" alt="Capa — bullying físico" loading="lazy" decoding="async">
+                  <p class="edu-flip-hint edu-flip-hint--cover">Toque para saber mais</p>
+                </div>
+                <div class="edu-flip-back">
+                  <h4>Exemplo</h4>
+                  <p>Empurrões, socos, chutes ou pegar/esconder pertences de alguém.</p>
+                  <h4>Sinais de alerta</h4>
+                  <ul>
+                    <li>Aparecem marcas ou objetos sumidos</li>
+                    <li>A pessoa evita certos lugares da escola</li>
+                  </ul>
+                  <h4>O que fazer</h4>
+                  <p>Conte para um adulto de confiança. Não responda com violência — peça ajuda.</p>
+                  <h4>Base legal</h4>
+                  <p>Lei nº 13.185/2015 (Art. 5º) — escolas devem garantir ambiente seguro. Lei nº 14.811/2024 reforça medidas contra violência escolar. CP Art. 129 — lesão corporal pode ser crime.</p>
+                  <div class="edu-flip-close" role="button" tabindex="0">← Voltar</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-flip-card edu-flip-card--verbal toon-flip-card" data-sticker="verbal">
+              <div class="edu-flip-inner">
+                <div class="edu-flip-front edu-flip-front--cover" tabindex="0" role="button" aria-expanded="false" aria-label="Bullying verbal — toque para ver detalhes">
+                  <img class="edu-flip-cover" src="assets/CAPAVERBAL.png" alt="Capa — bullying verbal" loading="lazy" decoding="async">
+                  <p class="edu-flip-hint edu-flip-hint--cover">Toque para saber mais</p>
+                </div>
+                <div class="edu-flip-back">
+                  <h4>Exemplo</h4>
+                  <p>Apelidos ofensivos, xingamentos, ameaças ou piadas que humilham alguém.</p>
+                  <h4>Sinais de alerta</h4>
+                  <ul>
+                    <li>A pessoa fica quieta ou triste depois das aulas</li>
+                    <li>Evita falar ou participar</li>
+                  </ul>
+                  <h4>O que fazer</h4>
+                  <p>Palavras machucam. Registre o que ouviu e avise um adulto — você está ajudando, não "dedurando".</p>
+                  <h4>Base legal</h4>
+                  <p>Lei nº 13.185/2015 — bullying verbal é violência escolar. CP Art. 140 (injúria) e Art. 147 (ameaça). Lei nº 14.811/2024 — responsabilização de agressores.</p>
+                  <div class="edu-flip-close" role="button" tabindex="0">← Voltar</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-flip-card edu-flip-card--social toon-flip-card" data-sticker="social">
+              <div class="edu-flip-inner">
+                <div class="edu-flip-front edu-flip-front--cover" tabindex="0" role="button" aria-expanded="false" aria-label="Bullying social — toque para ver detalhes">
+                  <img class="edu-flip-cover" src="assets/CAPASOCIAL.png" alt="Capa — bullying social" loading="lazy" decoding="async">
+                  <p class="edu-flip-hint edu-flip-hint--cover">Toque para saber mais</p>
+                </div>
+                <div class="edu-flip-back">
+                  <h4>Exemplo</h4>
+                  <p>Deixar alguém de fora de grupos, espalhar rumores ou ignorar de propósito.</p>
+                  <h4>Sinais de alerta</h4>
+                  <ul>
+                    <li>Alguém sempre come sozinho(a)</li>
+                    <li>Grupos riem quando a pessoa se aproxima</li>
+                  </ul>
+                  <h4>O que fazer</h4>
+                  <p>Inclua a pessoa quando puder. Se não der, conte para um adulto o que você viu.</p>
+                  <h4>Base legal</h4>
+                  <p>Lei nº 13.185/2015 — exclusão intencional e repetida configura bullying social. ECA Art. 53 — direito a convivência familiar e comunitária, inclusive na escola.</p>
+                  <div class="edu-flip-close" role="button" tabindex="0">← Voltar</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-flip-card edu-flip-card--cyber toon-flip-card" data-sticker="cyber">
+              <div class="edu-flip-inner">
+                <div class="edu-flip-front edu-flip-front--cover" tabindex="0" role="button" aria-expanded="false" aria-label="Cyberbullying — toque para ver detalhes">
+                  <img class="edu-flip-cover" src="assets/CAPACYBER.png" alt="Capa — cyberbullying" loading="lazy" decoding="async">
+                  <p class="edu-flip-hint edu-flip-hint--cover">Toque para saber mais</p>
+                </div>
+                <div class="edu-flip-back">
+                  <h4>Exemplo</h4>
+                  <p>Mensagens ofensivas, exposição de fotos, grupos de zoeira ou fake profiles.</p>
+                  <h4>Sinais de alerta</h4>
+                  <ul>
+                    <li>Medo de olhar o celular</li>
+                    <li>Apaga apps ou fica online escondido(a)</li>
+                  </ul>
+                  <h4>O que fazer</h4>
+                  <p>Salve prints, bloqueie quem ataca e conte para um adulto. Não responda na hora.</p>
+                  <h4>Base legal</h4>
+                  <p>Marco Civil da Internet (Art. 21) — plataformas devem remover conteúdo ilícito. Lei nº 14.811/2024 — cyberbullying nas escolas. CP Arts. 138–140 — calúnia, difamação e injúria online.</p>
+                  <div class="edu-flip-close" role="button" tabindex="0">← Voltar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <!-- Quiz -->
+          <div class="edu-quiz toon-quiz" id="eduQuiz" aria-label="Quiz interativo: Isso é bullying ou não?">
+            <div class="edu-quiz-badge toon-quiz-badge">⚡ Jogo interativo</div>
+            <div class="edu-quiz-header">
+              <h3 class="edu-quiz-title">Isso é bullying ou não?</h3>
+              <span class="edu-quiz-progress" id="quizProgress" aria-live="polite">1 de 8</span>
+            </div>
+            <div class="edu-quiz-progress-wrap toon-progress-wrap" aria-hidden="true">
+              <div class="edu-quiz-progress-bar" id="quizProgressBar"></div>
+            </div>
+            <div class="toon-quiz-stage">
+              <div class="toon-quiz-mascot" id="quizMascot" data-mood="think">
+                <div class="ju-avatar-wrap ju-avatar-wrap--quiz ju-avatar-wrap--portrait" data-frame="think" id="quizJuAvatar">
+                  <img
+                    src="assets/ju-pergunta.png?v=4"
+                    alt="Ju pensando sobre a pergunta do quiz"
+                    class="ju-portrait-img"
+                    width="566"
+                    height="718"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                  <span class="ju-mood-chip" aria-hidden="true">Pensando…</span>
+                </div>
+              </div>
+              <div class="toon-speech-bubble toon-speech-bubble--quiz">
+                <p class="edu-quiz-scenario" id="quizScenario">Todo recreio, um grupo empurra o mesmo colega contra o muro e pega o lanche dele.</p>
+                <p class="edu-quiz-context" id="quizContextTip" hidden></p>
+                <p class="edu-quiz-legal" id="quizLegalNote" hidden></p>
+                <div class="edu-quiz-actions toon-quiz-actions toon-quiz-actions--inline" id="quizActions">
+                  <button type="button" class="edu-quiz-btn edu-quiz-btn-yes toon-btn toon-btn--yes" id="quizYes" aria-label="Minha resposta: é bullying"><span>👎</span> É bullying</button>
+                  <button type="button" class="edu-quiz-btn edu-quiz-btn-no toon-btn toon-btn--no" id="quizNo" aria-label="Minha resposta: não é bullying"><span>✋</span> Não é bullying</button>
+                </div>
+              </div>
+            </div>
+            <div class="edu-quiz-feedback toon-feedback" id="quizFeedback"></div>
+            <button type="button" class="edu-quiz-next toon-btn toon-btn--next" id="quizNext">Próximo! →</button>
+            <div class="edu-quiz-finish toon-quiz-finish" id="quizFinish">
+              <div class="toon-finish-burst ju-finish-burst" aria-hidden="true">
+                <img
+                  src="assets/ju_fimdejogo.png?v=9"
+                  alt=""
+                  class="ju-finish-img"
+                  width="380"
+                  height="520"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+              <h3>Você concluiu os 8 cenários!</h3>
+              <p id="quizFinishMsg"></p>
+              <div class="edu-quiz-finish-ctas">
+                <a href="ouvidoria.html#formulario" class="toon-btn toon-btn--ouvidoria btn-ouvidoria-pulse">Alguém está fazendo isso com você? <strong>FALE COM A GENTE!!!</strong></a>
+                <a href="https://www.cvv.org.br" class="toon-btn toon-btn--help" target="_blank" rel="noopener noreferrer">📞 CVV — 188</a>
+                <a href="tel:100" class="toon-btn toon-btn--help">👶 Disque 100</a>
+              </div>
+              <button type="button" class="edu-quiz-restart toon-btn toon-btn--restart" id="quizRestart">Jogar de novo</button>
+            </div>
+            <div class="toon-confetti" id="toonConfetti" aria-hidden="true"></div>
+          </div>
+          </div>
+        </section>
+
+        <!-- Módulo 2 -->
+        <section class="edu-module edu-module--2 is-locked" id="modulo-2">
+          <div class="edu-module-shell">
+          <div class="edu-module-head">
+            <span class="edu-module-num" aria-hidden="true">02</span>
+            <a href="#modulo-2" class="edu-jump toon-jump game-mission-btn edu-module-mission-btn is-locked" data-module="2" aria-disabled="true" aria-label="Missão 2 bloqueada — complete a Missão 1"><span class="game-mission-lock" aria-hidden="true">🔒</span><span class="toon-jump-num">2</span> Missão: Testemunha</a>
+            <h2 class="edu-module-title">Eu testemunhei. E agora?</h2>
+            <p class="edu-module-desc">Ver alguém sofrendo não é fácil — mas você pode fazer diferença com segurança.</p>
+          </div>
+
+          <div class="edu-m23" id="eduM23">
+            <div class="missao-tabs" role="tablist" aria-label="Atividades da Missão 2">
+              <button type="button" class="mtab active" id="tab-m2" data-m23-tab="2" role="tab" aria-selected="true">
+                <span class="mtab-icon">🤝</span>
+                <span>SER ALIADO</span>
+                <span class="mtab-num">MISSÃO 2</span>
+              </button>
+              <button type="button" class="mtab" id="tab-m3a" data-m23-tab="3" role="tab" aria-selected="false">
+                <span class="mtab-icon">🆘</span>
+                <span>PEDIR AJUDA</span>
+                <span class="mtab-num">MISSÃO 3A</span>
+              </button>
+              <button type="button" class="mtab" id="tab-m3b" data-m23-tab="4" role="tab" aria-selected="false">
+                <span class="mtab-icon">📱</span>
+                <span>CYBERBULLYING</span>
+                <span class="mtab-num">MISSÃO 3B</span>
+              </button>
+            </div>
+
+            <div class="missao-panel active" id="panel-m2" role="tabpanel">
+              <div class="missao-intro missao-intro--ally">
+                <div class="missao-intro-layout">
+                  <figure class="missao-hero-figure">
+                    <img
+                      src="assets/ju-ser-aliado.png?v=3"
+                      alt="Ju apertando a mão de um colega — ser aliado de verdade"
+                      class="missao-hero-img"
+                      width="1063"
+                      height="1188"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  </figure>
+                  <div class="missao-intro-copy">
+                    <div class="missao-intro-row">
+                      <div>
+                        <div class="missao-intro-label">MISSÃO 2</div>
+                        <div class="missao-intro-title">Ser Aliado(a)</div>
+                      </div>
+                    </div>
+                    <div class="missao-intro-desc">Cinco etapas progressivas: apoiar, registrar provas, incluir, denunciar online e fazer denúncia formal — sem se colocar em risco.</div>
+                    <div class="progress-bar-wrap">
+                      <div class="prog-label"><span>ETAPAS CONCLUÍDAS</span><span id="m2-prog-label">0 / 5</span></div>
+                      <div class="prog-bar"><div class="prog-fill" id="m2-prog-bar" style="width:0%"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="m2-cenarios"></div>
+              <div class="nao-dizer-section">
+                <div class="nao-dizer-title">🚫 O QUE NÃO DIZER</div>
+                <div class="nao-dizer-cards">
+                  <div class="nd-card"><div class="nd-phrase">"Se defenda sozinho(a)!"</div><div class="nd-why">Coloca toda a responsabilidade na vítima, que já está vulnerável.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"É só brincadeira, ignora."</div><div class="nd-why">Minimiza a dor real que a pessoa está sentindo.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"Você provocou."</div><div class="nd-why">Ninguém merece ser agredido. A culpa nunca é da vítima.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"Não conta pra ninguém."</div><div class="nd-why">O silêncio protege o agressor, não a vítima.</div></div>
+                  <div class="nd-card"><div class="nd-phrase">"Você está exagerando."</div><div class="nd-why">Invalida o sentimento da pessoa e dificulta que ela busque ajuda.</div></div>
+                </div>
+              </div>
+              <div class="hud-divider"></div>
+              <div class="avisar-section">
+                <div class="avisar-title">💬 COMO AVISAR UM ADULTO</div>
+                <div class="avisar-script">
+                  <div class="script-quote" id="script-text">"Preciso de ajuda com algo que vi na escola. Não quero que ninguém se machuque mais."</div>
+                  <div class="script-note">Você não precisa ter todas as palavras. Falar é suficiente. Você está protegendo alguém — não é dedo-duro.</div>
+                  <button type="button" class="copy-btn" id="copy-btn">📋 COPIAR FRASE</button>
+                </div>
+              </div>
+              <div class="conclusao-m2" id="conclusao-m2">
+                <div style="font-size:40px;margin-bottom:8px" aria-hidden="true">🏆</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:14px;color:var(--m23-ng);margin-bottom:6px">MISSÃO 2 CONCLUÍDA!</div>
+                <div class="conclusao-score" id="m2-score">5/5</div>
+                <div class="conclusao-msg" id="m2-msg">Você mostrou que sabe ser um aliado de verdade. Isso faz diferença!</div>
+              </div>
+            </div>
+
+            <div class="missao-panel" id="panel-m3a" role="tabpanel">
+              <div class="missao-intro missao-intro--ajuda">
+                <div class="missao-intro-layout">
+                  <figure class="missao-hero-figure">
+                    <video
+                      class="missao-hero-img ju-sinto-video"
+                      src="assets/SINTOMUITO.mp4?v=2"
+                      playsinline
+                      webkit-playsinline
+                      preload="metadata"
+                      aria-label="Vídeo da Ju pedindo ajuda. Toque para assistir."
+                      title="▶ Toque para assistir o vídeo"
+                      role="button"
+                      tabindex="0"
+                      width="719"
+                      height="1298"
+                    ></video>
+                  </figure>
+                  <div class="missao-intro-copy">
+                    <div class="missao-intro-row">
+                      <div>
+                        <div class="missao-intro-label">MISSÃO 3A</div>
+                        <div class="missao-intro-title">Pedir Ajuda</div>
+                      </div>
+                    </div>
+                    <div class="missao-intro-desc">Pedir ajuda pode parecer difícil. Esta missão mostra o caminho passo a passo — com respostas para as dúvidas mais comuns. Clique em cada etapa!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="badge-row">
+                <span class="badge pink">ROTEIRO REAL</span>
+                <span class="badge blue">PASSO A PASSO</span>
+                <span class="badge purple">DÚVIDAS COMUNS</span>
+              </div>
+              <div class="stepper" id="stepper-ajuda"></div>
+              <div class="hud-divider"></div>
+              <div class="conclusao-m3" id="conclusao-m3a">
+                <div style="font-size:36px;margin-bottom:8px" aria-hidden="true">⭐</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--m23-nv);margin-bottom:8px">MISSÃO 3A CONCLUÍDA!</div>
+                <div style="font-size:14px;color:rgba(200,220,255,.8);line-height:1.6;max-width:380px;margin:0 auto">Agora você sabe o que dizer e o que esperar. Pedir ajuda é corajoso — e você merece ser ouvido(a).</div>
+              </div>
+            </div>
+
+            <div class="missao-panel" id="panel-m3b" role="tabpanel">
+              <div class="missao-intro missao-intro--cyber">
+                <div class="missao-intro-layout">
+                  <figure class="missao-hero-figure">
+                    <img
+                      src="assets/ju-cyberbullying.png?v=3"
+                      alt="Ju preocupada com alertas de cyberbullying no celular holográfico"
+                      class="missao-hero-img"
+                      width="576"
+                      height="1024"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  </figure>
+                  <div class="missao-intro-copy">
+                    <div class="missao-intro-row">
+                      <div>
+                        <div class="missao-intro-label">MISSÃO 3B</div>
+                        <div class="missao-intro-title">Cyberbullying: o que fazer</div>
+                      </div>
+                    </div>
+                    <div class="missao-intro-desc">Se você está sofrendo cyberbullying, aja! Toque nos cards para revelar cada passo — e pratique no simulador de situação real.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="badge-row">
+                <span class="badge pink">SIMULADOR</span>
+                <span class="badge blue">4 PASSOS</span>
+                <span class="badge purple">3 PLATAFORMAS</span>
+              </div>
+              <div class="cyber-grid" id="cyber-steps-grid"></div>
+              <div class="hud-divider"></div>
+              <div class="sim-section">
+                <div class="sim-title">🎮 SIMULADOR — O QUE VOCÊ FAZ?</div>
+                <p style="font-size:13px;color:rgba(180,200,255,.65);margin-bottom:12px;line-height:1.6">Você recebeu uma mensagem hostil. Escolha a melhor resposta para cada situação.</p>
+                <div id="sim-wrap"></div>
+              </div>
+              <div class="hud-divider"></div>
+              <div class="plat-section">
+                <div class="plat-title">📲 COMO DENUNCIAR NAS PLATAFORMAS</div>
+                <div class="plat-tabs">
+                  <button type="button" class="plat-tab active" data-plat-key="instagram">📸 Instagram</button>
+                  <button type="button" class="plat-tab" data-plat-key="tiktok">🎵 TikTok</button>
+                  <button type="button" class="plat-tab" data-plat-key="whatsapp">💬 WhatsApp</button>
+                </div>
+                <div id="plat-contents"></div>
+              </div>
+              <div class="conclusao-m3" id="conclusao-m3b">
+                <div style="font-size:36px;margin-bottom:8px" aria-hidden="true">🛡️</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--m23-nb);margin-bottom:8px">MISSÃO 3B CONCLUÍDA!</div>
+                <div style="font-size:14px;color:rgba(200,220,255,.8);line-height:1.6;max-width:380px;margin:0 auto">Agora você sabe exatamente o que fazer se sofrer cyberbullying. Salve os prints, bloqueie e conte para um adulto.</div>
+              </div>
+            </div>
+
+            <div class="confetti" id="m23-confetti" aria-hidden="true"></div>
+          </div>
+          </div>
+        </section>
+
+        <!-- Módulo 3 -->
+        <section class="edu-module edu-module--3 is-locked" id="modulo-3">
+          <div class="edu-module-shell">
+          <div class="edu-module-head">
+            <span class="edu-module-num" aria-hidden="true">03</span>
+            <a href="#eduMa" class="edu-jump toon-jump game-mission-btn edu-module-mission-btn is-locked" data-module="3" aria-disabled="true" aria-label="Missão 3 bloqueada — complete as missões anteriores"><span class="game-mission-lock" aria-hidden="true">🔒</span><span class="toon-jump-num">3</span> Missão: Acolhimento</a>
+            <h2 class="edu-module-title">Se Eu Estiver Sofrendo</h2>
+            <p class="edu-module-desc">Este espaço é para você — sem julgamento, no seu ritmo.</p>
+          </div>
+
+          <div class="edu-ma" id="eduMa">
+            <div class="missao-intro missao-intro--acolhimento ma-fade-in">
+              <div class="missao-intro-layout">
+                <figure class="missao-hero-figure">
+                  <video
+                    class="missao-hero-img ju-sinto-video"
+                    src="assets/SINTOMUITO.mp4?v=2"
+                    playsinline
+                    webkit-playsinline
+                    preload="metadata"
+                    aria-label="Vídeo da Ju em acolhimento. Toque para assistir."
+                    title="▶ Toque para assistir o vídeo"
+                    role="button"
+                    tabindex="0"
+                    width="719"
+                    height="1298"
+                  ></video>
+                </figure>
+                <div class="missao-intro-copy">
+                  <div class="missao-intro-row">
+                    <div>
+                      <div class="missao-intro-label">MISSÃO ACOLHIMENTO</div>
+                      <div class="missao-intro-title">Se Eu Estiver Sofrendo</div>
+                    </div>
+                  </div>
+                  <p class="missao-intro-desc">Este espaço é para você — sem julgamento, no seu ritmo. Identifique o que está acontecendo, entenda seus direitos e saiba o que fazer.</p>
+                  <blockquote class="ma-hero-quote">"Bullying não é frescura. Não é drama. É violência — e existe lei que te protege. Você merece ajuda, respeito e um ambiente seguro."</blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div class="ma-section ma-fade-in" id="eduChecklist">
+              <div class="ma-section-title">💜 IDENTIFICAR O QUE ESTÁ ACONTECENDO COMIGO</div>
+              <div class="ma-checklist-intro">
+                Marque as situações que você está vivendo. Não precisa mostrar para ninguém — isso é só para você entender melhor.
+              </div>
+              <div class="ma-chk-grid" id="ma-chk-grid">
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="0">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Alguém me machuca fisicamente (empurrões, socos, chutes) de propósito e mais de uma vez</div>
+                </div>
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="1">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Me chamam de apelidos ofensivos, me xingam ou me humilham na frente de outras pessoas</div>
+                </div>
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="2">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Fui excluído(a) de grupos, festas ou conversas de propósito e isso se repete</div>
+                </div>
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="3">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Recebo mensagens ofensivas, tenho fotos postadas sem minha permissão ou sou atacado(a) online</div>
+                </div>
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="4">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Tenho medo de ir à escola, ao intervalo ou a determinados lugares por causa de alguém</div>
+                </div>
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="5">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Espalharam mentiras ou segredos meus para me envergonhar ou me isolar</div>
+                </div>
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="6">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Já tentei pedir para parar, mas continua acontecendo</div>
+                </div>
+                <div class="ma-chk-item" role="checkbox" aria-checked="false" tabindex="0" data-check-index="7">
+                  <div class="ma-chk-box" aria-hidden="true"></div>
+                  <div class="ma-chk-text">Me sinto sozinho(a), envergonhado(a) ou sem esperança por causa disso</div>
+                </div>
+              </div>
+              <div class="ma-chk-resultado" id="ma-chk-resultado" role="status" aria-live="polite">
+                <span class="ma-resultado-icon" id="ma-res-icon">💜</span>
+                <div class="ma-resultado-title" id="ma-res-title">Isso que você está sentindo é real.</div>
+                <div class="ma-resultado-text" id="ma-res-text"></div>
+                <button type="button" class="ma-resultado-cta" id="ma-resultado-cta">💬 Ver o que fazer agora</button>
+              </div>
+            </div>
+
+            <div class="ma-section ma-fade-in">
+              <div class="ma-section-title">🤍 POR QUE ÀS VEZES É DIFÍCIL CONTAR</div>
+              <div class="ma-badge-row">
+                <span class="ma-badge purple">VOCÊ NÃO ESTÁ ERRADO(A)</span>
+                <span class="ma-badge blue">ISSO É NORMAL SENTIR</span>
+              </div>
+              <div class="ma-acc-list">
+                <div class="ma-acc-item">
+                  <button type="button" class="ma-acc-head">
+                    <span class="ma-acc-emoji" aria-hidden="true">😰</span>
+                    <span class="ma-acc-head-title">"Tenho medo de que piore se eu contar."</span>
+                    <span class="ma-acc-arrow" aria-hidden="true">▾</span>
+                  </button>
+                  <div class="ma-acc-body">
+                    <div class="ma-acc-body-text">
+                      Esse medo é muito comum e faz sentido. Mas a pesquisa mostra que <strong>guardar segredo quase sempre piora a situação</strong> — o agressor se sente impune e continua.
+                      <div class="ma-acc-highlight purple">Quando um adulto de confiança sabe, ele pode agir de forma discreta e estratégica para te proteger sem te expor mais.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ma-acc-item">
+                  <button type="button" class="ma-acc-head">
+                    <span class="ma-acc-emoji" aria-hidden="true">😔</span>
+                    <span class="ma-acc-head-title">"Acho que não vão acreditar em mim."</span>
+                    <span class="ma-acc-arrow" aria-hidden="true">▾</span>
+                  </button>
+                  <div class="ma-acc-body">
+                    <div class="ma-acc-body-text">
+                      Se alguém não acreditar, <strong>tente outra pessoa</strong>. Você tem o direito de ser ouvido(a). Se tiver prints, mensagens ou testemunhas, guarde — mas não é obrigatório ter provas para ser levado a sério.
+                      <div class="ma-acc-highlight blue"><em>"Não precisa ser perfeito para pedir ajuda. Só precisa falar."</em></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ma-acc-item">
+                  <button type="button" class="ma-acc-head">
+                    <span class="ma-acc-emoji" aria-hidden="true">🥺</span>
+                    <span class="ma-acc-head-title">"Tenho vergonha — parece que é fraqueza."</span>
+                    <span class="ma-acc-arrow" aria-hidden="true">▾</span>
+                  </button>
+                  <div class="ma-acc-body">
+                    <div class="ma-acc-body-text">
+                      Pedir ajuda é um ato de <strong>coragem enorme</strong>. Os maiores heróis da história pediram ajuda. Você não precisa carregar isso sozinho(a) para provar que é forte.
+                      <div class="ma-acc-highlight gold">Você está passando por algo que não deveria estar passando. Isso não é fraqueza — é injustiça.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ma-acc-item">
+                  <button type="button" class="ma-acc-head">
+                    <span class="ma-acc-emoji" aria-hidden="true">😶</span>
+                    <span class="ma-acc-head-title">"Não sei nem bem o que dizer."</span>
+                    <span class="ma-acc-arrow" aria-hidden="true">▾</span>
+                  </button>
+                  <div class="ma-acc-body">
+                    <div class="ma-acc-body-text">
+                      Você não precisa explicar tudo de uma vez. Só começa assim:
+                      <div class="ma-acc-highlight purple"><em>"Preciso de ajuda. Tem uma coisa acontecendo comigo na escola."</em><br>Só isso já é suficiente para começar.</div>
+                      Se preferir, escreva numa mensagem ou bilhete. Qualquer forma vale.
+                    </div>
+                  </div>
+                </div>
+                <div class="ma-acc-item">
+                  <button type="button" class="ma-acc-head">
+                    <span class="ma-acc-emoji" aria-hidden="true">💭</span>
+                    <span class="ma-acc-head-title">"Talvez eu tenha feito algo para merecer."</span>
+                    <span class="ma-acc-arrow" aria-hidden="true">▾</span>
+                  </button>
+                  <div class="ma-acc-body">
+                    <div class="ma-acc-body-text">
+                      <strong>Ninguém merece ser agredido, humilhado ou excluído.</strong> Independente do que você tenha feito, dito ou de como você seja — nada justifica bullying. Isso não é punição. É violência.
+                      <div class="ma-acc-highlight green">A culpa nunca é da vítima. Nunca.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ma-section ma-fade-in ma-sec-ajuda" id="ma-sec-ajuda">
+              <div class="ma-section-title">📋 O QUE ACONTECE DEPOIS QUE EU CONTO</div>
+              <div class="ma-badge-row">
+                <span class="ma-badge green">TRANSPARENTE</span>
+                <span class="ma-badge blue">SEM SURPRESAS</span>
+              </div>
+              <p class="ma-section-lead">
+                Não saber o que vai acontecer depois é o que mais paralisa as pessoas. Aqui está o caminho real — clique em cada etapa para entender.
+              </p>
+              <div class="ma-timeline" id="ma-timeline-wrap"></div>
+            </div>
+
+            <div class="ma-section ma-fade-in">
+              <div class="ma-section-title">⚖️ MEUS DIREITOS</div>
+              <div class="ma-badge-row">
+                <span class="ma-badge gold">LEI 14.811/2024</span>
+                <span class="ma-badge purple">ECA — ART. 17</span>
+                <span class="ma-badge blue">PROTEÇÃO REAL</span>
+              </div>
+              <p class="ma-section-lead">Vire os cards e descubra seus direitos. A lei está do seu lado.</p>
+              <div class="ma-direitos-grid" id="ma-direitos-grid"></div>
+            </div>
+
+            <div class="ma-section ma-fade-in ma-sec-ouvidoria" id="ma-sec-ouvidoria">
+              <div class="ma-section-title">💬 FALE COM A GENTE</div>
+              <div class="ma-ouvidoria-card">
+                <div class="ma-ouvidoria-glow" aria-hidden="true"></div>
+                <span class="ma-ouvidoria-icon" aria-hidden="true">💜</span>
+                <div class="ma-ouvidoria-title">Você não precisa enfrentar isso sozinho(a).</div>
+                <div class="ma-ouvidoria-msg">
+                  Nossa ouvidoria é segura, sigilosa e está aqui para te ouvir. Você não precisa ter certeza de tudo, nem ter provas. Só precisa falar.
+                </div>
+                <div class="ma-ouvidoria-btns">
+                  <a href="ouvidoria.html#formulario" class="ma-btn-ouvidoria primary btn-ouvidoria-pulse">Alguém está fazendo isso com você? <strong>FALE COM A GENTE!!!</strong></a>
+                  <a href="https://www.cvv.org.br" class="ma-btn-ouvidoria secondary" target="_blank" rel="noopener noreferrer">📞 CVV — 188</a>
+                  <a href="tel:100" class="ma-btn-ouvidoria secondary">👶 Disque 100</a>
+                </div>
+              </div>
+              <div class="ma-contatos-grid">
+                <div class="ma-contato-card">
+                  <div class="ma-contato-icon" aria-hidden="true">📞</div>
+                  <div>
+                    <div class="ma-contato-name">CVV — Centro de Valorização da Vida</div>
+                    <div class="ma-contato-num">188</div>
+                    <div class="ma-contato-info">Gratuito • 24 horas • Sigiloso</div>
+                  </div>
+                </div>
+                <div class="ma-contato-card">
+                  <div class="ma-contato-icon" aria-hidden="true">👶</div>
+                  <div>
+                    <div class="ma-contato-name">Disque 100 — Direitos Humanos</div>
+                    <div class="ma-contato-num">100</div>
+                    <div class="ma-contato-info">Gratuito • 24 horas • Anônimo</div>
+                  </div>
+                </div>
+                <div class="ma-contato-card">
+                  <div class="ma-contato-icon" aria-hidden="true">🚨</div>
+                  <div>
+                    <div class="ma-contato-name">Polícia Militar</div>
+                    <div class="ma-contato-num">190</div>
+                    <div class="ma-contato-info">Emergências • Gratuito</div>
+                  </div>
+                </div>
+                <div class="ma-contato-card">
+                  <div class="ma-contato-icon" aria-hidden="true">🏛️</div>
+                  <div>
+                    <div class="ma-contato-name">Conselho Tutelar</div>
+                    <div class="ma-contato-num">136</div>
+                    <div class="ma-contato-info">Proteção de crianças e adolescentes</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ma-ju-mensagem ma-fade-in">
+              <span class="ma-ju-msg-icon" aria-hidden="true">⚖️</span>
+              <div class="ma-ju-msg-title">// UMA MENSAGEM DA JU //</div>
+              <div class="ma-ju-msg-text">
+                Você chegou até aqui — e isso já mostra que você <em>é mais forte do que pensa.</em><br><br>
+                O que está acontecendo com você não é certo. Não é normal. E não é para sempre.<br><br>
+                <em>Você tem o direito de se sentir seguro(a).</em> Em qualquer escola. Em qualquer lugar.<br><br>
+                Não desista de pedir ajuda. Mesmo que a primeira pessoa não ouça, a próxima pode ouvir. Continue tentando — porque você importa.
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        </div><!-- /eduTeenGame -->
+
+      </div>
+
+      <!-- Placeholders -->
+      <div class="edu-panel" id="panel-familia" role="tabpanel" aria-labelledby="tab-familia" hidden>
+        <div class="edu-soon is-visible">
+          <div class="edu-soon-icon" aria-hidden="true">👨‍👩‍👧</div>
+          <h2>Conteúdo para Famílias</h2>
+          <p>Em breve — estamos preparando materiais para famílias.</p>
+        </div>
+      </div>
+      <div class="edu-panel" id="panel-educadores" role="tabpanel" aria-labelledby="tab-educadores" hidden>
+        <div class="edu-soon is-visible">
+          <div class="edu-soon-icon" aria-hidden="true">👩‍🏫</div>
+          <h2>Conteúdo para Educadores</h2>
+          <p>Em breve — trilhas e recursos para a sala de aula.</p>
+        </div>
+      </div>
+      <div class="edu-panel" id="panel-gestores" role="tabpanel" aria-labelledby="tab-gestores" hidden>
+        <div class="edu-soon is-visible">
+          <div class="edu-soon-icon" aria-hidden="true">🏫</div>
+          <h2>Conteúdo para Gestores</h2>
+          <p>Em breve — protocolos e indicadores para gestão escolar.</p>
+        </div>
+      </div>
+      <div class="edu-panel" id="panel-trilhas" role="tabpanel" aria-labelledby="tab-trilhas" hidden>
+        <div class="edu-soon is-visible">
+          <div class="edu-soon-icon" aria-hidden="true">🛤️</div>
+          <h2>Trilhas de Aprendizagem</h2>
+          <p>Em breve — percursos guiados por idade e tema.</p>
+        </div>
+      </div>
+      <div class="edu-panel" id="panel-materiais" role="tabpanel" aria-labelledby="tab-materiais" hidden>
+        <div class="edu-soon is-visible">
+          <div class="edu-soon-icon" aria-hidden="true">📄</div>
+          <h2>Materiais para Download</h2>
+          <p>Em breve — cartilhas, posters e atividades.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:0;">
+        <p>&copy; 2026 Projeto REACT</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Acessibilidade + VLibras (canto inferior direito) -->
+  <div class="accessibility-dock" id="accessibilityDock">
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <script src="nav-mobile.js"></script>
+  <script src="accessibility.js"></script>
+  <script src="educativo.js"></script>
+  <script src="educativo-missoes23.js"></script>
+  <script src="educativo-acolhimento.js"></script>
+  <script src="ju-fala.js"></script>
+  <script src="ju-voice-clips.js"></script>
+  <script src="ju-voice.js"></script>
+  <script src="educativo-faixas.js"></script>
+</body>
+</html>

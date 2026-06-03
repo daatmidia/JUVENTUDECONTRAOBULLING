@@ -1,0 +1,15 @@
+  function setFaixaBackVisible(visible) {
+    if (faixaBack) faixaBack.hidden = !visible;
+  }
+
+  function showScreen(name) {
+    screens.forEach((screen) => {
+      const match = screen.dataset.screen === name
+        || screen.id === `fx${name.charAt(0).toUpperCase()}${name.slice(1)}`
+        || screen.id === `screen${name.charAt(0).toUpperCase()}${name.slice(1)}`
+        || screen.classList.contains(`fx-screen--${name}`);
+      screen.classList.toggle('active', match);
+    });
+
+    setFaixaBackVisible(name === 'kids' || name === 'medio');
+  }

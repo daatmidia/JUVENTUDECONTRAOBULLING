@@ -1,0 +1,2371 @@
+/* ===== Tema Jogo — Laboratório da Ju (cores do avatar) ===== */
+.page-educativo--game {
+  --game-bg: #040814;
+  --game-bg-mid: #0a1628;
+  --game-bg-panel: #0f1e3d;
+  --game-purple: #6366f1;
+  --game-purple-deep: #4338ca;
+  --game-purple-light: #818cf8;
+  --game-cyan: #00d4ff;
+  --game-cyan-soft: #38bdf8;
+  --game-cyan-dim: rgba(0, 212, 255, 0.35);
+  --game-gold: #fbbf24;
+  --game-green: #22c55e;
+  --game-pink: #ec4899;
+  --game-panel: rgba(8, 18, 42, 0.82);
+  --game-panel-border: rgba(0, 212, 255, 0.42);
+  --game-glow: 0 0 28px rgba(0, 212, 255, 0.32);
+  --game-glow-gold: 0 0 22px rgba(251, 191, 36, 0.4);
+  --game-glow-purple: 0 0 36px rgba(99, 102, 241, 0.35);
+
+  background:
+    radial-gradient(ellipse 100% 70% at 50% -15%, rgba(0, 212, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 0% 40%, rgba(99, 102, 241, 0.18), transparent 50%),
+    radial-gradient(ellipse 45% 40% at 100% 70%, rgba(67, 56, 202, 0.16), transparent 45%),
+    linear-gradient(180deg, var(--game-bg) 0%, var(--game-bg-mid) 42%, #0c1225 100%) !important;
+  color: #e2e8f0;
+}
+
+.page-educativo--game.page-educativo--cartoon {
+  --edu-bg: var(--game-bg);
+  background:
+    radial-gradient(ellipse 100% 70% at 50% -15%, rgba(0, 212, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 0% 40%, rgba(99, 102, 241, 0.18), transparent 50%),
+    radial-gradient(ellipse 45% 40% at 100% 70%, rgba(67, 56, 202, 0.16), transparent 45%),
+    linear-gradient(180deg, var(--game-bg) 0%, var(--game-bg-mid) 42%, #0c1225 100%) !important;
+}
+
+.page-educativo--game .navbar {
+  background: rgba(4, 8, 20, 0.92) !important;
+  border-bottom: 1px solid var(--game-panel-border) !important;
+  box-shadow: 0 4px 30px rgba(0, 212, 255, 0.12) !important;
+}
+
+.page-educativo--game .nav-links > li > a,
+.page-educativo--game .nav-links > li > .nav-link-trigger,
+.page-educativo--game .logo-text {
+  color: #e2e8f0 !important;
+}
+
+.page-educativo--game .nav-links > li > a:hover,
+.page-educativo--game .nav-links > li > .nav-link-trigger:hover {
+  background: rgba(0, 212, 255, 0.12) !important;
+  color: var(--game-cyan) !important;
+}
+
+/* ----- Cenário templo ----- */
+.game-scene {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.game-temple-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(4, 8, 20, 0.2) 0%, rgba(4, 8, 20, 0.75) 100%),
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+  opacity: 0.9;
+}
+
+.game-column {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(48px, 8vw, 90px);
+  background: linear-gradient(180deg, rgba(15, 30, 62, 0.95), rgba(8, 18, 42, 0.98));
+  border: 2px solid rgba(0, 212, 255, 0.35);
+  box-shadow: inset 0 0 40px rgba(0, 212, 255, 0.08), var(--game-glow);
+}
+
+.game-column--left {
+  left: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.game-column--right {
+  right: 0;
+  border-radius: 8px 0 0 8px;
+}
+
+.game-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: 24px;
+  background: linear-gradient(180deg, rgba(0, 212, 255, 0.35), rgba(67, 56, 202, 0.25));
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.35);
+}
+
+.game-arch {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 900px);
+  height: 120px;
+  border: 2px solid rgba(0, 212, 255, 0.28);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  box-shadow: 0 0 50px rgba(99, 102, 241, 0.22), inset 0 0 60px rgba(0, 212, 255, 0.06);
+}
+
+.game-holo {
+  position: absolute;
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  background: rgba(8, 24, 56, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+}
+
+.game-holo--stats {
+  display: none;
+}
+
+.game-hud--missions {
+  position: relative;
+  top: auto;
+  z-index: 1;
+  margin: 0 0 20px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--game-panel-border);
+  background: linear-gradient(165deg, rgba(8, 20, 48, 0.95), rgba(6, 14, 36, 0.9));
+  box-shadow: var(--game-glow), inset 0 0 0 1px rgba(99, 102, 241, 0.12);
+}
+
+.game-hud--missions .game-hud-inner {
+  padding: 0;
+}
+
+.game-hud-xp-label {
+  min-width: 88px;
+  white-space: nowrap;
+}
+
+.game-hud-values span.is-active {
+  background: rgba(34, 197, 94, 0.28);
+  border-color: rgba(74, 222, 128, 0.55);
+  color: #bbf7d0;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
+}
+
+.game-hud-values span.is-complete {
+  background: rgba(251, 191, 36, 0.22);
+  border-color: rgba(251, 191, 36, 0.55);
+  color: #fde68a;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.3);
+}
+
+.toon-speech-bubble--quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.toon-quiz-actions--inline {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 0;
+  padding-top: 16px;
+  border-top: 2px dashed rgba(45, 52, 54, 0.18);
+}
+
+.page-educativo--cartoon .toon-quiz-actions--inline {
+  border-top-color: rgba(45, 52, 54, 0.22);
+}
+
+.toon-quiz-actions--inline .edu-quiz-btn,
+.toon-quiz-actions--inline .toon-btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 14px 12px;
+  font-size: 0.92rem;
+}
+
+.game-quest-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+a.toon-quest-item {
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.game-mission-btn {
+  position: relative;
+}
+
+.game-mission-lock {
+  display: none;
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(8, 18, 42, 0.96);
+  border: 2px solid rgba(251, 191, 36, 0.7);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.4);
+  font-size: 1rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.game-mission-btn.is-locked .game-mission-lock,
+a.toon-quest-item.is-locked .game-mission-lock {
+  display: inline-flex;
+  animation: missionLockPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes missionLockPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 12px rgba(251, 191, 36, 0.35); }
+  50% { transform: translateX(-50%) scale(1.1); box-shadow: 0 0 22px rgba(251, 191, 36, 0.55); }
+}
+
+a.toon-quest-item.is-locked {
+  cursor: not-allowed;
+  padding-top: 14px;
+}
+
+.page-educativo--game .game-quest-nav a.toon-quest-item.is-locked {
+  opacity: 0.5;
+  filter: grayscale(0.4);
+}
+
+.page-educativo--game .game-mission-btn.is-locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.4);
+  padding-top: 14px;
+  pointer-events: auto;
+}
+
+.page-educativo--game .game-quest-nav a.toon-quest-item {
+  opacity: 1;
+  border-style: solid;
+  filter: none;
+  font-size: 0.88rem;
+  padding: 10px 16px;
+}
+
+.page-educativo--game .game-quest-nav a.toon-quest-item.is-active {
+  transform: translateY(-1px);
+}
+
+.page-educativo--game .toon-speech-bubble--quiz .toon-quiz-actions--inline {
+  border-top-color: rgba(0, 212, 255, 0.28);
+}
+
+.page-educativo--game .toon-speech-bubble--quiz .edu-quiz-scenario {
+  display: block !important;
+  visibility: visible !important;
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #e0f2fe !important;
+  font-size: 1.08rem !important;
+  font-weight: 700 !important;
+  line-height: 1.65 !important;
+  mix-blend-mode: normal !important;
+}
+
+.page-educativo--game .toon-speech-bubble--quiz .edu-quiz-context {
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px dashed rgba(251, 191, 36, 0.35);
+  border-radius: 8px;
+}
+
+.page-educativo--game .toon-speech-bubble--quiz .edu-quiz-legal {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.12);
+  border-left: 3px solid rgba(167, 139, 250, 0.65);
+  border-radius: 0 8px 8px 0;
+}
+
+.page-educativo--game .edu-quiz-finish-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.page-educativo--game .toon-btn--ouvidoria {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(139, 92, 246, 0.25));
+  border-color: rgba(0, 212, 255, 0.5);
+  color: #e0f2fe;
+  text-decoration: none;
+}
+
+.page-educativo--game .toon-btn--ouvidoria.btn-ouvidoria-pulse,
+.page-educativo--game .fx-btn--ouvidoria.btn-ouvidoria-pulse,
+.edu-ma .ma-btn-ouvidoria.primary.btn-ouvidoria-pulse {
+  border-width: 2px;
+}
+
+.page-educativo--game .toon-btn--help {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+.page-educativo--game .edu-module.is-locked {
+  position: relative;
+}
+
+.page-educativo--game .edu-module.is-locked > .edu-module-shell {
+  opacity: 0.42;
+  filter: grayscale(0.45);
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-educativo--game .edu-module.is-locked::before {
+  content: '🔒';
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 6;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid rgba(251, 191, 36, 0.65);
+  background: rgba(8, 18, 42, 0.95);
+  font-size: 1.15rem;
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.35);
+  pointer-events: none;
+}
+
+.page-educativo--game .edu-module.is-locked::after {
+  content: '🔒 Complete a missão anterior para desbloquear';
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  max-width: min(92%, 420px);
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(251, 191, 36, 0.55);
+  background: rgba(8, 18, 42, 0.92);
+  color: #fde68a;
+  font-family: var(--edu-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.25);
+  pointer-events: none;
+}
+
+.page-educativo--game .game-mission-btn.is-locked:hover {
+  background: rgba(15, 10, 30, 0.7) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.page-educativo--game .game-mission-btn.is-locked .toon-jump-num {
+  opacity: 0.65;
+}
+
+.game-holo--shield {
+  display: none;
+}
+
+.game-float--heart {
+  display: none;
+}
+
+.game-float {
+  position: absolute;
+  font-family: var(--edu-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(251, 191, 36, 0.55);
+  background: rgba(8, 24, 56, 0.75);
+  color: var(--game-gold);
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.45);
+}
+
+.game-float--xp { top: 35%; left: 12%; }
+.game-float--peace { top: 60%; left: 6%; }
+.game-float--level { top: 30%; right: 14%; font-size: 0.65rem; letter-spacing: 0.05em; }
+
+/* ----- Menu de perfis (abaixo do cabeçalho) ----- */
+.page-educativo--game .game-tabs-wrap {
+  position: sticky;
+  top: 72px;
+  z-index: 95;
+  padding: 12px 0;
+  background: rgba(4, 8, 20, 0.94);
+  border-bottom: 1px solid var(--game-panel-border);
+  backdrop-filter: blur(14px);
+}
+
+.page-educativo--game .game-tabs-wrap .edu-tabs {
+  max-width: 100%;
+}
+
+/* ----- HUD (barra fixa no topo — removida; ver game-hud--missions) ----- */
+.game-hud:not(.game-hud--missions) {
+  position: sticky;
+  top: calc(72px + 68px);
+  z-index: 90;
+  padding: 10px 0;
+  background: linear-gradient(180deg, rgba(4, 8, 20, 0.96), rgba(8, 18, 42, 0.88));
+  border-bottom: 1px solid var(--game-panel-border);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.game-hud-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.game-hud-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--game-gold);
+  background: rgba(251, 191, 36, 0.12);
+  font-family: var(--edu-heading);
+  font-size: 0.8rem;
+  color: var(--game-gold);
+  box-shadow: var(--game-glow-gold);
+}
+
+.game-hud-pill strong {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.game-hud-xp-wrap {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-hud-xp-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: max-content;
+}
+
+.game-hud-xp-label {
+  font-family: var(--edu-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #7dd3fc;
+  text-shadow: 0 0 8px rgba(125, 211, 252, 0.45);
+}
+
+.game-hud-done-label {
+  font-family: var(--edu-heading);
+  font-weight: 800;
+  font-size: 0.72rem;
+  color: #6ee7b7;
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.35);
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.game-hud-done-label.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.game-hud-done-label.is-burst {
+  animation: gameHudDoneBurst 0.9s ease;
+}
+
+.game-hud-xp {
+  flex: 1;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid var(--game-cyan);
+  background: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.game-hud-xp-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--game-purple), var(--game-cyan), var(--game-gold));
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+}
+
+.game-hud-xp-fill.is-burst {
+  animation: gameXpFillBurst 0.9s ease;
+}
+
+@keyframes gameXpFillBurst {
+  0% { box-shadow: 0 0 12px rgba(34, 211, 238, 0.6); filter: brightness(1); }
+  45% { box-shadow: 0 0 28px rgba(52, 211, 153, 0.95), 0 0 42px rgba(34, 211, 238, 0.65); filter: brightness(1.2); }
+  100% { box-shadow: 0 0 12px rgba(34, 211, 238, 0.6); filter: brightness(1); }
+}
+
+@keyframes gameHudDoneBurst {
+  0% { transform: scale(1); color: #6ee7b7; }
+  40% { transform: scale(1.08); color: #bbf7d0; }
+  100% { transform: scale(1); color: #6ee7b7; }
+}
+
+.game-hud-values {
+  display: flex;
+  gap: 10px;
+  font-family: var(--edu-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.game-hud-values span {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(100, 116, 139, 0.35);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e2e8f0;
+}
+
+/* Módulos visíveis de imediato no modo jogo */
+.page-educativo--game .edu-module-shell {
+  opacity: 1;
+  transform: none;
+}
+
+.page-educativo--game .game-quest-map,
+.page-educativo--game .game-hud--missions {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ----- Hero game ----- */
+.page-educativo--game .game-hero--start {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(12px, 2.5vw, 32px);
+  padding-bottom: clamp(8px, 1.5vw, 16px);
+  color: #fff;
+  overflow: visible;
+}
+
+.page-educativo--game {
+  --ju-hero-max-w: clamp(200px, min(32vw, 30svh), 340px);
+  --ju-hero-max-h: clamp(240px, min(48svh, 52vh), 520px);
+  --ju-quiz-max-w: clamp(150px, min(34vw, 30svh), 280px);
+  --ju-quiz-max-h: clamp(190px, min(40svh, 44vh), 360px);
+  --ju-intro-video-max-w: min(96vw, 560px);
+  --ju-intro-video-max-h: min(88svh, 720px);
+  --ju-help-video-max-w: min(96vw, 400px);
+  --ju-help-video-max-h: min(80svh, 560px);
+  --ju-finish-max-w: clamp(130px, 26vw, 220px);
+  --ju-bubble-col: clamp(160px, 22vw, 230px);
+  --ju-bubble-below-gap: clamp(8px, 1.5vw, 14px);
+}
+
+.page-educativo--game .edu-hero--start .edu-hero-inner.game-start-wrap {
+  max-width: min(560px, 100%);
+  width: 100%;
+  margin-inline: auto;
+}
+
+.game-start-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  column-gap: clamp(24px, 4vw, 48px);
+  row-gap: clamp(16px, 3vw, 24px);
+  align-items: center;
+  text-align: left;
+}
+
+/* Hero inicial: título → meta → Ju + balão, tudo centralizado */
+.page-educativo--game .game-hero--start .game-start-wrap--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(14px, 2.5vw, 22px);
+  max-width: min(96vw, 820px);
+}
+
+.page-educativo--game .game-hero--start .game-start-wrap--centered .game-start-mascot {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--ju-intro-video-max-w, min(96vw, 560px));
+}
+
+.page-educativo--game .game-hero--start .game-start-wrap--centered .game-start-splash {
+  max-width: var(--ju-intro-video-max-w, min(96vw, 560px));
+  width: 100%;
+  margin-inline: auto;
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--head,
+.page-educativo--game .game-hero--start .game-start-copy--foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--head .game-start-title {
+  justify-content: center;
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--head .game-start-title-accent-wrap {
+  align-items: center;
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--foot .game-start-meta {
+  align-items: center;
+  margin-top: 0;
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--above-ju {
+  order: 2;
+  margin-bottom: clamp(2px, 0.6vw, 6px);
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--above-ju .game-start-meta {
+  gap: clamp(6px, 1.2vw, 10px);
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--head {
+  order: 1;
+}
+
+.page-educativo--game .game-hero--start .game-start-mascot {
+  order: 3;
+}
+
+.page-educativo--game .game-hero--start .game-start-mascot--with-speech {
+  --ju-bubble-below-gap: 0;
+  gap: 0;
+}
+
+.page-educativo--game .game-hero--start .game-start-speech--beside-ju {
+  margin-top: clamp(-18px, -2.8vw, -10px);
+  padding-top: 12px;
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--foot .game-start-lead {
+  max-width: 100%;
+}
+
+.page-educativo--game .game-hero--start .game-start-copy--foot .game-hero-xp--lead {
+  align-self: center;
+}
+
+.page-educativo--game .game-hero--start .game-start-mascot,
+.page-educativo--game .game-hero--start .game-hero-stage {
+  min-width: 0;
+}
+
+.game-start-mascot {
+  position: relative;
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  min-width: 0;
+  width: 100%;
+  max-width: var(--ju-intro-video-max-w, var(--ju-hero-max-w));
+  margin-inline: 0;
+  overflow: visible;
+  isolation: isolate;
+  z-index: 1;
+}
+
+/* Ju em cima, balão embaixo da cintura (fora da imagem) */
+.game-start-mascot--with-speech,
+.ju-arena--with-speech {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-items: stretch;
+  gap: var(--ju-bubble-below-gap);
+  max-width: var(--ju-figure-col, var(--ju-hero-max-w));
+}
+
+.game-start-mascot--with-speech .game-start-splash,
+.ju-arena--with-speech > .game-start-splash,
+.ju-arena--with-speech > .kids-ju,
+.ju-arena--with-speech > .ju-img {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  justify-self: center;
+  width: 100%;
+  max-width: var(--ju-figure-col, var(--ju-hero-max-w));
+}
+
+.game-start-mascot--with-speech .game-start-aura,
+.game-start-mascot--with-speech .game-start-aura--2 {
+  left: 50%;
+  width: min(88%, var(--ju-figure-col, var(--ju-hero-max-w)));
+}
+
+.game-start-splash {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: 100%;
+  max-width: var(--ju-hero-max-w);
+  line-height: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.game-start-splash .game-start-speech--beside-ju,
+.game-start-speech--beside-ju,
+.ju-bubble--beside,
+.edu-faixas .ju-arena .ju-bubble {
+  line-height: 1.45;
+}
+
+.game-start-img {
+  display: block;
+  width: 100%;
+  max-width: var(--ju-hero-max-w);
+  height: auto;
+  max-height: var(--ju-hero-max-h);
+  object-fit: contain;
+  object-position: center bottom;
+  border: none;
+  border-radius: 0;
+  background: transparent !important;
+  filter: none;
+}
+
+video.game-start-img,
+video.ju-intro-video {
+  display: block;
+  width: 100%;
+  max-width: var(--ju-intro-video-max-w, var(--ju-hero-max-w));
+  height: auto;
+  max-height: var(--ju-intro-video-max-h, var(--ju-hero-max-h));
+  min-width: 0;
+  object-fit: contain;
+  object-position: center bottom;
+  border: none;
+  border-radius: 0;
+  background: transparent !important;
+  filter: none;
+}
+
+video.ju-intro-video {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#heroIntroVideo.ju-intro-video {
+  pointer-events: none;
+  cursor: default;
+}
+
+.page-educativo--game .game-start-mascot:has(.ju-intro-video),
+.page-educativo--game .game-start-splash:has(.ju-intro-video) {
+  max-width: var(--ju-intro-video-max-w, var(--ju-hero-max-w));
+  width: 100%;
+}
+
+.game-start-speech {
+  position: absolute;
+  z-index: 4;
+  width: min(62%, 280px);
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 212, 255, 0.55);
+  background: rgba(8, 18, 42, 0.92);
+  color: #e2e8f0;
+  font-family: var(--edu-heading, 'Fredoka', sans-serif);
+  font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.25), 0 8px 24px rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+/* Balão abaixo da cintura da Ju */
+.game-start-speech--beside-ju,
+.ju-bubble--beside {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  justify-self: stretch;
+  z-index: 3;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  transform: none;
+  white-space: normal;
+  text-align: center;
+}
+
+.game-start-speech--beside-ju::before,
+.ju-bubble--beside::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-bottom-color: rgba(0, 212, 255, 0.55);
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+.game-start-speech--beside-ju::after,
+.ju-bubble--beside::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-bottom-color: rgba(8, 18, 42, 0.92);
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+.page-educativo--game .toon-hero-speech.game-start-speech--beside-ju::before,
+.page-educativo--game .toon-hero-speech.game-start-speech--beside-ju::after {
+  top: -11px;
+  bottom: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.page-educativo--game .toon-hero-speech.game-start-speech--beside-ju::after {
+  top: -7px;
+}
+
+.page-educativo--game .toon-hero-speech.game-start-speech--beside-ju {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 100%;
+  transform: none;
+  white-space: normal;
+}
+
+.edu-faixas .ju-bubble::before {
+  border-bottom-color: rgba(0, 212, 255, 0.45);
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.edu-faixas .ju-bubble::after {
+  border-bottom-color: rgba(8, 18, 42, 0.94);
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+.game-start-speech-text {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.game-start-speech-line {
+  display: block;
+  color: #e0f2fe;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.game-start-speech-line--lead {
+  font-size: 1.08em;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+  margin-bottom: 0;
+}
+
+.game-start-speech:not(.game-start-speech--beside-ju)::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-bottom-color: rgba(0, 212, 255, 0.55);
+}
+
+.game-start-speech:not(.game-start-speech--beside-ju)::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-bottom-color: rgba(8, 18, 42, 0.92);
+}
+
+.game-start-aura {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 88%;
+  height: 78%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 212, 255, 0.42) 0%,
+    rgba(99, 102, 241, 0.28) 38%,
+    transparent 72%
+  );
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 0;
+  animation: gameStartAura 3.2s ease-in-out infinite;
+}
+
+.game-start-aura--2 {
+  width: 105%;
+  height: 90%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(251, 191, 36, 0.18) 0%,
+    rgba(0, 212, 255, 0.12) 45%,
+    transparent 75%
+  );
+  filter: blur(28px);
+  animation-delay: -1.2s;
+}
+
+@keyframes gameStartAura {
+  0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+.page-educativo--game .game-start-splash {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.page-educativo--game .game-start-img {
+  mix-blend-mode: lighten;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  filter: none !important;
+}
+
+.page-educativo--game video.game-start-img,
+.page-educativo--game video.ju-intro-video {
+  mix-blend-mode: normal !important;
+}
+
+.game-start-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.game-start-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.35em 0.55em;
+  margin: 0;
+  line-height: 1.12;
+  width: 100%;
+}
+
+.page-educativo--game .game-hero--start .game-start-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 900;
+}
+
+.game-start-title-main {
+  display: inline-block;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.game-start-title-accent-wrap,
+.game-title-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.game-start-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: clamp(14px, 2.5vw, 20px);
+  width: 100%;
+}
+
+.game-hero-level-up {
+  display: inline-block;
+  margin: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(251, 191, 36, 0.55);
+  background: rgba(8, 24, 56, 0.75);
+  color: var(--game-gold);
+  font-family: var(--edu-heading);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.45);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.2);
+  white-space: nowrap;
+}
+
+.game-hero-xp {
+  position: absolute;
+  z-index: 3;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(251, 191, 36, 0.55);
+  background: rgba(8, 24, 56, 0.88);
+  color: var(--game-gold);
+  font-family: var(--edu-heading);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.45);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
+  pointer-events: none;
+  animation: gameXpPulse 1.8s ease-in-out infinite;
+}
+
+.game-hero-xp--lead {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin: 0;
+  padding: 10px 22px;
+  font-size: 1rem;
+  transform: none;
+  animation: gameXpPulseLead 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes gameXpPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
+  }
+  50% {
+    transform: scale(1.14);
+    box-shadow: 0 0 28px rgba(251, 191, 36, 0.65), 0 0 36px rgba(0, 212, 255, 0.35);
+  }
+}
+
+@keyframes gameXpPulseLead {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(251, 191, 36, 0.4);
+  }
+  50% {
+    transform: scale(1.16);
+    box-shadow: 0 0 32px rgba(251, 191, 36, 0.7), 0 0 42px rgba(0, 212, 255, 0.4);
+  }
+}
+
+.game-start-copy h1 {
+  margin: 0;
+}
+
+.game-start-tag {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  text-shadow: 0 0 12px rgba(125, 211, 252, 0.35);
+  cursor: pointer;
+}
+
+.game-start-lead {
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.12rem);
+  line-height: 1.55;
+  color: rgba(226, 232, 240, 0.88);
+  cursor: pointer;
+  max-width: 36ch;
+}
+
+.game-start-missions {
+  justify-content: flex-start;
+}
+
+@media (min-width: 861px) {
+  .page-educativo--game .game-hero--start .game-start-wrap--centered {
+    max-width: min(540px, 100%);
+  }
+}
+
+@media (max-width: 860px) {
+  .toon-quiz-actions--inline {
+    grid-template-columns: 1fr;
+  }
+
+  .page-educativo--game .game-hero--start .game-start-wrap--centered {
+    max-width: min(480px, 96vw);
+  }
+
+  .game-start-wrap:not(.game-start-wrap--centered) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: clamp(16px, 3vw, 28px);
+  }
+
+  .game-start-mascot,
+  .game-start-mascot--with-speech,
+  .ju-arena--with-speech {
+    margin: 0 auto;
+    max-width: min(var(--ju-hero-max-w), 88vw);
+  }
+
+  .game-start-copy:not(.game-start-copy--head):not(.game-start-copy--foot) {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    max-width: min(480px, 100%);
+  }
+
+  .game-start-title-accent-wrap,
+  .game-title-stack {
+    align-items: center;
+  }
+
+  .game-start-meta {
+    align-items: center;
+  }
+
+  .game-start-lead {
+    max-width: 100%;
+  }
+
+  .game-start-title {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .game-start-title-main {
+    white-space: normal;
+  }
+
+  .game-hero-xp--lead {
+    align-self: center;
+  }
+
+  .game-start-missions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-educativo--game {
+    --ju-hero-max-w: min(84vw, 300px);
+    --ju-hero-max-h: clamp(220px, 44svh, 420px);
+    --ju-quiz-max-w: min(78vw, 240px);
+    --ju-quiz-max-h: clamp(180px, 38svh, 320px);
+    --ju-intro-video-max-w: min(96vw, 520px);
+    --ju-intro-video-max-h: min(82svh, 640px);
+    --ju-help-video-max-w: min(96vw, 360px);
+    --ju-help-video-max-h: min(74svh, 480px);
+    --ju-bubble-col: min(88vw, 320px);
+  }
+
+  .game-start-speech--beside-ju,
+  .ju-bubble--beside {
+    padding: 10px 12px;
+    font-size: clamp(0.72rem, 3.2vw, 0.88rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-educativo--game {
+    --ju-hero-max-w: clamp(300px, 26vw, 420px);
+    --ju-hero-max-h: clamp(340px, 54svh, 600px);
+    --ju-intro-video-max-w: clamp(520px, 52vw, 800px);
+    --ju-intro-video-max-h: clamp(580px, 78svh, 860px);
+    --ju-help-video-max-w: clamp(380px, 34vw, 560px);
+    --ju-help-video-max-h: clamp(460px, 62svh, 680px);
+  }
+}
+
+video.ju-sinto-video,
+video.ju-help-video,
+.missao-hero-figure .ju-sinto-video {
+  display: block;
+  width: 100%;
+  max-width: var(--ju-help-video-max-w, min(96vw, 400px));
+  max-height: var(--ju-help-video-max-h, min(80svh, 560px));
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  background: transparent;
+  border: none;
+}
+
+.page-educativo--game .game-hero {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(24px, 4vw, 40px);
+  color: #fff;
+}
+
+.page-educativo--game .game-hero-bg,
+.page-educativo--game .toon-hero-bg {
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 100%, rgba(99, 102, 241, 0.35), transparent 62%),
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(0, 212, 255, 0.16), transparent 52%),
+    transparent !important;
+}
+
+.game-hero-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 90vw);
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(34, 211, 238, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+.page-educativo--game .game-hero-copy .game-lead,
+.page-educativo--game .game-hero-copy h1 {
+  color: #f8fafc;
+  text-shadow: 0 2px 20px rgba(124, 58, 237, 0.5);
+}
+
+.page-educativo--game .game-badge {
+  background: rgba(124, 58, 237, 0.4) !important;
+  border-color: var(--game-cyan) !important;
+  color: var(--game-cyan) !important;
+  box-shadow: var(--game-glow) !important;
+}
+
+.page-educativo--game .game-title {
+  background: linear-gradient(135deg, var(--game-gold), var(--game-pink)) !important;
+  color: #1e1b4b !important;
+  border-color: var(--game-gold) !important;
+  box-shadow: var(--game-glow-gold) !important;
+}
+
+.page-educativo--game .game-mission-btn {
+  background: rgba(15, 10, 30, 0.7) !important;
+  border-color: var(--game-cyan) !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.2) !important;
+}
+
+.page-educativo--game .game-mission-btn:hover {
+  background: rgba(34, 211, 238, 0.2) !important;
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.4) !important;
+}
+
+.page-educativo--game .game-mission-btn.is-done:not(.is-locked),
+.page-educativo--game .edu-module-mission-btn.is-done:not(.is-locked) {
+  background: rgba(52, 211, 153, 0.25) !important;
+  border-color: #34d399 !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.page-educativo--game .game-mission-btn.is-done:not(.is-locked) .game-mission-lock,
+.page-educativo--game a.toon-quest-item.is-done .game-mission-lock {
+  display: none !important;
+}
+
+.page-educativo--game .game-mission-btn.is-done:not(.is-locked) .toon-jump-num,
+.page-educativo--game .edu-module-mission-btn.is-done:not(.is-locked) .toon-jump-num,
+.page-educativo--game a.toon-quest-item.is-done .toon-jump-num {
+  background: #34d399 !important;
+  border-color: #6ee7b7 !important;
+  color: #052e16 !important;
+}
+
+/* ----- Plataforma da Ju ----- */
+.game-hero-stage:not(.game-start-mascot) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: min(460px, 92vw);
+}
+
+.game-hero-stage.game-start-mascot {
+  min-width: 0;
+}
+
+.ju-avatar-wrap--hero {
+  position: relative;
+  z-index: 2;
+}
+
+.game-platform {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.game-platform-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+  animation: gameRingSpin 12s linear infinite;
+}
+
+.game-platform-ring--1 {
+  width: 280px;
+  height: 80px;
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+  bottom: 20px;
+}
+
+.game-platform-ring--2 {
+  width: 240px;
+  height: 65px;
+  border-color: rgba(244, 114, 182, 0.4);
+  bottom: 28px;
+  animation-direction: reverse;
+  animation-duration: 8s;
+}
+
+@keyframes gameRingSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.game-platform-stone {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 36px;
+  background: linear-gradient(180deg, #64748b, #475569);
+  border-radius: 50%;
+  border: 3px solid #334155;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 2px 8px rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+
+.game-platform-word {
+  font-family: var(--edu-heading);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(226, 232, 240, 0.9);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.game-pad {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.game-pad-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.game-pad-btn--a { background: #ef4444; }
+.game-pad-btn--b { background: #3b82f6; }
+.game-pad-btn--x { background: #eab308; }
+.game-pad-btn--y { background: #22c55e; }
+
+.game-platform .ju-img--hero {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.5));
+}
+
+.page-educativo--game .game-speech {
+  background: rgba(15, 10, 30, 0.9);
+  border-color: var(--game-cyan);
+  color: #e2e8f0;
+  box-shadow: var(--game-glow);
+}
+
+/* ----- Main game area ----- */
+.game-main {
+  position: relative;
+  z-index: 1;
+}
+
+.page-educativo--game .edu-tabs-wrap {
+  background: rgba(15, 10, 30, 0.85);
+  border-color: var(--game-panel-border);
+}
+
+.page-educativo--game .edu-tabs {
+  background: rgba(30, 20, 60, 0.8);
+  border-color: var(--game-purple-light);
+}
+
+.page-educativo--game .edu-tab {
+  color: #cbd5e1;
+}
+
+.page-educativo--game .edu-tab.is-active {
+  background: linear-gradient(135deg, var(--game-purple), var(--game-cyan)) !important;
+  color: #fff !important;
+  border-color: var(--game-cyan) !important;
+  box-shadow: var(--game-glow) !important;
+}
+
+.page-educativo--game .edu-soon {
+  opacity: 1;
+  transform: none;
+  background: linear-gradient(165deg, rgba(8, 20, 48, 0.92), rgba(6, 14, 36, 0.88));
+  border: 2px solid rgba(0, 212, 255, 0.35);
+  box-shadow: var(--game-glow);
+  color: #e2e8f0;
+}
+
+.page-educativo--game .edu-soon h2 {
+  color: #f1f5f9;
+}
+
+.page-educativo--game .edu-soon p {
+  color: #cbd5e1;
+}
+
+.page-educativo--game .game-hero--start[hidden] {
+  display: none !important;
+}
+
+/* ----- Quest map RPG ----- */
+.page-educativo--game .game-quest-map {
+  background: var(--game-panel);
+  border: 2px solid var(--game-panel-border);
+  box-shadow: var(--game-glow), inset 0 0 40px rgba(124, 58, 237, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.game-quest-title {
+  width: 100%;
+  text-align: center;
+  font-family: var(--edu-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--game-cyan);
+  margin-bottom: 4px;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+.page-educativo--game .toon-quest-item {
+  border-color: rgba(34, 211, 238, 0.4);
+  color: #cbd5e1;
+  background: rgba(0,0,0,0.2);
+}
+
+.page-educativo--game .toon-quest-item.is-active {
+  background: rgba(124, 58, 237, 0.4);
+  border-color: var(--game-cyan);
+  color: #fff;
+  box-shadow: var(--game-glow);
+}
+
+.page-educativo--game .toon-quest-item.is-done {
+  background: rgba(52, 211, 153, 0.25);
+  border-color: #34d399;
+  color: #a7f3d0;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.game-mission-done-label {
+  display: none;
+  margin-left: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #6ee7b7;
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.35);
+  white-space: nowrap;
+}
+
+.page-educativo--game .edu-module-mission-btn.is-done:not(.is-locked) .game-mission-done-label,
+.page-educativo--game .game-mission-btn.is-done:not(.is-locked) .game-mission-done-label,
+.page-educativo--game a.toon-quest-item.is-done .game-mission-done-label {
+  display: inline;
+}
+
+.page-educativo--game .edu-module-mission-btn.is-done,
+.page-educativo--game a.toon-quest-item.is-done,
+.page-educativo--game .game-mission-btn.is-done {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ----- Level panels (módulos) ----- */
+.page-educativo--game .game-level-panel {
+  background: var(--game-panel);
+  border: 2px solid var(--game-panel-border);
+  box-shadow: var(--game-glow), 0 16px 48px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  color: #e2e8f0;
+}
+
+.page-educativo--game .edu-module-title,
+.page-educativo--game .edu-module-desc {
+  color: #f1f5f9;
+}
+
+.page-educativo--game .edu-module-desc {
+  color: #cbd5e1;
+}
+
+.page-educativo--game .edu-acc-list-rights {
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: 1.65;
+  font-size: 0.92rem;
+  color: #cbd5e1;
+}
+
+.page-educativo--game .edu-module-label {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: var(--game-gold);
+  color: var(--game-gold);
+}
+
+.page-educativo--game .edu-module-num {
+  color: rgba(34, 211, 238, 0.08);
+}
+
+.page-educativo--game .edu-module-head {
+  border-bottom-color: rgba(34, 211, 238, 0.2);
+}
+
+.edu-module-mission-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  text-decoration: none;
+}
+
+/* Quiz game UI */
+.page-educativo--game .toon-quiz {
+  background: rgba(30, 20, 60, 0.6);
+  border-color: var(--game-purple-light);
+}
+
+.page-educativo--game .ju-finish-img {
+  filter: none !important;
+}
+
+.page-educativo--game .toon-quiz-finish .ju-finish-burst {
+  animation: toonBurst 0.8s ease;
+}
+
+.page-educativo--game .toon-speech-bubble {
+  background: rgba(15, 10, 30, 0.85);
+  border-color: var(--game-cyan);
+  color: #f1f5f9;
+}
+
+.page-educativo--game .toon-speech-bubble::after {
+  border-right-color: rgba(15, 10, 30, 0.85);
+}
+
+.page-educativo--game .toon-sticker-bar {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.page-educativo--game .edu-card,
+.page-educativo--game .edu-checklist,
+.page-educativo--game .edu-acc-item,
+.page-educativo--game .edu-banner {
+  background: rgba(20, 15, 45, 0.75);
+  border-color: rgba(124, 58, 237, 0.4);
+  color: #e2e8f0;
+}
+
+.page-educativo--game .edu-card-section p,
+.page-educativo--game .edu-card-section ul,
+.page-educativo--game .edu-acc-panel p,
+.page-educativo--game .edu-acc-panel ol {
+  color: #cbd5e1;
+}
+
+.page-educativo--game .edu-quiz-feedback,
+.page-educativo--game .toon-feedback {
+  background: #f8fafc !important;
+  color: #111827 !important;
+  border-left: 4px solid var(--game-cyan) !important;
+}
+
+.page-educativo--game .edu-quiz-feedback strong,
+.page-educativo--game .toon-feedback strong {
+  color: #0f172a !important;
+}
+
+.page-educativo--game .edu-flip-front,
+.page-educativo--game .edu-flip-back {
+  background: rgba(25, 18, 55, 0.9) !important;
+  color: #f1f5f9;
+}
+
+.page-educativo--game .footer {
+  position: relative;
+  z-index: 1;
+  background: rgba(15, 10, 30, 0.9);
+  color: #94a3b8;
+}
+
+.page-educativo--game .toon-buddy-bubble {
+  background: rgba(15, 10, 30, 0.95);
+  border-color: var(--game-cyan);
+  color: #e2e8f0;
+}
+
+.page-educativo--game .toon-buddy-toggle {
+  border-color: var(--game-cyan);
+  box-shadow: var(--game-glow);
+  background: transparent;
+}
+
+.page-educativo--game .ju-avatar-wrap,
+.page-educativo--game .ju-avatar-wrap--hero,
+.page-educativo--game .ju-avatar-wrap--quiz,
+.page-educativo--game .ju-avatar-wrap--portrait,
+.page-educativo--game .ju-avatar-wrap[data-frame="think"],
+.page-educativo--game .ju-avatar-wrap[data-frame="learn"],
+.page-educativo--game .ju-avatar-wrap[data-frame="correct"],
+.page-educativo--game .ju-avatar-wrap[data-frame="victory"] {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  outline: none !important;
+}
+
+.page-educativo--game .ju-avatar-wrap--quiz.ju-avatar-wrap--portrait .ju-portrait-img {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  filter: none !important;
+}
+
+.page-educativo--game .ju-avatar-wrap--quiz {
+  border-radius: 0 !important;
+}
+
+.page-educativo--game .toon-quiz-mascot {
+  position: relative;
+  z-index: 1;
+}
+
+.page-educativo--game .toon-finish-burst,
+.page-educativo--game .ju-finish-burst {
+  mix-blend-mode: lighten;
+}
+
+.page-educativo--game .ju-portrait-img,
+.page-educativo--game .ju-finish-img {
+  mix-blend-mode: lighten;
+  border-radius: 0 !important;
+  filter: none !important;
+  width: 100%;
+  max-width: var(--ju-quiz-max-w);
+  max-height: var(--ju-quiz-max-h);
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.page-educativo--game .ju-finish-img {
+  max-width: var(--ju-finish-max-w);
+  max-height: clamp(160px, 32svh, 280px);
+}
+
+.page-educativo--game .ju-avatar-wrap--hero {
+  width: 100%;
+  max-width: var(--ju-hero-max-w);
+  margin-inline: auto;
+}
+
+.page-educativo--game .ju-avatar-wrap--quiz.ju-avatar-wrap--portrait {
+  width: 100%;
+  max-width: var(--ju-quiz-max-w);
+  margin-inline: auto;
+}
+
+.page-educativo--game .toon-hero-mascot,
+.page-educativo--game .toon-quiz-mascot {
+  width: 100%;
+  max-width: var(--ju-quiz-max-w);
+  margin-inline: auto;
+}
+
+.page-educativo--game .ju-avatar-wrap--portrait[data-frame="think"] .ju-portrait-img,
+.page-educativo--game .ju-avatar-wrap--portrait[data-frame="learn"] .ju-portrait-img,
+.page-educativo--game .ju-avatar-wrap--portrait[data-frame="victory"] .ju-portrait-img {
+  filter: none !important;
+}
+
+/* Acertou: pose mais larga — ocupa o mesmo peso visual das outras expressões */
+.page-educativo--game .ju-avatar-wrap--portrait[data-frame="correct"],
+.page-educativo--game .toon-quiz-mascot[data-mood="correct"] .ju-avatar-wrap--portrait {
+  max-width: min(calc(var(--ju-quiz-max-w) * 1.08), 92vw);
+}
+
+.page-educativo--game .ju-avatar-wrap--portrait[data-frame="correct"] .ju-portrait-img {
+  filter: none !important;
+  max-width: min(calc(var(--ju-quiz-max-w) * 1.08), 92vw);
+  max-height: min(calc(var(--ju-quiz-max-h) * 1.32), 48svh);
+}
+
+/* ----- Somente a Ju pulsa ----- */
+
+.page-educativo--game .toon-hero-mascot,
+.page-educativo--game .toon-buddy-toggle,
+.page-educativo--game .toon-quiz-badge,
+.page-educativo--game .toon-quiz-mascot,
+.page-educativo--game .game-holo,
+.page-educativo--game .game-float,
+.page-educativo--game .edu-hero-badge-dot,
+.page-educativo--game .toon-deco--clouds,
+.page-educativo--game .game-platform-ring {
+  animation: none !important;
+}
+
+.page-educativo--game .toon-title-pop.game-title {
+  transform: rotate(-1deg);
+  animation: none !important;
+}
+
+.page-educativo--game .game-hero-xp--lead {
+  animation: gameXpPulseLead 1.8s ease-in-out infinite !important;
+  transform-origin: center center;
+}
+
+.page-educativo--game .game-hero-level-up.is-burst {
+  animation: gameLevelBurst 1.2s ease-out !important;
+}
+
+.page-educativo--game .ju-avatar-wrap--hero,
+.page-educativo--game .ju-avatar-wrap--quiz,
+.page-educativo--game .ju-avatar-wrap--buddy {
+  animation: none;
+}
+
+.page-educativo--game .ju-avatar-wrap--portrait[data-frame="intro"] .ju-portrait-img {
+  animation: juPulse 2.8s ease-in-out infinite;
+  filter: none !important;
+}
+
+@keyframes juPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.page-educativo--game .ju-avatar-wrap--sprite .ju-sprite-sheet {
+  animation: none;
+}
+
+.page-educativo--game .toon-buddy-toggle.is-wiggle {
+  animation: none !important;
+}
+
+/* UI estilo jogo (cores do avatar) */
+.page-educativo--game .toon-hero h1,
+.page-educativo--game .toon-hero .edu-hero-lead,
+.page-educativo--game .toon-badge,
+.page-educativo--game .toon-jump {
+  color: #e0f2fe !important;
+}
+
+.page-educativo--game .toon-badge,
+.page-educativo--game .toon-jump {
+  background: rgba(8, 24, 56, 0.85) !important;
+  border-color: rgba(0, 212, 255, 0.45) !important;
+  box-shadow: var(--game-glow) !important;
+}
+
+.page-educativo--game .toon-title-pop {
+  background: linear-gradient(135deg, #fbbf24, #00d4ff) !important;
+  color: #041020 !important;
+  border-color: rgba(251, 191, 36, 0.8) !important;
+  transform: rotate(-1deg);
+}
+
+.page-educativo--game .toon-quiz,
+.page-educativo--game .toon-btn {
+  border-color: rgba(0, 212, 255, 0.35);
+}
+
+.page-educativo--game .toon-btn--yes {
+  background: rgba(34, 197, 94, 0.2) !important;
+  border-color: #22c55e !important;
+}
+
+.page-educativo--game .toon-btn--no {
+  background: rgba(99, 102, 241, 0.25) !important;
+  border-color: var(--game-purple-light) !important;
+}
+
+.page-educativo--game .toon-speech-bubble,
+.page-educativo--game .toon-buddy-bubble,
+.page-educativo--game .toon-hero-speech:not(.game-start-speech--beside-ju) {
+  background: rgba(6, 16, 40, 0.92) !important;
+  border-color: rgba(0, 212, 255, 0.5) !important;
+  color: #e0f2fe !important;
+}
+
+.page-educativo--game .game-start-speech--beside-ju {
+  background: rgba(8, 18, 42, 0.94) !important;
+  border-color: rgba(0, 212, 255, 0.6) !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 0 28px rgba(0, 212, 255, 0.3), 0 10px 28px rgba(0, 0, 0, 0.4) !important;
+}
+
+.page-educativo--game .toon-speech-bubble::after {
+  border-right-color: rgba(6, 16, 40, 0.92) !important;
+}
+
+.page-educativo--game .toon-quiz-badge {
+  background: linear-gradient(135deg, var(--game-purple-deep), var(--game-cyan-soft)) !important;
+  color: #fff !important;
+  border-color: rgba(0, 212, 255, 0.5) !important;
+}
+
+.page-educativo--game .edu-tabs-wrap {
+  background: rgba(4, 8, 20, 0.92);
+}
+
+.page-educativo--game .edu-tabs {
+  background: rgba(8, 20, 48, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+}
+
+.page-educativo--game .game-level-panel {
+  background: linear-gradient(165deg, rgba(8, 20, 48, 0.92), rgba(6, 14, 36, 0.88));
+  border-color: rgba(0, 212, 255, 0.38);
+  box-shadow: var(--game-glow), inset 0 0 0 1px rgba(99, 102, 241, 0.15);
+}
+
+.page-educativo--game .game-quest-map {
+  background: linear-gradient(165deg, rgba(8, 20, 48, 0.9), rgba(6, 14, 36, 0.85));
+}
+
+.page-educativo--game .toon-quest-item.is-active {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: var(--game-cyan);
+}
+
+.page-educativo--game .toon-quest-item.is-done {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: var(--game-green);
+  color: #bbf7d0;
+}
+
+.page-educativo--game .edu-cta {
+  background: linear-gradient(135deg, var(--game-purple-deep), #0ea5e9) !important;
+  border-color: rgba(0, 212, 255, 0.45) !important;
+}
+
+/* ----- Tipos de bullying — cards empilhados (capa em destaque) ----- */
+.page-educativo--game .toon-flip-grid {
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 3vw, 22px);
+  align-items: stretch;
+  max-width: min(820px, 100%);
+  margin-inline: auto;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-card {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  min-height: 0;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-inner {
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
+  height: 100%;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-front--cover {
+  padding: 5px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-cover {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 10px;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-hint--cover {
+  color: rgba(226, 232, 240, 0.95);
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-front,
+.page-educativo--game .toon-flip-grid .edu-flip-back {
+  padding: clamp(14px, 1.8vw, 22px) clamp(10px, 1.4vw, 16px);
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-front--cover {
+  padding: 0;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-icon {
+  width: clamp(44px, 5vw, 56px);
+  height: clamp(44px, 5vw, 56px);
+  margin-bottom: 10px;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-front h3 {
+  font-size: clamp(0.82rem, 1.15vw, 0.98rem);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-hint {
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-back h4 {
+  font-size: 0.65rem;
+  margin: 10px 0 4px;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-back h4:first-child {
+  margin-top: 0;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-back p,
+.page-educativo--game .toon-flip-grid .edu-flip-back ul {
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-back ul {
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-close {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 0.75rem;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-card.is-flipped {
+  min-height: 300px;
+}
+
+.page-educativo--game .toon-flip-grid .edu-flip-card.is-flipped .edu-flip-inner {
+  min-height: 300px;
+}
+
+@media (max-width: 560px) {
+  .page-educativo--game .toon-flip-grid .edu-flip-card.is-flipped,
+  .page-educativo--game .toon-flip-grid .edu-flip-card.is-flipped .edu-flip-inner {
+    min-height: clamp(200px, 52vw, 320px);
+    aspect-ratio: auto;
+  }
+
+  .edu-faixas .fx-flip-card.is-flipped,
+  .edu-faixas .fx-flip-card.is-flipped .fx-flip-inner {
+    aspect-ratio: auto;
+    min-height: clamp(200px, 52vw, 320px);
+  }
+}
+
+/* ----- Missão 2 — cards completos e legíveis ----- */
+.page-educativo--game .edu-module--2 .edu-m2-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  align-items: start;
+}
+
+.page-educativo--game .edu-module--2 .edu-card {
+  overflow: visible;
+  height: auto;
+  min-height: 0;
+}
+
+.page-educativo--game .edu-module--2 .edu-card h3 {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+}
+
+.page-educativo--game .edu-module--2 .edu-card-section {
+  padding: 14px clamp(16px, 2vw, 22px);
+}
+
+.page-educativo--game .edu-module--2 .edu-card-section ul,
+.page-educativo--game .edu-module--2 .edu-card-section p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.page-educativo--game .edu-module--2 .edu-step h4 {
+  font-size: 0.92rem;
+  color: #f1f5f9 !important;
+}
+
+.page-educativo--game .edu-module--2 .edu-step p {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: #dbeafe !important;
+}
+
+.page-educativo--game .edu-module--2 .edu-cyber-step {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.page-educativo--game .edu-module--2 .edu-cyber-step p {
+  color: #dbeafe !important;
+  font-size: 0.86rem;
+}
+
+.page-educativo--game .edu-module--2 .edu-platforms h4 {
+  color: #f1f5f9 !important;
+}
+
+.page-educativo--game .edu-module--2 .edu-platform {
+  background: rgba(5, 150, 105, 0.12);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.page-educativo--game .edu-module--2 .edu-platform span {
+  color: #dbeafe !important;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 1100px) {
+  .page-educativo--game .edu-module--2 .edu-m2-grid {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+}
+
+/* ----- Missão 3 — layout e legibilidade ----- */
+.page-educativo--game .edu-module--3 .game-level-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.page-educativo--game .edu-module--3 .edu-module-head,
+.page-educativo--game .edu-module--3 .edu-banner,
+.page-educativo--game .edu-module--3 .edu-cta {
+  grid-column: 1 / -1;
+}
+
+.page-educativo--game .edu-module--3 .edu-banner {
+  margin-bottom: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(5, 150, 105, 0.14));
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+.page-educativo--game .edu-module--3 .edu-banner blockquote {
+  color: #f1f5f9 !important;
+}
+
+.page-educativo--game .edu-module--3 .edu-banner-quote {
+  color: rgba(147, 197, 253, 0.35);
+}
+
+.page-educativo--game .edu-module--3 .edu-checklist {
+  margin-bottom: 0;
+  background: rgba(20, 15, 45, 0.85);
+}
+
+.page-educativo--game .edu-module--3 .edu-checklist h3 {
+  color: #f1f5f9 !important;
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  margin-bottom: 16px;
+}
+
+.page-educativo--game .edu-module--3 .edu-check-item {
+  padding: 12px 14px;
+  margin-bottom: 6px;
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.page-educativo--game .edu-module--3 .edu-check-item:hover,
+.page-educativo--game .edu-module--3 .edu-check-item:has(input:checked) {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.page-educativo--game .edu-module--3 .edu-check-item span {
+  color: #e2e8f0 !important;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.page-educativo--game .edu-module--3 .edu-check-msg {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(52, 211, 153, 0.35);
+  color: #ecfdf5 !important;
+}
+
+.page-educativo--game .edu-module--3 .edu-accordion {
+  margin-bottom: 0;
+  gap: 10px;
+}
+
+.page-educativo--game .edu-module--3 .edu-acc-trigger {
+  background: rgba(15, 10, 30, 0.6);
+  color: #f1f5f9 !important;
+  padding: 16px 18px;
+  font-size: 0.92rem;
+}
+
+.page-educativo--game .edu-module--3 .edu-acc-trigger:hover {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.page-educativo--game .edu-module--3 .edu-acc-trigger[aria-expanded="true"] {
+  background: rgba(37, 99, 235, 0.22);
+  color: #e0f2fe !important;
+}
+
+.page-educativo--game .edu-module--3 .edu-acc-icon {
+  background: rgba(96, 165, 250, 0.2);
+  color: #e0f2fe;
+}
+
+.page-educativo--game .edu-module--3 .edu-acc-trigger[aria-expanded="true"] .edu-acc-icon {
+  background: rgba(34, 211, 238, 0.35);
+  color: #fff;
+}
+
+.page-educativo--game .edu-module--3 .edu-acc-panel {
+  padding: 0 18px 18px;
+}
+
+.page-educativo--game .edu-module--3 .edu-acc-panel p,
+.page-educativo--game .edu-module--3 .edu-acc-panel ol,
+.page-educativo--game .edu-module--3 .edu-acc-list-rights {
+  color: #dbeafe !important;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 960px) {
+  .page-educativo--game .edu-module--3 .game-level-panel {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: start;
+  }
+}
+
+/* Legibilidade — corrige textos escuros herdados do tema cartoon */
+.page-educativo--game .edu-flip-hint,
+.page-educativo--game .edu-flip-front h3,
+.page-educativo--game .edu-flip-back h4,
+.page-educativo--game .edu-quiz-title,
+.page-educativo--game .edu-quiz-progress,
+.page-educativo--game .edu-card h3,
+.page-educativo--game .edu-card h4,
+.page-educativo--game .edu-subsection .edu-module-title,
+.page-educativo--game .toon-sticker-label,
+.page-educativo--game .toon-sticker-count,
+.page-educativo--game .edu-soon h2,
+.page-educativo--game .edu-check-item label,
+.page-educativo--game .edu-acc-trigger,
+.page-educativo--game .edu-banner,
+.page-educativo--game .toon-quiz-finish h3,
+.page-educativo--game .toon-quiz-finish p,
+.page-educativo--game .toon-check-msg,
+.page-educativo--game .edu-cyber-step h4,
+.page-educativo--game .edu-platform h4 {
+  color: #f1f5f9 !important;
+}
+
+.page-educativo--game .edu-module-desc,
+.page-educativo--game .edu-soon p,
+.page-educativo--game .edu-card-section p,
+.page-educativo--game .edu-card-section ul,
+.page-educativo--game .edu-acc-panel p,
+.page-educativo--game .edu-acc-panel ol,
+.page-educativo--game .edu-acc-list-rights,
+.page-educativo--game .edu-flip-back p,
+.page-educativo--game .edu-flip-back ul,
+.page-educativo--game .edu-flip-hint {
+  color: #dbeafe !important;
+}
+
+.page-educativo--game .footer,
+.page-educativo--game .footer a {
+  color: #cbd5e1 !important;
+}
+
+.page-educativo--game .footer a:hover {
+  color: #f1f5f9 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-column { width: 28px; opacity: 0.5; }
+  .game-holo, .game-float { display: none; }
+  .game-hero-xp--lead { font-size: 0.92rem; padding: 9px 18px; margin-top: 12px; }
+  .game-hud-values { display: flex; flex-wrap: wrap; }
+  .game-hud--missions { padding: 12px 14px; }
+  .game-platform-stone { width: 200px; }
+  .game-platform-ring--1 { width: 220px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-platform-ring,
+  .game-holo,
+  .game-float,
+  .game-hero-xp,
+  .game-mission-lock,
+  .game-start-aura,
+  .page-educativo--game .ju-avatar-wrap--hero,
+  .page-educativo--game .ju-avatar-wrap--quiz,
+  .page-educativo--game .ju-avatar-wrap--buddy {
+    animation: none !important;
+  }
+}
+
+.game-hero-level-up.is-burst,
+.game-float--level.is-burst {
+  animation: gameLevelBurst 1.2s ease-out;
+  border-color: #fff;
+  color: #fff;
+  background: rgba(124, 58, 237, 0.85);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.9);
+}
+
+@keyframes gameLevelBurst {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}

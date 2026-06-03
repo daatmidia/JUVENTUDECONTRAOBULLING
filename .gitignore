@@ -1,0 +1,4 @@
+.venv/
+.pypackages/
+.DS_Store
+**/.DS_Store
