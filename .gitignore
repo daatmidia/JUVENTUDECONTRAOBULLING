@@ -2,3 +2,5 @@
 .pypackages/
 .DS_Store
 **/.DS_Store
+tools/gh
+upload-lotes/

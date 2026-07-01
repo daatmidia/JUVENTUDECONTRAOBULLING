@@ -2,7 +2,7 @@
   'use strict';
 
   const ASSETS = {
-    ola: 'assets/VIDEOSAUDACAOINICIAL.mp4?v=5',
+    ola: 'assets/VIDEOSAUDACAOINICIAL.mp4?v=6',
     think: 'assets/ju-pergunta.png',
     acertou: 'assets/ju-acertou.png?v=12',
     errou: 'assets/ju-quase.png',
@@ -10,7 +10,7 @@
   };
 
   const INTRO_VIDEO = {
-    mp4: 'assets/VIDEOSAUDACAOINICIAL.mp4?v=5',
+    mp4: 'assets/VIDEOSAUDACAOINICIAL.mp4?v=6',
   };
 
   let selectorIntroLoopActive = false;
@@ -36,16 +36,32 @@
     return Boolean(event.target.closest('[data-fx-mode], [data-fx-back], .faixa-card'));
   }
 
-  /** Vídeo visível na tela (o #selectorJu fica oculto com .edu-faixa-active). */
+  /** Vídeo visível na tela (prioriza o que está no viewport). */
+  function isInViewport(el, minRatio = 0.12) {
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    if (rect.width <= 0 || rect.height <= 0) return false;
+    const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+    const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+    return visible > 0 && (visible / rect.height) >= minRatio;
+  }
+
   function getActiveIntroVideo() {
     const hero = document.getElementById('heroIntroVideo');
     const selector = document.getElementById('selectorJu');
+
+    if (isJuVideo(hero) && isElementVisible(hero) && isInViewport(hero)) {
+      return hero;
+    }
+
     if (isJuVideo(selector)) {
       const arena = selector.closest('.ju-arena--selector');
-      if (isElementVisible(selector) && (!arena || isElementVisible(arena))) {
+      const selectorVisible = isElementVisible(selector) && (!arena || isElementVisible(arena));
+      if (selectorVisible && isInViewport(selector)) {
         return selector;
       }
     }
+
     if (isJuVideo(hero) && isElementVisible(hero)) return hero;
     return isJuVideo(selector) ? selector : hero;
   }
@@ -141,9 +157,9 @@
     playIntroVideo(active, { withSound: false, loop: true, resetTime: false }).catch(() => {});
   }
 
-  /** Autoplay ao abrir alunos.html — apenas áudio do vídeo (sem MP3 separado). */
+  /** Autoplay ao abrir — tenta com som; se o navegador bloquear, toca mudo (sem pausar). */
   async function autoplaySaudacaoOnOpen() {
-    if (muted || !shouldPlaySaudacaoVideo()) return false;
+    if (!shouldPlaySaudacaoVideo()) return false;
     const active = getActiveIntroVideo();
     if (!isJuVideo(active)) return false;
 
@@ -156,31 +172,15 @@
     active.loop = true;
     active.playsInline = true;
 
-    const tryPlayWithSound = async () => {
+    if (!muted) {
       active.muted = false;
       try {
         await active.play();
-        return true;
-      } catch (_) {
-        try { active.pause(); } catch (_) { /* ignore */ }
-        return false;
-      }
-    };
-
-    if (!active.paused && !active.ended && !active.muted) {
-      selectorIntroLoopActive = true;
-      saudacaoAberturaPlayed = true;
-      return true;
-    }
-
-    for (let attempt = 0; attempt < 5; attempt += 1) {
-      if (attempt > 0) {
-        await new Promise((resolve) => window.setTimeout(resolve, 120 * attempt));
-      }
-      if (await tryPlayWithSound()) {
         selectorIntroLoopActive = true;
         saudacaoAberturaPlayed = true;
         return true;
+      } catch (_) {
+        /* Navegador bloqueou som automático — continua mudo abaixo. */
       }
     }
 
@@ -639,7 +639,7 @@
   }
 
   async function saudacaoAbertura() {
-    if (muted || !shouldPlaySaudacaoVideo()) return false;
+    if (muted) return false;
 
     unlock();
 
@@ -803,27 +803,49 @@
     return speak(message);
   }
 
+  function kickIntroAutoplay() {
+    if (!shouldPlaySaudacaoVideo()) return;
+    autoplaySaudacaoOnOpen().catch(() => initIntroVideoLoops());
+  }
+
+  function bindIntroVideoObservers() {
+    if (!('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.15);
+      if (!visible || !shouldPlaySaudacaoVideo()) return;
+
+      const active = getActiveIntroVideo();
+      if (isJuVideo(active) && (active.paused || active.ended)) {
+        kickIntroAutoplay();
+      }
+    }, { threshold: [0, 0.15, 0.35] });
+
+    allIntroVideos().forEach((video) => {
+      if (isJuVideo(video)) observer.observe(video);
+    });
+  }
+
   function initVoice() {
     waitForVoices();
     waitClipReady(faixaEntradaPlayer).catch(() => {});
     waitClipReady(clipPlayers.acertou).catch(() => {});
     waitClipReady(clipPlayers.errou).catch(() => {});
+
     allIntroVideos().forEach((video) => {
-      if (isJuVideo(video)) {
-        try { video.load(); } catch (_) { /* ignore */ }
-        video.addEventListener('loadeddata', () => {
-          if (!selectorIntroLoopActive && shouldPlaySaudacaoVideo() && document.getElementById('heroIntroVideo')) {
-            autoplaySaudacaoOnOpen().catch(() => {});
-          }
-        }, { once: true });
-      }
+      if (!isJuVideo(video)) return;
+      video.playsInline = true;
+      try { video.load(); } catch (_) { /* ignore */ }
+      video.addEventListener('loadeddata', kickIntroAutoplay, { once: true });
+      video.addEventListener('canplay', kickIntroAutoplay, { once: true });
     });
-    window.requestAnimationFrame(() => {
-      if (document.getElementById('heroIntroVideo') || document.getElementById('selectorJu')) {
-        saudacaoAbertura().catch(() => initIntroVideoLoops());
-      } else {
-        initIntroVideoLoops();
-      }
+
+    bindIntroVideoObservers();
+    kickIntroAutoplay();
+    window.requestAnimationFrame(kickIntroAutoplay);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') kickIntroAutoplay();
     });
   }
 
