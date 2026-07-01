@@ -395,6 +395,9 @@
       showScreen('medio');
       initFullQuiz();
       buildFlipCards({ gridId: 'fxFlipGrid', countId: 'fxStickerCount' });
+      globalThis.mountMedioAcolhimento?.();
+      globalThis.initJuSintoVideos?.();
+      return;
     }
   }
 
@@ -908,6 +911,8 @@
       });
     });
   }
+
+  globalThis.initJuSintoVideos = initSintoVideosClickToPlay;
 
   function irParaModo(modo) {
     if (globalThis.JU?.unlock) JU.unlock();

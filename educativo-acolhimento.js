@@ -296,6 +296,7 @@
     mount.appendChild(clone);
     mount.dataset.mounted = '1';
     initEduMa(clone);
+    globalThis.initJuSintoVideos?.();
   }
 
   function initAll() {
