@@ -830,10 +830,39 @@
     });
   }
 
-  const SINTO_VIDEO_SRC = 'assets/SINTOMUITO.mp4?v=2';
+  const SINTO_VIDEO_SRC = 'assets/SINTOMUITO.mp4?v=3';
 
   function isSintoVideo(video) {
     return Boolean(video && video.classList.contains('ju-sinto-video'));
+  }
+
+  function findSintoVideoFromEvent(event) {
+    if (event.target?.closest?.('video.ju-sinto-video')) {
+      return event.target.closest('video.ju-sinto-video');
+    }
+    const wrap = event.target?.closest?.('.fx-kids-sinto-block, .missao-hero-figure');
+    return wrap?.querySelector?.('video.ju-sinto-video') || null;
+  }
+
+  function prepareSintoVideo(video) {
+    if (!isSintoVideo(video)) return;
+
+    if (!video.getAttribute('src')) {
+      video.src = SINTO_VIDEO_SRC;
+    }
+
+    video.playsInline = true;
+    video.controls = false;
+    video.removeAttribute('controls');
+    video.preload = 'auto';
+    video.setAttribute('role', 'button');
+    if (!video.hasAttribute('tabindex')) video.tabIndex = 0;
+    video.title = '▶ Toque para assistir o vídeo';
+
+    if (video.paused && !video.dataset.sintoPrimed) {
+      video.dataset.sintoPrimed = '1';
+      try { video.load(); } catch (_) { /* ignore */ }
+    }
   }
 
   function pauseSintoVideo(video) {
@@ -843,10 +872,11 @@
     video.removeAttribute('autoplay');
   }
 
-  function playSintoVideoOnClick(video) {
-    if (!isSintoVideo(video)) return;
+  async function playSintoVideoOnClick(video) {
+    if (!isSintoVideo(video)) return false;
     if (globalThis.JU?.unlock) globalThis.JU.unlock();
 
+    prepareSintoVideo(video);
     video.autoplay = false;
     video.loop = false;
     video.muted = false;
@@ -862,57 +892,69 @@
       video.pause();
       video.classList.remove('is-playing');
       wrap?.classList.remove('is-playing');
-      return;
+      return true;
     }
 
     video.classList.add('is-playing');
     wrap?.classList.add('is-playing');
-    video.play().catch(() => {
-      video.muted = true;
-      video.play().catch(() => {
+
+    const tryPlay = async (muted) => {
+      video.muted = muted;
+      await video.play();
+      return true;
+    };
+
+    try {
+      await tryPlay(false);
+    } catch (_) {
+      try {
+        await tryPlay(true);
+      } catch (_) {
         video.classList.remove('is-playing');
         wrap?.classList.remove('is-playing');
-      });
-    });
+        return false;
+      }
+    }
 
     video.addEventListener('ended', () => {
       video.classList.remove('is-playing');
       wrap?.classList.remove('is-playing');
     }, { once: true });
+    return true;
+  }
+
+  function activateSintoVideoFromEvent(event) {
+    const video = findSintoVideoFromEvent(event);
+    if (!video) return false;
+    event.preventDefault();
+    event.stopPropagation();
+    playSintoVideoOnClick(video);
+    return true;
+  }
+
+  function bindSintoVideoDelegation() {
+    if (document.documentElement.dataset.juSintoDelegation === '1') return;
+    document.documentElement.dataset.juSintoDelegation = '1';
+
+    document.addEventListener('click', (event) => {
+      activateSintoVideoFromEvent(event);
+    }, true);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      activateSintoVideoFromEvent(event);
+    }, true);
   }
 
   function initSintoVideosClickToPlay() {
     document.querySelectorAll('video.ju-sinto-video').forEach((video) => {
-      if (video.dataset.sintoClickBound === '1') return;
-      video.dataset.sintoClickBound = '1';
-
-      if (!video.getAttribute('src')) {
-        video.src = SINTO_VIDEO_SRC;
-      }
-
+      prepareSintoVideo(video);
       pauseSintoVideo(video);
-      video.controls = false;
-      video.removeAttribute('controls');
-      video.preload = 'metadata';
-      video.setAttribute('role', 'button');
-      video.tabIndex = 0;
-      video.title = '▶ Toque para assistir o vídeo';
-
-      const onActivate = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        playSintoVideoOnClick(video);
-      };
-
-      video.addEventListener('click', onActivate);
-      video.addEventListener('keydown', (event) => {
-        if (event.key !== 'Enter' && event.key !== ' ') return;
-        onActivate(event);
-      });
     });
   }
 
   globalThis.initJuSintoVideos = initSintoVideosClickToPlay;
+  bindSintoVideoDelegation();
 
   function irParaModo(modo) {
     if (globalThis.JU?.unlock) JU.unlock();

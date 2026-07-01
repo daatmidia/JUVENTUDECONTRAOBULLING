@@ -308,9 +308,17 @@
   globalThis.initEduMa = initEduMa;
   globalThis.mountMedioAcolhimento = mountMedioAcolhimento;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAll);
-  } else {
-    initAll();
+  function scheduleInitAll() {
+    const run = () => {
+      initAll();
+      globalThis.initJuSintoVideos?.();
+    };
+    if (document.readyState === 'complete') {
+      run();
+    } else {
+      window.addEventListener('load', run, { once: true });
+    }
   }
+
+  scheduleInitAll();
 }());

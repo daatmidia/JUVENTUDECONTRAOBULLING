@@ -1015,6 +1015,12 @@ body.edu-faixa-teen .fx-brand-hero {
 
 .edu-faixas .fx-screen--medio #fxMedioMa {
   margin-top: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.edu-faixas .fx-screen--medio .missao-hero-figure {
+  cursor: pointer;
 }
 
 .edu-faixas .fx-screen--medio .edu-ma {
