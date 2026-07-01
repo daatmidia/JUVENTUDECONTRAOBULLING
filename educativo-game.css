@@ -652,6 +652,7 @@ a.toon-quest-item.is-locked {
   max-width: var(--ju-intro-video-max-w, min(96vw, 560px));
   width: 100%;
   margin-inline: auto;
+  max-height: min(58svh, 560px);
 }
 
 .page-educativo--game .game-hero--start .game-start-copy--head,
@@ -819,6 +820,7 @@ video.ju-intro-video {
 #heroIntroVideo.ju-intro-video {
   pointer-events: none;
   cursor: default;
+  max-height: min(58svh, 560px);
 }
 
 .page-educativo--game .game-start-mascot:has(.ju-intro-video),

@@ -947,5 +947,35 @@
   globalThis.openFlipCardImage = openKidsFlipImage;
 
   initSintoVideosClickToPlay();
-  enterFaixaMode();
+  initSelectorJu({ speak: false });
+  bindSelectorAutoGreeting();
+
+  /* Modo compacto só quando hero e faixas aparecem juntos na tela (evita Ju duplicada). */
+  function syncFaixaCompactMode() {
+    if (document.body.classList.contains('edu-faixa-in-quiz')
+      || document.body.classList.contains('edu-faixa-teen')) {
+      return;
+    }
+    const hero = document.getElementById('heroIntroVideo');
+    const faixas = document.getElementById('eduFaixas');
+    if (!hero || !faixas) return;
+
+    const heroRect = hero.getBoundingClientRect();
+    const faixasRect = faixas.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+    const heroOnScreen = heroRect.bottom > 0 && heroRect.top < vh * 0.85;
+    const faixasOnScreen = faixasRect.top < vh * 0.92;
+
+    if (heroOnScreen && faixasOnScreen) {
+      if (!document.body.classList.contains('edu-faixa-active')) {
+        document.body.classList.add('edu-faixa-active');
+      }
+    } else {
+      document.body.classList.remove('edu-faixa-active');
+    }
+  }
+
+  window.addEventListener('scroll', syncFaixaCompactMode, { passive: true });
+  window.addEventListener('resize', syncFaixaCompactMode, { passive: true });
+  window.requestAnimationFrame(syncFaixaCompactMode);
 })();
