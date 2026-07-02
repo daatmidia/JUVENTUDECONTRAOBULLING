@@ -769,7 +769,7 @@
       fisico: 'assets/cards/5.webp',
       verbal: 'assets/cards/6.webp',
       social: 'assets/cards/7.webp',
-      cyber: 'assets/cards/8.webp?v=2',
+      cyber: 'assets/cards/8.webp?v=3',
     };
   }
 

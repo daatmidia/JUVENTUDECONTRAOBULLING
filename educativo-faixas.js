@@ -149,7 +149,7 @@
       title: 'Cyberbullying',
       className: 'fx-flip-card--cyber',
       coverImage: 'assets/cards/CAPACYBER.webp',
-      faixaImage: 'assets/cards/8.webp?v=2',
+      faixaImage: 'assets/cards/8.webp?v=3',
       exemplo: 'Posts humilhantes, perfil falso, mensagens de ódio, exposição de fotos sem permissão.',
       sinais: ['Ansiedade ao usar celular, evita redes sociais, chora após usar o celular.'],
       fazer: 'Não responda. Salve prints. Bloqueie. Conte para um adulto. Denuncie na plataforma.',
