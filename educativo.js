@@ -765,10 +765,10 @@
 
   /* ----- Stickers + Flip cards ----- */
   const FLIP_CARD_IMAGES = {
-    fisico: 'assets/5.png',
-    verbal: 'assets/6.png',
-    social: 'assets/7.png',
-    cyber: 'assets/6.png',
+    fisico: 'assets/cards/5.webp',
+    verbal: 'assets/cards/6.webp',
+    social: 'assets/cards/7.webp',
+    cyber: 'assets/cards/6.webp',
   };
 
   function initFlipCards() {
@@ -839,6 +839,8 @@
         }
       });
     });
+
+    globalThis.bindLazyFlipCovers?.(document.getElementById('eduFlipTypes') || document);
   }
 
   function addMissionDoneLabel(el) {

@@ -112,8 +112,8 @@
       icon: '👊',
       title: 'Físico',
       className: 'fx-flip-card--fisico',
-      coverImage: 'assets/CAPAFISICO.png',
-      faixaImage: 'assets/5.png',
+      coverImage: 'assets/cards/CAPAFISICO.webp',
+      faixaImage: 'assets/cards/5.webp',
       exemplo: 'Empurrões, socos, chutes, roubo de objetos, danos a pertences.',
       sinais: ['Marcas no corpo, roupas rasgadas, medo do intervalo ou da escola.'],
       fazer: 'Afaste-se da situação. Conte para um professor, orientador ou familiar imediatamente.',
@@ -124,8 +124,8 @@
       icon: '🗣️',
       title: 'Verbal',
       className: 'fx-flip-card--verbal',
-      coverImage: 'assets/CAPAVERBAL.png',
-      faixaImage: 'assets/6.png',
+      coverImage: 'assets/cards/CAPAVERBAL.webp',
+      faixaImage: 'assets/cards/6.webp',
       exemplo: 'Apelidos ofensivos, xingamentos, ameaças, humilhação pública em sala.',
       sinais: ['Tristeza após intervalos, não quer ir à escola, isolamento, baixa autoestima.'],
       fazer: 'Não responda às provocações. Guarde registros (anotações de data/hora) e conte para um adulto.',
@@ -136,8 +136,8 @@
       icon: '👥',
       title: 'Social',
       className: 'fx-flip-card--social',
-      coverImage: 'assets/CAPASOCIAL.png',
-      faixaImage: 'assets/7.png',
+      coverImage: 'assets/cards/CAPASOCIAL.webp',
+      faixaImage: 'assets/cards/7.webp',
       exemplo: 'Exclusão proposital de grupos, espalhar mentiras para isolar, impedir amizades.',
       sinais: ['Sempre sozinho(a), sem amigos na escola, parece triste sem motivo aparente.'],
       fazer: 'Seja aliado(a): inclua, converse, chame para participar. Avise um adulto discretamente.',
@@ -148,8 +148,8 @@
       icon: '📱',
       title: 'Cyberbullying',
       className: 'fx-flip-card--cyber',
-      coverImage: 'assets/CAPACYBER.png',
-      faixaImage: 'assets/6.png',
+      coverImage: 'assets/cards/CAPACYBER.webp',
+      faixaImage: 'assets/cards/6.webp',
       exemplo: 'Posts humilhantes, perfil falso, mensagens de ódio, exposição de fotos sem permissão.',
       sinais: ['Ansiedade ao usar celular, evita redes sociais, chora após usar o celular.'],
       fazer: 'Não responda. Salve prints. Bloqueie. Conte para um adulto. Denuncie na plataforma.',
@@ -386,7 +386,7 @@
       else if (globalThis.JU?.setFaixa) JU.setFaixa('kids');
       showScreen('kids');
       initKidsQuiz();
-      buildFlipCards({ gridId: 'kidsFlipGrid', countId: 'kidsStickerCount' });
+      scheduleFlipCards({ gridId: 'kidsFlipGrid', countId: 'kidsStickerCount' });
       return;
     }
     if (mode === 'medio') {
@@ -394,7 +394,7 @@
       else if (globalThis.JU?.setFaixa) JU.setFaixa('medio');
       showScreen('medio');
       initFullQuiz();
-      buildFlipCards({ gridId: 'fxFlipGrid', countId: 'fxStickerCount' });
+      scheduleFlipCards({ gridId: 'fxFlipGrid', countId: 'fxStickerCount' });
       globalThis.mountMedioAcolhimento?.();
       globalThis.initJuSintoVideos?.();
       return;
@@ -755,6 +755,48 @@
     });
   }
 
+  function bindLazyFlipCovers(scope) {
+    const rootEl = scope || document;
+    const imgs = rootEl.querySelectorAll('img.fx-flip-cover[data-src], img.edu-flip-cover[data-src]');
+    if (!imgs.length) return;
+
+    const load = (img) => {
+      const src = img.dataset.src;
+      if (!src || img.dataset.loaded === '1') return;
+      img.src = src;
+      img.dataset.loaded = '1';
+      img.removeAttribute('data-src');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      imgs.forEach(load);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        load(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '160px 0px', threshold: 0.01 });
+
+    imgs.forEach((img) => observer.observe(img));
+  }
+
+  function scheduleFlipCards(options = {}) {
+    const run = () => {
+      buildFlipCards(options);
+      const grid = $(options.gridId || 'fxFlipGrid');
+      if (grid) bindLazyFlipCovers(grid);
+    };
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(run, { timeout: 1200 });
+    } else {
+      window.setTimeout(run, 60);
+    }
+  }
+
   function buildFlipCards(options = {}) {
     const gridId = options.gridId || 'fxFlipGrid';
     const countId = options.countId || 'fxStickerCount';
@@ -772,7 +814,7 @@
       card.innerHTML = `
         <div class="fx-flip-inner">
           <div class="fx-flip-front fx-flip-front--cover" tabindex="0" role="button" aria-expanded="false" aria-label="${d.title} — toque para ver detalhes">
-            <img class="fx-flip-cover" src="${d.coverImage}" alt="Capa — bullying ${d.title}" loading="lazy" decoding="async">
+            <img class="fx-flip-cover" data-src="${d.coverImage}" alt="Capa — bullying ${d.title}" loading="lazy" decoding="async" width="900" height="506">
             <p class="fx-flip-hint fx-flip-hint--cover">Toque para saber mais</p>
           </div>
           <div class="fx-flip-back">
@@ -954,6 +996,7 @@
   }
 
   globalThis.initJuSintoVideos = initSintoVideosClickToPlay;
+  globalThis.bindLazyFlipCovers = bindLazyFlipCovers;
   bindSintoVideoDelegation();
 
   function irParaModo(modo) {
