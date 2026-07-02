@@ -764,14 +764,17 @@
   }
 
   /* ----- Stickers + Flip cards ----- */
-  const FLIP_CARD_IMAGES = {
-    fisico: 'assets/cards/5.webp',
-    verbal: 'assets/cards/6.webp',
-    social: 'assets/cards/7.webp',
-    cyber: 'assets/cards/6.webp',
-  };
+  function getFlipCardImages() {
+    return globalThis.FLIP_CARD_DETAIL_IMAGES || {
+      fisico: 'assets/cards/5.webp',
+      verbal: 'assets/cards/6.webp',
+      social: 'assets/cards/7.webp',
+      cyber: 'assets/cards/8.webp?v=2',
+    };
+  }
 
   function initFlipCards() {
+    const FLIP_CARD_IMAGES = getFlipCardImages();
     const unlocked = new Set();
     document.querySelectorAll('.toon-sticker.is-unlocked').forEach((el) => {
       if (el.dataset.sticker) unlocked.add(el.dataset.sticker);

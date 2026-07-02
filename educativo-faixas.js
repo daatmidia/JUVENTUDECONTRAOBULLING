@@ -149,13 +149,17 @@
       title: 'Cyberbullying',
       className: 'fx-flip-card--cyber',
       coverImage: 'assets/cards/CAPACYBER.webp',
-      faixaImage: 'assets/cards/6.webp',
+      faixaImage: 'assets/cards/8.webp?v=2',
       exemplo: 'Posts humilhantes, perfil falso, mensagens de ódio, exposição de fotos sem permissão.',
       sinais: ['Ansiedade ao usar celular, evita redes sociais, chora após usar o celular.'],
       fazer: 'Não responda. Salve prints. Bloqueie. Conte para um adulto. Denuncie na plataforma.',
       legal: 'Crime previsto na Lei nº 14.811/2024 e Lei Carolina Dieckmann',
     },
   ];
+
+  const FLIP_CARD_DETAIL_IMAGES = Object.fromEntries(
+    flipD.map((item) => [item.key, item.faixaImage]).filter(([, src]) => src)
+  );
 
   const kidsFinishMsgs = [
     'Mandou bem! Agora você sabe reconhecer quando algo machuca de verdade.',
@@ -515,6 +519,7 @@
         starsEl.setAttribute('aria-label', `${kidsState.score} de ${kidsQ.length} estrelas`);
       }
       if (globalThis.JU) {
+        bindActiveJu();
         JU.unlock();
         if (juImg) juImg.src = JU_ASSETS.victory;
         if (typeof juParabens === 'function') juParabens();
@@ -651,6 +656,7 @@
       }
       setJuImg(juImg, juBubble, 'victory');
       if (globalThis.JU?.unlock) JU.unlock();
+      bindActiveJu();
       if (typeof juParabens === 'function') juParabens();
       else if (globalThis.JU?.parabens) JU.parabens();
       fireConfetti();
@@ -1035,6 +1041,7 @@
   });
 
   globalThis.openFlipCardImage = openKidsFlipImage;
+  globalThis.FLIP_CARD_DETAIL_IMAGES = FLIP_CARD_DETAIL_IMAGES;
 
   initSintoVideosClickToPlay();
   initSelectorJu({ speak: false });
