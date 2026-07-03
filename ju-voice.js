@@ -221,10 +221,16 @@
 
   const FAIXA_ENTRADA_SRC = 'assets/teste_ate_5_6.mp3';
 
-  const CLIPS = {
+  const CLIPS_FILES = {
     acertou: 'assets/ju-acertou.mp3',
     errou: 'assets/ju-errou.mp3',
   };
+
+  function resolveClipSrc(type) {
+    const embedded = global.JU_VOICE_CLIPS?.[type];
+    if (embedded) return embedded;
+    return CLIPS_FILES[type] || null;
+  }
 
   const blobUrlCache = new Map();
 
@@ -280,8 +286,8 @@
   }
 
   const clipPlayers = {
-    acertou: makeClipPlayer(CLIPS.acertou),
-    errou: makeClipPlayer(CLIPS.errou),
+    acertou: makeClipPlayer(resolveClipSrc('acertou')),
+    errou: makeClipPlayer(resolveClipSrc('errou')),
   };
 
   const faixaEntradaPlayer = makeClipPlayer(FAIXA_ENTRADA_SRC);
@@ -784,14 +790,13 @@
     return speak(frase);
   }
 
-  function parabens() {
-    unlock();
-    setVisual('victory', global.JU_FALA?.FRASES?.parabens || 'Parabéns! Saber pedir ajuda é um superpoder!', 'acertou');
-    if (global.JU_FALA) {
-      global.JU_FALA.parabens();
-      return Promise.resolve(true);
+  async function parabens() {
+    global.JU_FALA?.parar?.();
+    pauseAllClips();
+    if (hasSpeech()) {
+      try { window.speechSynthesis.cancel(); } catch (_) { /* ignore */ }
     }
-    return speak(global.JU_FALA?.FRASES?.parabens || 'Parabéns! Saber pedir ajuda é um superpoder!');
+    return true;
   }
 
   function falar(text) {

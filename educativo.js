@@ -740,9 +740,8 @@
       const msg = FINISH_MESSAGES[Math.floor(Math.random() * FINISH_MESSAGES.length)];
       finishMsgEl.textContent = msg;
       burstConfetti(document.getElementById('toonConfetti'));
-      if (globalThis.JU?.unlock) JU.unlock();
-      if (typeof juParabens === 'function') juParabens();
-      else if (globalThis.JU?.parabens) JU.parabens();
+      if (globalThis.JU?.parar) JU.parar();
+      global.JU_FALA?.parar?.();
       sayBuddy('quizDone');
       grantGameXp(GAME_XP.quizDone, 'quiz-done');
       tryCompleteMission1();

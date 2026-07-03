@@ -124,7 +124,7 @@ const JU_FALA = (() => {
     selector() { falar(FRASES.selector, null); },
     acertou() { falar(FRASES.acertou, 'acertou'); },
     errou() { falar(FRASES.errou, 'errou'); },
-    parabens() { falar(FRASES.parabens, 'parabens'); },
+    parabens() { parar(); },
     parar() {
       if (window.speechSynthesis) window.speechSynthesis.cancel();
       ondas(false);

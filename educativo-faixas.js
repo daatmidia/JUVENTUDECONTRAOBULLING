@@ -520,11 +520,10 @@
       }
       if (globalThis.JU) {
         bindActiveJu();
-        JU.unlock();
         if (juImg) juImg.src = JU_ASSETS.victory;
-        if (typeof juParabens === 'function') juParabens();
-        else if (globalThis.JU?.parabens) JU.parabens();
-        else JU.falar(finishMsg);
+        if (juBubble && finishMsg) juBubble.textContent = finishMsg;
+        global.JU_FALA?.parar?.();
+        globalThis.JU?.parar?.();
       } else {
         setJuImg(juImg, juBubble, 'victory');
       }
@@ -655,10 +654,8 @@
         finishMsgEl.textContent = fullFinishMsgs[Math.floor(Math.random() * fullFinishMsgs.length)];
       }
       setJuImg(juImg, juBubble, 'victory');
-      if (globalThis.JU?.unlock) JU.unlock();
-      bindActiveJu();
-      if (typeof juParabens === 'function') juParabens();
-      else if (globalThis.JU?.parabens) JU.parabens();
+      global.JU_FALA?.parar?.();
+      globalThis.JU?.parar?.();
       fireConfetti();
     }
 
