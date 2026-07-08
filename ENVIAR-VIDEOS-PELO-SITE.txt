@@ -1,0 +1,35 @@
+POR QUE DEU ERRO NO UPLOAD?
+============================
+Voce tentou enviar ~130 MB de uma vez. O GitHub pelo navegador
+nao aceita uploads tao grandes.
+
+SOLUCAO A — LOGIN AUTOMATICO (RECOMENDADO, envia tudo)
+=======================================================
+1. Abra a pasta: site-JCB/tools/
+2. Duplo clique em: ENVIAR-COM-LOGIN.command
+3. Siga o login no navegador (GitHub.com → HTTPS → Login with browser)
+4. Aguarde o envio terminar
+
+SOLUCAO B — UPLOAD EM LOTES PELO SITE (so se A falhar)
+=======================================================
+
+LOTE 1 — VIDEOS (13 MB) — FACA ESTE PRIMEIRO
+   Pasta no Finder:
+   site-JCB/upload-lotes/lote1-com-videos/assets/
+
+   1. Abra: https://github.com/daatmidia/JUVENTUDECONTRAOBULLING/upload/main
+   2. Arraste a pasta "assets" de lote1-com-videos para o GitHub
+   3. Commit changes
+
+   Confirme: deve aparecer VIDEOSAUDACAOINICIAL.mp4 e SINTOMUITO.mp4
+
+LOTE 2 — IMAGENS E AUDIOS (depois)
+   Envie o restante da pasta assets/ original em grupos de ~20 arquivos.
+
+IMPORTANTE
+==========
+Os videos usam os arquivos .mp4 (nao .mov):
+  - VIDEOSAUDACAOINICIAL.mp4  (saudacao da Ju)
+  - SINTOMUITO.mp4            (video "Sinto muito")
+
+Depois do Lote 1, os videos ja devem funcionar no site.

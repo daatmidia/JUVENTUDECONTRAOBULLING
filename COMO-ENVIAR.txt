@@ -1,0 +1,35 @@
+COMO ENVIAR O PROJETO PARA O GITHUB
+====================================
+
+Os vídeos ainda NÃO estão no GitHub porque o envio não foi concluído.
+Siga estes passos no Terminal do Mac (não use o Cursor):
+
+PASSO 1 — Abrir o Terminal
+   Aplicativos → Utilitários → Terminal
+
+PASSO 2 — Cole este comando e pressione ENTER:
+
+cd ~/Documents/site-JCB && git push --force origin main
+
+PASSO 3 — Quando pedir:
+   Username: daatmidia
+   Password: cole seu TOKEN do GitHub (NÃO use a senha da conta)
+
+   Criar token: https://github.com/settings/tokens
+   → Generate new token (classic)
+   → Marque a opção "repo"
+   → Generate token → copie o código
+
+PASSO 4 — Confirme no navegador:
+   https://github.com/daatmidia/JUVENTUDECONTRAOBULLING/tree/main/assets
+
+   Deve aparecer VIDEOSAUDACAOINICIAL.mp4 e SINTOMUITO.mp4
+
+---
+
+SE DER ERRO "Newer commits on remote":
+   Apague o repositório no GitHub e crie de novo VAZIO:
+   https://github.com/new
+   Nome: JUVENTUDECONTRAOBULLING
+   NÃO marque README, .gitignore ou license
+   Depois rode o comando do PASSO 2 de novo.
